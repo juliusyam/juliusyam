@@ -1,11 +1,9 @@
 import type { NextPage } from 'next'
-import JuliusYam, {JuliusYamLanding} from '../components/JuliusYam';
+import JuliusYam  from '../components/JuliusYam';
 import Image from "next/image";
 import ReactFullpage from '@fullpage/react-fullpage';
-import {useState} from "react";
 
 const Home: NextPage = () => {
-  // const [fullpages, setfullpages] = useState([...originalPages]);
 
   const fullpages = [{ text: "Section 1" }, { text: "Section 2" }, { text: "Section 3" }];
 
@@ -20,7 +18,6 @@ const Home: NextPage = () => {
                  <LandingImageGrid/>
                  <LandingText/>
                </div>
-               <JuliusYamLanding/>
              </div>
             {fullpages.map(({ text }) => (
               <div key={text} className="section">
@@ -44,8 +41,11 @@ function LandingImageGrid() {
 
 function LandingText() {
   return (
-    <section className="p-20 flex justify-end items-center relative">
-      <h2 className="font-ocr text-jy-cyan text-2xl text-right mt-32">Web, Mobile, UX, Graphic Design</h2>
+    <section className="p-20 grid content-center align-center relative">
+      <div>
+        <JuliusYam textAlign="text-right" fontSize="text-3xl md:text-5xl lg:text-8xl" />
+        <h2 className="font-ocr text-jy-cyan text-2xl text-right">Web, Mobile, UX, Graphic Design</h2>
+      </div>
 
       <h5 className="font-ocr text-gray-400 text-1xl text-right bottom-20 right-20 absolute w-80">
         Copyright © 2022 by Julius Yam. All Rights Reserved
