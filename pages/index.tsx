@@ -1,8 +1,9 @@
 import type { NextPage } from 'next'
+import JuliusYam, {JuliusYamLanding} from '../components/JuliusYam';
 
 const Home: NextPage = () => {
   return (
-    <div className="text-5xl font-bold underline">Julius Yam</div>
+    <JuliusYamLanding />
   )
 }
 
