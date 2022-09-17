@@ -3,6 +3,7 @@ import ReactFullpage from '@fullpage/react-fullpage';
 import {LandingSlideContainer} from "../components/LandingSlideContainer";
 import {LandingInitialSlide} from "../components/Landing";
 import {LandingWhoAmI} from "../components/Landing/WhoAmI";
+import {LandingMyBelieve} from "../components/Landing/MyBelieve";
 
 const Home: NextPage = () => {
 
@@ -16,9 +17,7 @@ const Home: NextPage = () => {
 
             <LandingWhoAmI />
 
-            <LandingSlideContainer slideNumber="02" title="My believe">
-              <h1>content goes here</h1>
-            </LandingSlideContainer>
+            <LandingMyBelieve />
 
             <LandingSlideContainer slideNumber="03" title="My experience">
               <h1>content goes here</h1>
