@@ -10,7 +10,9 @@ module.exports = {
         ocr: ['ocr'],
       },
       colors: {
+        'jy-cyan-300': '#afccc8',
         'jy-cyan': '#69aaac',
+        'jy-lime-300': '#c1ccaf',
         'jy-lime': '#c3da68',
       },
       dropShadow: {

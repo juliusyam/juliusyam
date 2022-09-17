@@ -2,10 +2,9 @@ import type { NextPage } from 'next'
 import JuliusYam  from '../components/JuliusYam';
 import Image from "next/image";
 import ReactFullpage from '@fullpage/react-fullpage';
+import {LandingSlideContainer} from "../components/LandingSlideContainer";
 
 const Home: NextPage = () => {
-
-  const fullpages = [{ text: "Section 1" }, { text: "Section 2" }, { text: "Section 3" }];
 
   return (
     <ReactFullpage
@@ -19,11 +18,25 @@ const Home: NextPage = () => {
                  <LandingText/>
                </div>
              </div>
-            {fullpages.map(({ text }) => (
-              <div key={text} className="section">
-                <h1>{text}</h1>
-              </div>
-            ))}
+            <LandingSlideContainer slideNumber="01" title="Who am I?">
+              <h1>content goes here</h1>
+            </LandingSlideContainer>
+
+            <LandingSlideContainer slideNumber="02" title="My believe">
+              <h1>content goes here</h1>
+            </LandingSlideContainer>
+
+            <LandingSlideContainer slideNumber="03" title="My experience">
+              <h1>content goes here</h1>
+            </LandingSlideContainer>
+
+            <LandingSlideContainer slideNumber="04" title="Previous projects">
+              <h1>content goes here</h1>
+            </LandingSlideContainer>
+
+            <LandingSlideContainer slideNumber="05" title="Contact me">
+              <h1>content goes here</h1>
+            </LandingSlideContainer>
           </ReactFullpage.Wrapper>
         )
       }
