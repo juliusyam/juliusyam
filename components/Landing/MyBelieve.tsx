@@ -7,7 +7,7 @@ export function LandingMyBelieve() {
     <LandingSlideContainer slideNumber="02" title="My believe">
       <div className="grid items-center">
 
-        <div className="grid w-40 md:w-80 relative h-2/3 md:h-full ">
+        <div className="grid w-40 md:w-80 relative h-2/3 md:h-full">
 
           <Image src="/img/scribbling.png" objectFit="cover" width="800" height="800" />
           <div className="absolute bg-jy-lime w-full h-full bottom-1/2 right-1/2 translate-x-1/2 translate-y-1/2 bg-opacity-80" />

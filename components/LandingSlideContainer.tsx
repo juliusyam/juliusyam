@@ -15,7 +15,7 @@ export function LandingSlideContainer({ children, ...props }: LandingSlideContai
         <section className="grid relative w-full max-w-7xl h-full">
           { children }
 
-          <div className="absolute left-0 md:right-0 bottom-0 md:top-0">
+          <div className="absolute left-0 md:right-0 bottom-0 md:top-0 inline-block h-20">
             <NumberedTitle { ...props } />
           </div>
         </section>
