@@ -2,8 +2,8 @@
   "name": "juliusyam-frontend",
   "version": "0.1.0",
   "private": true,
-  "engines" : {
-    "node" : "16.17.0"
+  "engines": {
+    "node": "16.17.0"
   },
   "scripts": {
     "dev": "next dev",
@@ -12,6 +12,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@fullpage/react-fullpage": "^0.1.28",
     "next": "12.3.0",
     "react": "18.2.0",
     "react-dom": "18.2.0"
