@@ -56,7 +56,7 @@ function LandingText() {
   return (
     <section className="p-20 grid content-center align-center relative">
       <div>
-        <JuliusYam textAlign="text-right" fontSize="text-3xl md:text-5xl lg:text-8xl" />
+        <JuliusYam textAlign="text-right" fontSize="text-3xl md:text-5xl lg:text-8xl text-right" />
         <h2 className="font-ocr text-jy-cyan text-2xl text-right">Web, Mobile, UX, Graphic Design</h2>
       </div>
 
