@@ -12,7 +12,13 @@ module.exports = {
       colors: {
         'jy-cyan': '#69aaac',
         'jy-lime': '#c3da68',
-      }
+      },
+      dropShadow: {
+        'jy-text': [
+          '5px 0 0 rgba(195, 218, 104, 1)',
+          '-3px -3px 0 rgba(105, 170, 172, 1)',
+        ],
+      },
     },
   },
   plugins: [],

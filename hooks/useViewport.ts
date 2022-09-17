@@ -34,6 +34,7 @@ export function useViewport(): ViewportAndViews {
   }
 
   useEffect(() => {
+    console.log('window', window);
     window.addEventListener('resize', handleResize);
 
     return () => window.removeEventListener('resize', handleResize);
