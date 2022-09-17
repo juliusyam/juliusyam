@@ -5,6 +5,7 @@ import {LandingInitialSlide} from "../components/Landing";
 import {LandingWhoAmI} from "../components/Landing/WhoAmI";
 import {LandingMyBelieve} from "../components/Landing/MyBelieve";
 import {LandingMyExperience} from "../components/Landing/MyExperience";
+import {LandingPreviousProjects} from "../components/Landing/PreviousProjects";
 
 const Home: NextPage = () => {
 
@@ -22,9 +23,7 @@ const Home: NextPage = () => {
 
             <LandingMyExperience />
 
-            <LandingSlideContainer slideNumber="04" title="Previous projects">
-              <h1>content goes here</h1>
-            </LandingSlideContainer>
+            <LandingPreviousProjects />
 
             <LandingSlideContainer slideNumber="05" title="Contact me">
               <h1>content goes here</h1>
