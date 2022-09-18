@@ -15,7 +15,6 @@ export const getStaticProps: GetStaticProps<ClientsProps> = async () => {
     props: {
       clients: await apiService.get('/api/clients?populate=*')
         .then(({ data }) => {
-          console.log(data.data);
           return data.data;
         }),
     }
@@ -23,8 +22,6 @@ export const getStaticProps: GetStaticProps<ClientsProps> = async () => {
 }
 
 const Clients: NextPage<ClientsProps> = ({ clients }) => {
-
-  console.log(clients);
 
   return (
     <PageWrapper>
