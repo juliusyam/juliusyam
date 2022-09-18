@@ -13,10 +13,12 @@ export function LandingMyExperience() {
             Previous clients
           </ImageButton>
         </Link>
-        <ImageButton src="/img/stack.jpg"
-                     onHoverText="My go-to and familiar technologies">
-          My tech stack
-        </ImageButton>
+        <Link href='/techStacks'>
+          <ImageButton src="/img/stack.jpg"
+                       onHoverText="My go-to and familiar technologies">
+            My tech stack
+          </ImageButton>
+        </Link>
       </div>
     </LandingSlideContainer>
   )

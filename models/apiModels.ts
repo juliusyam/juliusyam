@@ -14,6 +14,36 @@ export interface ClientAttributes {
   updatedAt: Date,
 }
 
+export interface TechStack {
+  id: number,
+  attributes: TechStackAttributes
+}
+
+export enum TechStackCategories {
+  web = 'web',
+  mobile = 'mobile',
+  backend = 'backend',
+  design = 'design',
+  softSkill = 'softSkill',
+  language = 'language',
+}
+
+export enum ExperienceLevel {
+  limited = 'limited',
+  moderate = 'moderate',
+  proficient = 'proficient',
+}
+
+export interface TechStackAttributes {
+  category: TechStackCategories,
+  createdAt: Date,
+  experienceLevel: ExperienceLevel,
+  image: Image,
+  publishedAt: Date,
+  title: string,
+  updatedAt: Date,
+}
+
 export interface Image {
   data: ImageData,
 }

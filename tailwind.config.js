@@ -26,6 +26,9 @@ module.exports = {
       },
       rotate: {
         '135': '135deg'
+      },
+      gridTemplateColumns: {
+        'tech': '15em calc(100% - 10em)',
       }
     },
   },
