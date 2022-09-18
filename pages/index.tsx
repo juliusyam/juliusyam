@@ -1,5 +1,5 @@
 import type { NextPage } from 'next'
-import ReactFullpage from '@fullpage/react-fullpage';
+import ReactFullPage from '@fullpage/react-fullpage';
 import {LandingSlideContainer} from "../components/LandingSlideContainer";
 import {LandingInitialSlide} from "../components/Landing";
 import {LandingWhoAmI} from "../components/Landing/WhoAmI";
@@ -10,11 +10,10 @@ import {LandingPreviousProjects} from "../components/Landing/PreviousProjects";
 const Home: NextPage = () => {
 
   return (
-    <ReactFullpage
-      navigation
+    <ReactFullPage
       licenseKey={ process.env.NEXT_PUBLIC_FULL_PAGE_KEY }
       render={() => (
-          <ReactFullpage.Wrapper>
+          <ReactFullPage.Wrapper>
             <LandingInitialSlide />
 
             <LandingWhoAmI />
@@ -28,7 +27,7 @@ const Home: NextPage = () => {
             <LandingSlideContainer slideNumber="05" title="Contact me">
               <h1>content goes here</h1>
             </LandingSlideContainer>
-          </ReactFullpage.Wrapper>
+          </ReactFullPage.Wrapper>
         )
       }
     />

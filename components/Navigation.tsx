@@ -83,7 +83,7 @@ export function NavList({ closePanel }: NavPanelProps) {
     <div className="p-5 mb:p-20 z-10" onClick={ closePanel }>
       <Title>My experience</Title>
       <NavItem href='/clients'>Clients</NavItem>
-      <NavItem href='/tech-stack'>Tech stack</NavItem>
+      <NavItem href='/techStack'>Tech stack</NavItem>
 
       <Divider />
 

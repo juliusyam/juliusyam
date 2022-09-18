@@ -24,7 +24,7 @@ export const getStaticProps: GetStaticProps<ClientsProps> = async () => {
 const Clients: NextPage<ClientsProps> = ({ clients }) => {
 
   return (
-    <PageWrapper>
+    // <PageWrapper>
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 p-5 md:p-20">
         {
           clients.map(client =>
@@ -40,7 +40,7 @@ const Clients: NextPage<ClientsProps> = ({ clients }) => {
           )
         }
       </div>
-    </PageWrapper>
+    // </PageWrapper>
   )
 }
 
