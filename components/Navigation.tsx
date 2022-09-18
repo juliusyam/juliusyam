@@ -1,8 +1,10 @@
 import JuliusYam from './JuliusYam';
-import {useState} from "react";
-import Link from "next/link";
+import { useState } from 'react';
+import Link from 'next/link';
 import Image from 'next/image';
-import {StringChildrenProps} from "../models";
+import { StringChildrenProps } from '../models';
+import styles from '../styles/Navigation.module.scss';
+import {useAnimationToggle} from "../hooks/useAnimationToggle";
 
 interface NavBarProps {
   openPanel: () => void,
@@ -17,8 +19,8 @@ export function NavBar({ openPanel }: NavBarProps) {
       </Link>
 
       <div onClick={ openPanel } className="cursor-pointer">
-        <div className="w-16 h-1 bg-gray-300 mb-2" />
-        <div className="w-16 h-1 bg-gray-300" />
+        <div className="w-16 h-0.5 bg-gray-300 mb-2" />
+        <div className="w-16 h-0.5 bg-gray-300" />
       </div>
     </div>
   )
@@ -35,6 +37,11 @@ export function NavPanel({ closePanel }: NavPanelProps) {
       <div className="absolute top-0 left-0 w-full h-screen grid place-items-center opacity-5">
         <Image src='/img/perspective-sketch.png' layout="fill"
                width="1920" height="1080" objectFit="cover" />
+      </div>
+
+      <div onClick={ closePanel } className="cursor-pointer absolute top-14 right-5">
+        <div className="w-16 h-0.5 bg-gray-300 rotate-45" />
+        <div className="w-16 h-0.5 -mt-0.5 bg-gray-300 rotate-135" />
       </div>
 
       <div className="grid grid-cols-2 w-full h-full">
@@ -99,14 +106,16 @@ export function NavList({ closePanel }: NavPanelProps) {
 
 export function Navigation() {
 
-const [toggle, setToggle] = useState(false);
+  const { state: { initialLoad, toggled }, toggleOn, toggleOff } = useAnimationToggle();
 
   return (
     <div className="grid relative z-50">
-      <NavBar openPanel={ () => setToggle(true) } />
+      <NavBar openPanel={ toggleOn } />
 
-      <div className={`grid absolute top-0 left-0 w-full ${ toggle ? 'h-screen' : 'h-0' } overflow-hidden` }>
-        <NavPanel closePanel={ () => setToggle(false) } />
+      <div className={`grid absolute top-0 left-0 h-screen w-0 
+      ${ initialLoad ? styles.initialPanel : toggled ? styles.panelReveal : styles.panelDisappear } overflow-hidden`
+      }>
+        <NavPanel closePanel={ toggleOff } />
       </div>
     </div>
   )

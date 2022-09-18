@@ -1,0 +1,35 @@
+.initialPanel {
+  width: 0;
+}
+
+.panelReveal {
+  width: 0;
+  animation: reveal 0.75s ease-in-out forwards;
+}
+
+.panelDisappear {
+  width: 100%;
+  animation: disappear 0.75s ease-out forwards;
+}
+
+@keyframes reveal {
+  from {
+    opacity: 0;
+    width: 0;
+  }
+  to {
+    opacity: 1;
+    width: 100%;
+  }
+}
+
+@keyframes disappear {
+  from {
+    opacity: 1;
+    width: 100%;
+  }
+  to {
+    opacity: 0;
+    width: 0;
+  }
+}

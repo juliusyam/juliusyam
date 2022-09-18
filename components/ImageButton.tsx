@@ -1,6 +1,7 @@
 import Image from "next/image";
 import styles from '../styles/ImageButton.module.scss';
 import {useState} from "react";
+import {useAnimationToggle} from "../hooks/useAnimationToggle";
 
 export enum ImageButtonBackground {
   cyan = 'bg-jy-cyan',
@@ -22,28 +23,11 @@ interface ImageButtonProps {
 
 export function ImageButton({ children, onHoverText, onClick, src, className, width, height, background, darken }: ImageButtonProps) {
 
-  const [{ initial, hover }, setHoverState] = useState({
-    initial: true,
-    hover: false,
-  });
-
-  const handleMouseEnter = () => {
-    setHoverState({
-      initial: false,
-      hover: true,
-    });
-  }
-
-  const handleMouseLeave = () => {
-    setHoverState({
-      initial: false,
-      hover: false,
-    });
-  }
+  const { state: { initialLoad, toggled }, toggleOn, toggleOff } = useAnimationToggle();
 
   return (
     <div className={`grid relative w-full h-full overflow-hidden cursor-pointer ${ className }`}
-         onClick={ onClick } onMouseEnter={ handleMouseEnter } onMouseLeave={ handleMouseLeave }>
+         onClick={ onClick } onMouseEnter={ toggleOn } onMouseLeave={ toggleOff }>
 
       <Image src={ src } width={ width || '800' } height={ height || '300' } objectFit="cover" />
 
@@ -57,7 +41,7 @@ export function ImageButton({ children, onHoverText, onClick, src, className, wi
 
       <div className={`absolute ${ background || 'bg-jy-lime' } 
       w-full h-full grid place-items-center bg-opacity-80 
-      ${ initial ? styles.initialContainer : hover ? styles.hoveredContainer : styles.container }`}>
+      ${ initialLoad ? styles.initialContainer : toggled ? styles.hoveredContainer : styles.container }`}>
 
         <h5 className={`font-tomorrow w-2/3 text-3xl text-center 
         ${ background == ImageButtonBackground.black ? 'text-white' : 'text-jy-background' }`}>{ onHoverText }</h5>

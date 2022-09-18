@@ -24,6 +24,9 @@ module.exports = {
         ],
         'text': '3px 3px 1px rgba(23, 23, 23, 1)',
       },
+      rotate: {
+        '135': '135deg'
+      }
     },
   },
   plugins: [],
