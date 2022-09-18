@@ -1,12 +1,12 @@
 import { ReactNode } from 'react';
 import { Navigation } from './Navigation';
-import {useRouter} from 'next/router';
+import { useRouter } from 'next/router';
 
-interface PageWrapperProps {
+interface AppWrapperProps {
   children: ReactNode,
 }
 
-export function PageWrapper({ children }: PageWrapperProps) {
+export function AppWrapper({ children }: AppWrapperProps) {
 
   const { pathname } = useRouter();
 

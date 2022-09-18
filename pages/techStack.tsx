@@ -1,12 +1,12 @@
 import {NextPage} from "next";
-import {PageWrapper} from "../components/PageWrapper";
+import {AppWrapper} from "../components/AppWrapper";
 
 const TechStack: NextPage = () => {
 
   return (
-    // <PageWrapper>
+    // <AppWrapper>
       <h3>Tech stack</h3>
-    // </PageWrapper>
+    // </AppWrapper>
   )
 }
 

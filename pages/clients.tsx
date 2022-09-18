@@ -3,7 +3,7 @@ import {apiService} from '../services/ApiService';
 import {Client} from '../models/apiModels';
 import Link from 'next/link';
 import {ImageButton, ImageButtonBackground} from "../components/ImageButton";
-import {PageWrapper} from "../components/PageWrapper";
+import {AppWrapper} from "../components/AppWrapper";
 
 interface ClientsProps {
   clients: Client[],
@@ -24,7 +24,7 @@ export const getStaticProps: GetStaticProps<ClientsProps> = async () => {
 const Clients: NextPage<ClientsProps> = ({ clients }) => {
 
   return (
-    // <PageWrapper>
+    // <AppWrapper>
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 p-5 md:p-20">
         {
           clients.map(client =>
@@ -40,7 +40,7 @@ const Clients: NextPage<ClientsProps> = ({ clients }) => {
           )
         }
       </div>
-    // </PageWrapper>
+    // </AppWrapper>
   )
 }
 
