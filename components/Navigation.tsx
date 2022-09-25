@@ -92,7 +92,7 @@ export function NavList({ closePanel }: NavPanelProps) {
       <NavItem href='/mobile'>Mobile</NavItem>
       <NavItem href='/design'>Design</NavItem>
       <NavItem href='/experiments'>Experiments</NavItem>
-      <NavItem href='/digital-artwork'>Digital artwork</NavItem>
+      <NavItem href='/digitalArtworks'>Digital artwork</NavItem>
 
       <Divider />
 

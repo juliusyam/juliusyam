@@ -5,6 +5,7 @@ import Image from 'next/image';
 import {getStrapiImageUrl} from "../../utilities/image";
 import {ChevronButton, Direction} from "../../components/ChevronButton";
 import Link from 'next/link';
+import { motion } from 'framer-motion';
 
 interface DigitalArtworkProps {
   digitalArtwork?: Artwork
@@ -39,16 +40,30 @@ const DigitalArtwork: NextPage<DigitalArtworkProps> = ({ digitalArtwork }) => {
 
   const { attributes: { title, description, image }, id } = digitalArtwork;
 
+  const variants = {
+    hidden: { opacity: 0, x: -200, y: 0 },
+    enter: { opacity: 1, x: 0, y: 0 },
+    exit: { opacity: 0, x: 0, y: -100 },
+  }
+
   return (
     <div className="grid w-full h-screen overflow-hidden relative -mt-20">
-      <div className='absolute left-0 top-0 w-full h-full'>
-        <Image src={ getStrapiImageUrl(image.data.attributes.url) }
-               width="1920"
-               height="1080"
-               layout="fill"
-               objectFit="cover"
-        />
-      </div>
+      <motion.div key={ id }
+                  variants={ variants }
+                  initial="hidden"
+                  animate="enter"
+                  exit="exit"
+                  transition={{ type: 'linear' }}>
+
+        <div className='absolute left-0 top-0 w-full h-full'>
+          <Image src={ getStrapiImageUrl(image.data.attributes.url) }
+                 width="1920"
+                 height="1080"
+                 layout="fill"
+                 objectFit="cover"
+          />
+        </div>
+      </motion.div>
 
       <div className="absolute left-0 bottom-0 grid grid-cols-2 bg-jy-background w-full">
         <section className="p-5">
