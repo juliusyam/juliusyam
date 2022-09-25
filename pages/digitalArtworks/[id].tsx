@@ -4,7 +4,7 @@ import {Artwork} from "../../models/apiModels";
 import Image from 'next/image';
 import {getStrapiImageUrl} from "../../utilities/image";
 import {ChevronButton, Direction} from "../../components/ChevronButton";
-import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { motion } from 'framer-motion';
 
 interface DigitalArtworkProps {
@@ -19,7 +19,7 @@ export const getStaticPaths = async() => {
         id: a.id.toString(),
       }
     }))),
-    fallback: false,
+    fallback: true,
   }
 }
 
@@ -27,23 +27,38 @@ export const getStaticProps: GetStaticProps<DigitalArtworkProps> = async({ param
 
   const id = params?.id;
 
+  const digitalArtwork = await getArtwork(id as string);
+
+  if (!digitalArtwork) {
+    return {
+      redirect: {
+        destination: '/digitalArtworks/1',
+        permanent: false,
+      },
+    }
+  }
+
   return {
     props: {
-      digitalArtwork: await getArtwork(id as string),
+      digitalArtwork,
     }
   }
 }
 
 const DigitalArtwork: NextPage<DigitalArtworkProps> = ({ digitalArtwork }) => {
 
-  if (!digitalArtwork) return null
+  const { push } = useRouter();
+
+  if (!digitalArtwork) return null;
 
   const { attributes: { title, description, image }, id } = digitalArtwork;
 
   const variants = {
     hidden: { opacity: 0, x: -200, y: 0 },
     enter: { opacity: 1, x: 0, y: 0 },
-    exit: { opacity: 0, x: 0, y: -100, transition: { duration: 0.2, ease: [0.48, 0.15, 0.25, 0.96] } },
+    exit: { opacity: 0, x: 200, y: 0, transition: {
+      duration: 0.25
+    } },
   }
 
   return (
@@ -53,7 +68,7 @@ const DigitalArtwork: NextPage<DigitalArtworkProps> = ({ digitalArtwork }) => {
                   initial="hidden"
                   animate="enter"
                   exit="exit"
-                  transition={{ type: 'spring', duration: 2, stiffness: 75, delay: 1 }}>
+                  transition={{ type: 'spring', duration: 2, stiffness: 75, delay: 0.25 }}>
 
         <div className='absolute left-0 top-0 w-full h-full'>
           <Image src={ getStrapiImageUrl(image.data.attributes.url) }
@@ -71,12 +86,13 @@ const DigitalArtwork: NextPage<DigitalArtworkProps> = ({ digitalArtwork }) => {
           <h2 className="font-ocr text-base text-gray-500 truncate">{ description }</h2>
         </section>
         <section className="grid grid-cols-2">
-          <Link href={`/digitalArtworks/${ id - 1 }`}>
-            <ChevronButton direction={ Direction.left } />
-          </Link>
-          <Link href={`/digitalArtworks/${ id + 1 }`}>
-            <ChevronButton direction={ Direction.right } />
-          </Link>
+          <ChevronButton direction={ Direction.left }
+                         onClick={ () => push(`/digitalArtworks/${ id - 1 }`) }
+                         disabled={ id <= 1 }
+          />
+          <ChevronButton direction={ Direction.right }
+                         onClick={ () => push(`/digitalArtworks/${ id + 1 }`) }
+          />
         </section>
       </div>
     </div>

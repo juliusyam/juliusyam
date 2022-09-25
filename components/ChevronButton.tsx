@@ -10,13 +10,15 @@ interface ChevronButtonProps {
   onClick?: () => void,
   direction: Direction,
   className?: string,
+  disabled?: boolean,
 }
 
-export function ChevronButton({ onClick, direction, className }: ChevronButtonProps) {
+export function ChevronButton({ onClick, direction, className, disabled }: ChevronButtonProps) {
 
   return (
     <button className={`hover:bg-black transition-all duration-500 ${ className }`}
-            onClick={ onClick }>
+            onClick={ onClick }
+            disabled={ disabled }>
       <FontAwesomeIcon icon={ direction === Direction.left ? faChevronLeft : faChevronRight }
                        size="3x"
                        color="#D1D5DB" />
