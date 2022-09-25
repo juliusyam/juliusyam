@@ -3,15 +3,12 @@ export interface Client {
   attributes: ClientAttributes,
 }
 
-export interface ClientAttributes {
-  createdAt: Date,
+export interface ClientAttributes extends GlobalAttributes  {
   description: string,
   image: Image,
   link: string,
-  publishedAt: Date,
   role: string,
   title: string,
-  updatedAt: Date,
 }
 
 export interface TechStack {
@@ -34,14 +31,28 @@ export enum ExperienceLevel {
   proficient = 'proficient',
 }
 
-export interface TechStackAttributes {
+export interface TechStackAttributes extends GlobalAttributes  {
   category: TechStackCategories,
-  createdAt: Date,
   experienceLevel: ExperienceLevel,
   image: Image,
-  publishedAt: Date,
   title: string,
+}
+
+export interface Artwork {
+  id: number,
+  attributes: ArtworkAttributes,
+}
+
+export interface ArtworkAttributes extends GlobalAttributes {
+  description: string,
+  image: Image,
+  title: string,
+}
+
+export interface GlobalAttributes {
+  createdAt: Date,
   updatedAt: Date,
+  publishedAt: Date,
 }
 
 export interface Image {

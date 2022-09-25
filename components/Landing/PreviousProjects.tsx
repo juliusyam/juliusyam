@@ -1,5 +1,6 @@
 import {LandingSlideContainer} from "../LandingSlideContainer";
 import {ImageButton} from "../ImageButton";
+import Link from 'next/link';
 
 export function LandingPreviousProjects() {
 
@@ -23,10 +24,12 @@ export function LandingPreviousProjects() {
                      onHoverText="Some fun doodles">
           Experimental projects
         </ImageButton>
-        <ImageButton src="/img/digital-sketch.jpg"
-                     onHoverText="Just for fun">
-          Web
-        </ImageButton>
+        <Link href='/digitalArtworks'>
+          <ImageButton src="/img/digital-sketch.jpg"
+                       onHoverText="Just for fun">
+            Digital artwork
+          </ImageButton>
+        </Link>
       </div>
 
     </LandingSlideContainer>
