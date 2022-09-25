@@ -1,11 +1,11 @@
 import type { NextPage } from 'next'
 import ReactFullPage from '@fullpage/react-fullpage';
-import {LandingSlideContainer} from "../components/LandingSlideContainer";
 import {LandingInitialSlide} from "../components/Landing";
 import {LandingWhoAmI} from "../components/Landing/WhoAmI";
 import {LandingMyBelieve} from "../components/Landing/MyBelieve";
 import {LandingMyExperience} from "../components/Landing/MyExperience";
 import {LandingPreviousProjects} from "../components/Landing/PreviousProjects";
+import {Contact} from "../components/Landing/Contact";
 
 const Home: NextPage = () => {
 
@@ -24,9 +24,7 @@ const Home: NextPage = () => {
 
             <LandingPreviousProjects />
 
-            <LandingSlideContainer slideNumber="05" title="Contact me">
-              <h1>content goes here</h1>
-            </LandingSlideContainer>
+            <Contact />
           </ReactFullPage.Wrapper>
         )
       }
