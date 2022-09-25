@@ -10,22 +10,22 @@ Next.js, Typescript, Strapi, Framer Motion, Tailwind
 
 ## I do the following,
 
-###### Software development.
+##### Software development.
 Web, React, Next.js, Typescript, WordPress.
 
 Mobile, iOS (Swift & SwiftUI), Android (Kotlin & Jetpack Compose)
 
-###### Graphic & publication design with accessibility.
+##### Graphic & publication design with accessibility.
 Adobe Photoshop, Illustrator, InDesign.
 
 UI & UX, Figma, Adobe XD, Sketch.
 
 ## My contributions
 
-###### iOS Developer at [BrightHR](https://www.brighthr.com)
+##### iOS Developer at [BrightHR](https://www.brighthr.com)
 Manchester, UK | Sep 2022 - Present
 
-###### Junior Software Developer / Junior Digital Designer at [Twelve Oaks Software](https://12os.co.uk)
+##### Junior Software Developer / Junior Digital Designer at [Twelve Oaks Software](https://12os.co.uk)
 York, UK | Feb 2021 - Aug 2022
 
 ## Contact me
