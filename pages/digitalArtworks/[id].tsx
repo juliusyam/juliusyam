@@ -43,7 +43,7 @@ const DigitalArtwork: NextPage<DigitalArtworkProps> = ({ digitalArtwork }) => {
   const variants = {
     hidden: { opacity: 0, x: -200, y: 0 },
     enter: { opacity: 1, x: 0, y: 0 },
-    exit: { opacity: 0, x: 0, y: -100 },
+    exit: { opacity: 0, x: 0, y: -100, transition: { duration: 0.2, ease: [0.48, 0.15, 0.25, 0.96] } },
   }
 
   return (
@@ -53,7 +53,7 @@ const DigitalArtwork: NextPage<DigitalArtworkProps> = ({ digitalArtwork }) => {
                   initial="hidden"
                   animate="enter"
                   exit="exit"
-                  transition={{ type: 'linear' }}>
+                  transition={{ type: 'spring', duration: 2, stiffness: 75, delay: 1 }}>
 
         <div className='absolute left-0 top-0 w-full h-full'>
           <Image src={ getStrapiImageUrl(image.data.attributes.url) }

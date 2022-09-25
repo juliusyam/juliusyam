@@ -11,17 +11,23 @@ export function AppWrapper({ children }: AppWrapperProps) {
 
   const { pathname } = useRouter();
 
-  if (pathname === '/') return <>{ children }</>;
+  if (pathname === '/') return <AnimationWrapper>{ children }</AnimationWrapper>;
 
   return (
     <>
       <div className="fixed w-full z-50"><Navigation /></div>
 
-      <AnimatePresence exitBeforeEnter
-                       initial={ false }
-                       onExitComplete={ () => window.scrollTo(0, 0) }>
-        <div className="pt-20">{ children }</div>
-      </AnimatePresence>
+      <div className="pt-20">
+        <AnimationWrapper>{ children }</AnimationWrapper>
+      </div>
     </>
+  )
+}
+
+function AnimationWrapper({ children }: AppWrapperProps) {
+  return (
+    <AnimatePresence exitBeforeEnter initial={ false }>
+      { children }
+    </AnimatePresence>
   )
 }

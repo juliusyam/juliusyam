@@ -5,8 +5,8 @@ import { config } from '@fortawesome/fontawesome-svg-core';
 import '@fortawesome/fontawesome-svg-core/styles.css';
 config.autoAddCss = false;
 
-function App({ Component, pageProps }: AppProps) {
-  return <AppWrapper><Component {...pageProps} /></AppWrapper>
+function App({ Component, pageProps, router }: AppProps) {
+  return <AppWrapper><Component {...pageProps} key={ router.asPath } /></AppWrapper>
 }
 
 export default App
