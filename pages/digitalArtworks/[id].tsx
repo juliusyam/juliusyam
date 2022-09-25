@@ -70,7 +70,7 @@ const DigitalArtwork: NextPage<DigitalArtworkProps> = ({ digitalArtwork }) => {
                   exit="exit"
                   transition={{ type: 'spring', duration: 2, stiffness: 75, delay: 0.25 }}>
 
-        <div className='absolute left-0 top-0 w-full h-full'>
+        <div className='absolute left-0 top-0 w-full h-[calc(100%_-_16rem)] lg:h-[calc(100%_-_9rem)]'>
           <Image src={ getStrapiImageUrl(image.data.attributes.url) }
                  width="1920"
                  height="1080"
@@ -80,8 +80,8 @@ const DigitalArtwork: NextPage<DigitalArtworkProps> = ({ digitalArtwork }) => {
         </div>
       </motion.div>
 
-      <div className="absolute left-0 bottom-0 grid grid-cols-2 bg-jy-background w-full">
-        <section className="p-5">
+      <div className="absolute left-0 bottom-0 grid grid-cols-1 lg:grid-cols-2 bg-jy-background w-full h-64 lg:h-36">
+        <section className="p-5 grid items-center">
           <h1 className="font-ocr text-3xl pb-5 truncate">{ title }</h1>
           <h2 className="font-ocr text-base text-gray-500 truncate">{ description }</h2>
         </section>
