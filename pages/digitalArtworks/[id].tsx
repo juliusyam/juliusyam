@@ -1,16 +1,13 @@
 import {GetStaticProps, NextPage} from "next";
-import {DigitalArtworksProps } from "./index";
-import {apiService} from "../../services/ApiService";
+import {getArtwork, getArtworks} from "../../services/ApiRoutes";
 import {Artwork} from "../../models/apiModels";
+import Image from 'next/image';
+import {getStrapiImageUrl} from "../../utilities/image";
+import {ChevronButton, Direction} from "../../components/ChevronButton";
+import Link from 'next/link';
 
-const getArtworks = async(): Promise<Artwork[]> => {
-  return await apiService.get('/api/artworks?populate=*')
-    .then(({ data }) => data.data);
-}
-
-const getArtwork = async(id: string): Promise<Artwork> => {
-  return await apiService.get(`/api/artworks/${ id }?populate=*`)
-    .then(({ data }) => data.data);
+interface DigitalArtworkProps {
+  digitalArtwork?: Artwork
 }
 
 export const getStaticPaths = async() => {
@@ -25,17 +22,9 @@ export const getStaticPaths = async() => {
   }
 }
 
-export const getStaticProps: GetStaticProps = async({ params }) => {
+export const getStaticProps: GetStaticProps<DigitalArtworkProps> = async({ params }) => {
 
   const id = params?.id;
-
-  if (!id) {
-    return {
-      props: {
-        digitalArtwork: undefined,
-      }
-    };
-  }
 
   return {
     props: {
@@ -44,12 +33,38 @@ export const getStaticProps: GetStaticProps = async({ params }) => {
   }
 }
 
-const DigitalArtwork: NextPage = (props) => {
+const DigitalArtwork: NextPage<DigitalArtworkProps> = ({ digitalArtwork }) => {
 
-  console.log(props);
+  if (!digitalArtwork) return null
+
+  const { attributes: { title, description, image }, id } = digitalArtwork;
 
   return (
-    <h3>{ }</h3>
+    <div className="grid w-full h-screen overflow-hidden relative -mt-20">
+      <div className='absolute left-0 top-0 w-full h-full'>
+        <Image src={ getStrapiImageUrl(image.data.attributes.url) }
+               width="1920"
+               height="1080"
+               layout="fill"
+               objectFit="cover"
+        />
+      </div>
+
+      <div className="absolute left-0 bottom-0 grid grid-cols-2 bg-jy-background w-full">
+        <section className="p-5">
+          <h1 className="font-ocr text-3xl pb-5 truncate">{ title }</h1>
+          <h2 className="font-ocr text-base text-gray-500 truncate">{ description }</h2>
+        </section>
+        <section className="grid grid-cols-2">
+          <Link href={`/digitalArtworks/${ id - 1 }`}>
+            <ChevronButton direction={ Direction.left } />
+          </Link>
+          <Link href={`/digitalArtworks/${ id + 1 }`}>
+            <ChevronButton direction={ Direction.right } />
+          </Link>
+        </section>
+      </div>
+    </div>
   )
 }
 
