@@ -2,12 +2,9 @@ import { ReactNode } from 'react';
 import { Navigation } from './Navigation';
 import { useRouter } from 'next/router';
 import { AnimatePresence } from 'framer-motion';
+import { ChildrenProps } from '../models';
 
-interface AppWrapperProps {
-  children: ReactNode,
-}
-
-export function AppWrapper({ children }: AppWrapperProps) {
+export function AppWrapper({ children }: ChildrenProps) {
 
   const { pathname } = useRouter();
 
@@ -24,7 +21,7 @@ export function AppWrapper({ children }: AppWrapperProps) {
   )
 }
 
-function AnimationWrapper({ children }: AppWrapperProps) {
+function AnimationWrapper({ children }: ChildrenProps) {
   return (
     <AnimatePresence exitBeforeEnter initial={ false }>
       { children }

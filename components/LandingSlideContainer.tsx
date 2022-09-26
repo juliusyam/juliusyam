@@ -10,7 +10,7 @@ export interface LandingSlideContainerProps {
 export function LandingSlideContainer({ children, ...props }: LandingSlideContainerProps) {
 
   return (
-    <div className="section relative h-screen">
+    <div className="section relative h-screen overflow-hidden">
       <div className="grid place-items-center p-5 md:p-20 w-full h-screen">
         <section className="grid relative w-full max-w-7xl h-full">
           { children }

@@ -6,7 +6,7 @@ export function LandingPreviousProjects() {
 
   return (
     <LandingSlideContainer slideNumber="04" title="Previous projects">
-      <div className="grid grid-cols-3 gap-8">
+      <div className="grid grid-cols-2 md:grid-cols-3 gap-8 mb-32 md:mb-0">
         <ImageButton src="/img/web.jpg"
                      onHoverText="Reactive and static sites">
           Web
@@ -15,7 +15,7 @@ export function LandingPreviousProjects() {
                      onHoverText="Publication, social media, professional templates">
           Design
         </ImageButton>
-        <div />
+        <div className="hidden md:block" />
         <ImageButton src="/img/mobile.jpg"
                      onHoverText="iOS, Android">
           Mobile
