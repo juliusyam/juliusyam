@@ -1,7 +1,12 @@
 import Image from "next/image";
 import JuliusYam from "../JuliusYam";
 
-export function LandingInitialSlide() {
+interface LandingInitialSideProps {
+  description: string,
+  copyright: string,
+}
+
+export function LandingInitialSlide({ description, copyright }: LandingInitialSideProps) {
 
   return (
     <div className="section relative h-screen">
@@ -13,11 +18,11 @@ export function LandingInitialSlide() {
 
           <div className="absolute right-0 bottom-1/2 translate-y-1/2">
             <JuliusYam textAlign="text-right" fontSize="text-3xl md:text-5xl lg:text-8xl text-right" />
-            <h2 className="font-ocr text-jy-cyan text-2xl text-right">Web, Mobile, UX, Graphic Design</h2>
+            <h2 className="font-ocr text-jy-cyan text-2xl text-right">{ description }</h2>
           </div>
 
           <h5 className="font-ocr text-gray-400 text-1xl text-right bottom-20 right-0 absolute w-80">
-            Copyright © 2022 by Julius Yam. All Rights Reserved
+            { copyright }
           </h5>
         </section>
       </div>
