@@ -10,7 +10,7 @@ export function NumberedTitle({ slideNumber, title }: NumberedTitleProps) {
       <h2 className="font-ocr text-4xl md:text-6xl lg:text-9xl text-left md:text-right">
         { slideNumber }
       </h2>
-      <h3 className="font-ocr text-3xl md:text-5xl lg:text-6xl text-jy-lime-300 text-left md:text-right">
+      <h3 className="font-ocr text-3xl md:text-5xl lg:text-6xl text-jy-lime-300 text-left md:text-right drop-shadow-text">
         { title }
       </h3>
     </section>
