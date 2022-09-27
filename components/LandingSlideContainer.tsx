@@ -4,13 +4,14 @@ import {NumberedTitle} from "./NumberedTitle";
 export interface LandingSlideContainerProps {
   slideNumber: string,
   title: string,
-  children: ReactNode
+  children: ReactNode,
+  dataAnchor: string,
 }
 
-export function LandingSlideContainer({ children, ...props }: LandingSlideContainerProps) {
+export function LandingSlideContainer({ children, dataAnchor, ...props }: LandingSlideContainerProps) {
 
   return (
-    <div className="section relative h-screen overflow-hidden">
+    <div className="section relative h-screen overflow-hidden" data-anchor={ dataAnchor }>
       <div className="grid place-items-center p-5 md:p-20 w-full h-screen">
         <section className="grid relative w-full max-w-7xl h-full">
           { children }

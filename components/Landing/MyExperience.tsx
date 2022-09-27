@@ -3,11 +3,14 @@ import { ImageButton } from '../ImageButton';
 import Link from 'next/link';
 import Image from "next/image";
 import {ClassNameProps} from "../../models";
+import {useTranslation} from "react-i18next";
 
 export function LandingMyExperience() {
 
+  const { t } = useTranslation('common');
+
   return (
-    <LandingSlideContainer slideNumber="03" title="My experience">
+    <LandingSlideContainer slideNumber="03" title={ t('my_experience') } dataAnchor="my-experience">
       <div className="grid w-full md:w-1/2 grid-cols-1 gap-8 relative mb-64 md:mb-0">
 
         <div className="absolute left-5 md:left-32 top-20 md:top-10 w-full h-full">
@@ -21,13 +24,13 @@ export function LandingMyExperience() {
         <Link href='/clients'>
           <ImageButton src="/img/handshake.png"
                        onHoverText="Great clients that enable great products!">
-            Previous clients
+            { t('previous_clients') }
           </ImageButton>
         </Link>
         <Link href='/techStacks'>
           <ImageButton src="/img/stack.jpg"
                        onHoverText="My go-to and familiar technologies">
-            My tech stack
+            { t('tech_stack') }
           </ImageButton>
         </Link>
 

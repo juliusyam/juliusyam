@@ -8,31 +8,37 @@ import {LandingPreviousProjects} from "../components/Landing/PreviousProjects";
 import {Contact} from "../components/Landing/Contact";
 
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import { useTranslation } from 'next-i18next';
-import {useEffect} from "react";
+import { SSRConfig } from 'next-i18next';
+import {Dict} from "../models";
 
-export async function getStaticProps({ locale }) {
+export async function getStaticProps<SSRConfig>({ locale }) {
   return {
     props: {
-        ...(await serverSideTranslations(locale, ['common'])),
+        ...(await serverSideTranslations(locale, ['common', 'landing'])),
     },
   };
 }
 
-const Home: NextPage = () => {
+interface HomePageProps extends SSRConfig {
+}
 
-  const { t } = useTranslation('common');
+const Home: NextPage = ({ _nextI18Next }: HomePageProps) => {
+
+  const { initialI18nStore, initialLocale } = _nextI18Next;
+
+  const keys = initialI18nStore[initialLocale].common as Dict<string>;
+  const landingKeys = initialI18nStore[initialLocale].landing as Dict<string>;
 
   return (
     <ReactFullPage
       licenseKey={ process.env.NEXT_PUBLIC_FULL_PAGE_KEY }
       render={() => (
           <ReactFullPage.Wrapper>
-            <LandingInitialSlide copyright="ss" description={ t('initial_description') } />
+            <LandingInitialSlide copyright={ keys.copyright } description={ landingKeys.initial_description } />
 
-            <LandingWhoAmI />
+            <LandingWhoAmI title={ keys.who_am_i } introduction={ landingKeys.introduction } />
 
-            <LandingMyBelieve />
+            <LandingMyBelieve title={ keys.my_believe } believe={ landingKeys.believe } />
 
             <LandingMyExperience />
 

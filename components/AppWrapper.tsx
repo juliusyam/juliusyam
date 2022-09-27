@@ -6,7 +6,7 @@ import { ChildrenProps } from '../models';
 
 export function AppWrapper({ children }: ChildrenProps) {
 
-  const { pathname } = useRouter();
+  const { pathname, asPath, basePath } = useRouter();
 
   if (pathname === '/') return <AnimationWrapper>{ children }</AnimationWrapper>;
 

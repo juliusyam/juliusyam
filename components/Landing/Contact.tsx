@@ -2,11 +2,14 @@ import {LandingSlideContainer} from "../LandingSlideContainer";
 import Image from 'next/image';
 import { SocialButton, Social } from '../SocialButton';
 import {ClassNameProps} from "../../models";
+import {useTranslation} from "react-i18next";
 
 export function Contact() {
 
+  const { t } = useTranslation('common');
+
   return (
-    <LandingSlideContainer slideNumber="05" title="Contact me">
+    <LandingSlideContainer slideNumber="05" title={ t('contact_me') } dataAnchor="contact-me">
       <div className="grid justify-start h-full overflow-hidden">
         <div className="grid mr-32 relative mb-32 md:mb-0">
           <Image src='/img/julius-yam.png'

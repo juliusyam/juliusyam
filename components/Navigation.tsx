@@ -14,7 +14,7 @@ export function NavBar({ openPanel }: NavBarProps) {
 
   return (
     <div className="p-5 flex justify-between items-center">
-      <Link href='/'>
+      <Link href='/#initial'>
         <a><JuliusYam /></a>
       </Link>
 

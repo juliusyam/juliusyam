@@ -1,3 +1,17 @@
 {
-  "initial_description": "Web, Mobile, UX, Graphic Design"
+  "who_am_i": "Who am I?",
+  "my_believe": "My believe",
+  "my_experience": "My experience",
+  "previous_projects": "Previous projects",
+  "contact_me": "Contact me",
+
+  "previous_clients": "Previous clients",
+  "tech_stack": "My tech stack",
+  "web": "Web",
+  "design": "Design",
+  "mobile": "Mobile",
+  "experimental_projects": "Experimental projects",
+  "digital_artwork": "Digital artwork",
+
+  "copyright": "Copyright © 2022 von Julius Yam. Alle Rechte vorbehalten"
 }

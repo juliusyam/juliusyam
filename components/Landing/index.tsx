@@ -9,7 +9,7 @@ interface LandingInitialSideProps {
 export function LandingInitialSlide({ description, copyright }: LandingInitialSideProps) {
 
   return (
-    <div className="section relative h-screen">
+    <div className="section relative h-screen" data-anchor="initial">
       <div className="grid place-items-center px-5 md:px-20 w-full h-screen">
         <section className="relative w-full max-w-9xl h-full">
           <div className="absolute bottom-0 left-0 mt-96">
