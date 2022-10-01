@@ -1,4 +1,4 @@
-import type { NextPage } from 'next'
+import type {GetStaticProps, NextPage} from 'next'
 import ReactFullPage from '@fullpage/react-fullpage';
 import {LandingInitialSlide} from "../components/Landing";
 import {LandingWhoAmI} from "../components/Landing/WhoAmI";
@@ -11,18 +11,18 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { SSRConfig } from 'next-i18next';
 import {Dict} from "../models";
 
-export async function getStaticProps<SSRConfig>({ locale }) {
+interface HomePageProps extends SSRConfig {
+}
+
+export const getStaticProps: GetStaticProps<SSRConfig> = async ({ locale }) => {
   return {
     props: {
-        ...(await serverSideTranslations(locale, ['common', 'landing'])),
+        ...(await serverSideTranslations(locale as string, ['common', 'landing'])),
     },
   };
 }
 
-interface HomePageProps extends SSRConfig {
-}
-
-const Home: NextPage = ({ _nextI18Next }: HomePageProps) => {
+const Home: NextPage<HomePageProps> = ({ _nextI18Next }) => {
 
   const { initialI18nStore, initialLocale } = _nextI18Next;
 
