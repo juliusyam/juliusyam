@@ -1,17 +1,32 @@
 {
-  "who_am_i": "Who am I?",
-  "my_believe": "My believe",
-  "my_experience": "My experience",
-  "previous_projects": "Previous projects",
-  "contact_me": "Contact me",
+  "previous_clients": {
+    "title": "Previous clients",
+    "description": "Great clients that enable great products!"
+  },
+  "tech_stack": {
+    "title": "My tech stack",
+    "description": "My go-to and familiar technologies"
+  },
+  "web": {
+    "title": "Web",
+    "description": "Reactive and static sites"
+  },
+  "design": {
+    "title": "Design",
+    "description": "Publication, social media, professional templates"
+  },
+  "mobile": {
+    "title": "Mobile",
+    "description": "iOS, Android"
+  },
+  "experimental_projects": {
+    "title": "Experimental projects",
+    "description": "Some fun doodles"
+  },
+  "digital_artwork": {
+    "title": "Digital artwork",
+    "description": "Just for fun"
+  },
 
-  "previous_clients": "Previous clients",
-  "tech_stack": "My tech stack",
-  "web": "Web",
-  "design": "Design",
-  "mobile": "Mobile",
-  "experimental_projects": "Experimental projects",
-  "digital_artwork": "Digital artwork",
-
-  "copyright": "Copyright © 2022 von Julius Yam. Alle Rechte vorbehalten"
+  "copyright": "Copyright © 2022 by Julius Yam. All Rights Reserved"
 }

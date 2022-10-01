@@ -3,13 +3,17 @@ import Image from 'next/image';
 import { SocialButton, Social } from '../SocialButton';
 import {ClassNameProps} from "../../models";
 import {useTranslation} from "react-i18next";
+import {Namespace} from "../../utilities/locales";
 
 export function Contact() {
 
-  const { t } = useTranslation('common');
+  const { t } = useTranslation([Namespace.common, Namespace.landing]);
 
   return (
-    <LandingSlideContainer slideNumber="05" title={ t('contact_me') } dataAnchor="contact-me">
+    <LandingSlideContainer slideNumber="05"
+                           title={ t('contact_me', { ns: Namespace.landing }) }
+                           dataAnchor="contact-me">
+
       <div className="grid justify-start h-full overflow-hidden">
         <div className="grid mr-32 relative mb-32 md:mb-0">
           <Image src='/img/julius-yam.png'

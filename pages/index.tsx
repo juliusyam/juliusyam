@@ -36,9 +36,9 @@ const Home: NextPage = ({ _nextI18Next }: HomePageProps) => {
           <ReactFullPage.Wrapper>
             <LandingInitialSlide copyright={ keys.copyright } description={ landingKeys.initial_description } />
 
-            <LandingWhoAmI title={ keys.who_am_i } introduction={ landingKeys.introduction } />
+            <LandingWhoAmI title={ landingKeys.who_am_i } introduction={ landingKeys.introduction } />
 
-            <LandingMyBelieve title={ keys.my_believe } believe={ landingKeys.believe } />
+            <LandingMyBelieve title={ landingKeys.my_believe } believe={ landingKeys.believe } />
 
             <LandingMyExperience />
 

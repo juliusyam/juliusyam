@@ -1,5 +1,11 @@
 {
   "initial_description": "Webseite, Handy, UX, Grafikdesign",
   "introduction": "Ich bin ein in Manchester ansässiger Softwareentwickler für Web- und Mobilanwendungen, Grafik-, Publikations-, UI- und UX-Designer.",
-  "believe": "Design ist eine Funktion, die das Praktische in die Welt der Schönheit transzendiert. Die Idee eines designorientierten Softwareentwicklers ist es, maßgeschneiderte Softwareprodukte zu entwickeln, die Funktionalität in Ästhetik und Benutzerfreundlichkeit umwandeln, während sie eine Designsprache entwickeln, die einzigartig auf jeden Kunden zugeschnitten ist, und letztendlich unvorstellbare Ideen zum Leben erwecken."
+  "believe": "Design ist eine Funktion, die das Praktische in die Welt der Schönheit transzendiert. Die Idee eines designorientierten Softwareentwicklers ist es, maßgeschneiderte Softwareprodukte zu entwickeln, die Funktionalität in Ästhetik und Benutzerfreundlichkeit umwandeln, während sie eine Designsprache entwickeln, die einzigartig auf jeden Kunden zugeschnitten ist, und letztendlich unvorstellbare Ideen zum Leben erwecken.",
+
+  "who_am_i": "Wer bin ich?",
+  "my_believe": "Mein Glaube",
+  "my_experience": "Meine Erfahrung",
+  "previous_projects": "Frühere Projekte",
+  "contact_me": "Kontaktiere mich"
 }

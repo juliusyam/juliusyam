@@ -4,13 +4,14 @@ import Link from 'next/link';
 import Image from "next/image";
 import {ClassNameProps} from "../../models";
 import {useTranslation} from "react-i18next";
+import {Namespace} from "../../utilities/locales";
 
 export function LandingMyExperience() {
 
-  const { t } = useTranslation('common');
+  const { t } = useTranslation([Namespace.common, Namespace.landing]);
 
   return (
-    <LandingSlideContainer slideNumber="03" title={ t('my_experience') } dataAnchor="my-experience">
+    <LandingSlideContainer slideNumber="03" title={ t('my_experience', { ns: Namespace.landing }) } dataAnchor="my-experience">
       <div className="grid w-full md:w-1/2 grid-cols-1 gap-8 relative mb-64 md:mb-0">
 
         <div className="absolute left-5 md:left-32 top-20 md:top-10 w-full h-full">
@@ -23,14 +24,14 @@ export function LandingMyExperience() {
 
         <Link href='/clients'>
           <ImageButton src="/img/handshake.png"
-                       onHoverText="Great clients that enable great products!">
-            { t('previous_clients') }
+                       onHoverText={ t('previous_clients.description') }>
+            { t('previous_clients.title') }
           </ImageButton>
         </Link>
         <Link href='/techStacks'>
           <ImageButton src="/img/stack.jpg"
-                       onHoverText="My go-to and familiar technologies">
-            { t('tech_stack') }
+                       onHoverText={ t('tech_stack.description') }>
+            { t('tech_stack.title') }
           </ImageButton>
         </Link>
 

@@ -1,17 +1,32 @@
 {
-  "who_am_i": "Wer bin ich?",
-  "my_believe": "Mein Glaube",
-  "my_experience": "Meine Erfahrung",
-  "previous_projects": "Frühere Projekte",
-  "contact_me": "Kontaktiere mich",
-
-  "previous_clients": "Frühere Kunden",
-  "tech_stack": "Mein Tech-Stack",
-  "web": "Webseite",
-  "design": "Design",
-  "mobile": "Handy",
-  "experimental_projects": "Experimentelle Projekte",
-  "digital_artwork": "Digitale Kunstwerke",
+  "previous_clients": {
+    "title": "Frühere Kunden",
+    "description": "Großartige Kunden, die großartige Produkte ermöglichen!"
+  },
+  "tech_stack": {
+    "title": "Mein Tech-Stack",
+    "description": "Meine Lieblings- und vertrauten Technologien"
+  },
+  "web": {
+    "title": "Webseite",
+    "description": "Reaktive und statische Websites"
+  },
+  "design": {
+    "title": "Design",
+    "description": "Veröffentlichung, soziale Medien, professionelle Vorlagen"
+  },
+  "mobile": {
+    "title": "Handy",
+    "description": "iOS, Android"
+  },
+  "experimental_projects": {
+    "title": "Experimentelle Projekte",
+    "description": "Einige lustige Kritzeleien"
+  },
+  "digital_artwork": {
+    "title": "Digitale Kunstwerke",
+    "description": "Nur zum Spaß"
+  },
 
   "copyright": "Copyright © 2022 von Julius Yam. Alle Rechte vorbehalten"
 }

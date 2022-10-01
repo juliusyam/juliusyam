@@ -1,6 +1,11 @@
 {
   "initial_description": "Web, Mobile, UX, Graphic Design",
-  "copyright": "Copyright © 2022 by Julius Yam. All Rights Reserved",
   "introduction": "I am a Manchester based Software Developer for Web and Mobile application, Graphic, Publication, UI and UX Designer.",
-  "believe": "Design is a function that transcends practicality into the world of beauty. The idea of a design focused software developer is to create bespoke software products that converts functionality into aesthetics and usability, whilst devising a design language uniquely tailored to each client, and ultimately transform unimaginable ideas to life."
+  "believe": "Design is a function that transcends practicality into the world of beauty. The idea of a design focused software developer is to create bespoke software products that converts functionality into aesthetics and usability, whilst devising a design language uniquely tailored to each client, and ultimately transform unimaginable ideas to life.",
+
+  "who_am_i": "Who am I?",
+  "my_believe": "My believe",
+  "my_experience": "My experience",
+  "previous_projects": "Previous projects",
+  "contact_me": "Contact me"
 }
