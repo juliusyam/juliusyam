@@ -1,18 +1,18 @@
 import {GetStaticProps, NextPage} from "next";
 import {apiService} from "../services/ApiService";
-import {TechStack, TechStackCategories} from "../models/apiModels";
+import { Tech, TechStackCategories} from "../models/apiModels";
 import {StringChildrenProps} from "../models";
 import {TechItem} from "../components/TechItem";
 
 interface TechStackProps {
-  techStacks: TechStack[],
+  techStack: Tech[],
 }
 
 export const getStaticProps: GetStaticProps<TechStackProps> = async() => {
 
   return {
     props: {
-      techStacks: await apiService.get('/api/tech-stacks?populate=*')
+      techStack: await apiService.get('/api/tech-stacks?populate=*')
         .then(({ data }) => {
           return data.data;
         })
@@ -20,7 +20,7 @@ export const getStaticProps: GetStaticProps<TechStackProps> = async() => {
   }
 }
 
-const TechStacks: NextPage<TechStackProps> = ({ techStacks }) => {
+const TechStack: NextPage<TechStackProps> = ({ techStack }) => {
 
   return (
     <div className="grid grid-cols-2 gap-4 p-5 md:p-20">
@@ -32,13 +32,13 @@ const TechStacks: NextPage<TechStackProps> = ({ techStacks }) => {
       </div>
 
       <div className="grid justify-items-start items-center">
-        <TechStackList techStacks={ techStacks } />
+        <TechStackList techStack={ techStack } />
       </div>
     </div>
   )
 }
 
-export function TechStackList({ techStacks }: TechStackProps) {
+export function TechStackList({ techStack }: TechStackProps) {
 
   const Title = ({ children }: StringChildrenProps) => (
     <h4 className="font-ocr text-1xl sm:text-2xl text-jy-yellow mb-4 text-jy-lime">{ children }</h4>
@@ -49,7 +49,7 @@ export function TechStackList({ techStacks }: TechStackProps) {
       <Title>Web</Title>
       <>
         {
-          techStacks.filter(t => t.attributes.category === TechStackCategories.web).map(t =>
+          techStack.filter(t => t.attributes.category === TechStackCategories.web).map(t =>
             <TechItem tech={ t } />
           )
         }
@@ -58,4 +58,4 @@ export function TechStackList({ techStacks }: TechStackProps) {
   )
 }
 
-export default TechStacks
+export default TechStack

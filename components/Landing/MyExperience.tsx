@@ -28,7 +28,7 @@ export function LandingMyExperience() {
             { t('previous_clients.title') }
           </ImageButton>
         </Link>
-        <Link href='/techStacks'>
+        <Link href='/techStack'>
           <ImageButton src="/img/stack.jpg"
                        onHoverText={ t('tech_stack.description') }>
             { t('tech_stack.title') }

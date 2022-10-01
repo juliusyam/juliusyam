@@ -11,9 +11,9 @@ export interface ClientAttributes extends GlobalAttributes  {
   title: string,
 }
 
-export interface TechStack {
+export interface Tech {
   id: number,
-  attributes: TechStackAttributes
+  attributes: TechAttributes
 }
 
 export enum TechStackCategories {
@@ -31,7 +31,7 @@ export enum ExperienceLevel {
   proficient = 'proficient',
 }
 
-export interface TechStackAttributes extends GlobalAttributes  {
+export interface TechAttributes extends GlobalAttributes  {
   category: TechStackCategories,
   experienceLevel: ExperienceLevel,
   image: Image,
