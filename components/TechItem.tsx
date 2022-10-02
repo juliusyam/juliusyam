@@ -1,9 +1,8 @@
-import { TechStack } from '../models/apiModels';
+import { Tech } from '../models/apiModels';
 import Image from 'next/image';
-import { getStrapiImageUrl } from '../utilities/image';
 
 interface TechItemProps {
-  tech: TechStack,
+  tech: Tech,
 }
 
 export function TechItem({ tech }: TechItemProps) {
@@ -11,7 +10,7 @@ export function TechItem({ tech }: TechItemProps) {
   return (
     <div className="grid grid-cols-tech justify-start items-center my-4 gap-4">
       <div className="rounded-lg overflow-hidden">
-        <Image src={ getStrapiImageUrl(tech.attributes.image.data.attributes.url) }
+        <Image src={ tech.attributes.image.data.attributes.url }
                width="300"
                height="150"
                objectFit="cover"

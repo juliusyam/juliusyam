@@ -2,7 +2,6 @@ import {GetStaticProps, NextPage} from "next";
 import {getArtwork, getArtworks} from "../../services/ApiRoutes";
 import {Artwork} from "../../models/apiModels";
 import Image from 'next/image';
-import {getStrapiImageUrl} from "../../utilities/image";
 import {ChevronButton, Direction} from "../../components/ChevronButton";
 import { useRouter } from 'next/router';
 import { motion } from 'framer-motion';
@@ -71,7 +70,7 @@ const DigitalArtwork: NextPage<DigitalArtworkProps> = ({ digitalArtwork }) => {
                   transition={{ type: 'spring', duration: 2, stiffness: 75, delay: 0.25 }}>
 
         <div className='absolute left-0 top-0 w-full h-[calc(100%_-_16rem)] lg:h-[calc(100%_-_9rem)]'>
-          <Image src={ getStrapiImageUrl(image.data.attributes.url) }
+          <Image src={ image.data.attributes.url }
                  width="1920"
                  height="1080"
                  layout="fill"

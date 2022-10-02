@@ -3,7 +3,6 @@ import {apiService} from '../services/ApiService';
 import {Client} from '../models/apiModels';
 import Link from 'next/link';
 import {ImageButton, ImageButtonBackground} from "../components/ImageButton";
-import {getStrapiImageUrl} from "../utilities/image";
 
 interface ClientsProps {
   clients: Client[],
@@ -29,7 +28,7 @@ const Clients: NextPage<ClientsProps> = ({ clients }) => {
         clients.map(client =>
           <Link href={ client.attributes.link || '/' } passHref>
             <a target="_blank" rel="noopener noreferrer">
-              <ImageButton src={ getStrapiImageUrl(client.attributes.image.data.attributes.url) }
+              <ImageButton src={ client.attributes.image.data.attributes.url }
                            onHoverText={ client.attributes.title }
                            width="800"
                            height="500"
