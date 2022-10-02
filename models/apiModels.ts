@@ -9,6 +9,7 @@ export interface ClientAttributes extends GlobalAttributes  {
   link: string,
   role: string,
   title: string,
+  sortOrder: number,
 }
 
 export interface Tech {
