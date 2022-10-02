@@ -1,13 +1,15 @@
 /** @type {import('next').NextConfig} */
 const { i18n } = require('./next-i18next.config');
 
+const baseUrl = process.env.NEXT_PUBLIC_BASE_URL
+
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   images: {
-    domains: ['localhost']
+    domains: ['localhost', baseUrl.replace('https://', '')]
   },
-  i18n,
+  i18n
 }
 
 module.exports = nextConfig
