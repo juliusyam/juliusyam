@@ -50,6 +50,23 @@ export interface ArtworkAttributes extends GlobalAttributes {
   title: string,
 }
 
+export interface Web {
+  id: number,
+  attributes: WebAttributes,
+}
+
+export interface WebAttributes extends GlobalAttributes {
+  brief: string,
+  client: {
+    data?: Client,
+  },
+  image: Image,
+  link: string,
+  sortOrder: number,
+  technologies: string,
+  title: string,
+}
+
 export interface GlobalAttributes {
   createdAt: Date,
   updatedAt: Date,

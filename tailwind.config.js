@@ -15,6 +15,7 @@ module.exports = {
         'jy-cyan': '#69aaac',
         'jy-lime-300': '#c1ccaf',
         'jy-lime': '#c3da68',
+        'jy-blue': '#6978AC',
         'jy-background': '#171717',
       },
       dropShadow: {
@@ -29,7 +30,14 @@ module.exports = {
       },
       gridTemplateColumns: {
         'tech': '15em calc(100% - 10em)',
-      }
+        'portfolio-display': '30% 70%',
+      },
+      height: {
+        'screen-without-nav': 'calc(100vh - 5em)',
+      },
+      fontSize: {
+        '14xl': '12rem',
+      },
     },
   },
   plugins: [],

@@ -1,13 +1,14 @@
 import {LandingSlideContainer} from "../LandingSlideContainer";
 import {ImageButton} from "../ImageButton";
-import Link from 'next/link';
 import {useTranslation} from "react-i18next";
 import {Namespace} from "../../utilities/locales";
-import {Routes} from "../../utilities/routes";
+import { Routes } from "../../utilities/routes";
+import { useRouter } from 'next/router';
 
 export function LandingPreviousProjects() {
 
   const { t } = useTranslation([Namespace.common, Namespace.landing]);
+  const { push } = useRouter();
 
   return (
     <LandingSlideContainer slideNumber="04"
@@ -16,6 +17,7 @@ export function LandingPreviousProjects() {
 
       <div className="grid grid-cols-2 md:grid-cols-3 gap-8 mb-32 md:mb-0">
         <ImageButton src="/img/web.jpg"
+                     onClick={ () => push(Routes.webs) }
                      onHoverText={ t('web.description') }>
           { t('web.title') }
         </ImageButton>
@@ -32,12 +34,11 @@ export function LandingPreviousProjects() {
                      onHoverText={ t('experimental_projects.description') }>
           { t('experimental_projects.title') }
         </ImageButton>
-        <Link href={ Routes.digitalArtworks }>
-          <ImageButton src="/img/digital-sketch.jpg"
-                       onHoverText={ t('digital_artwork.description') }>
-            { t('digital_artwork.title') }
-          </ImageButton>
-        </Link>
+        <ImageButton src="/img/digital-sketch.jpg"
+                     onClick={ () => push(Routes.digitalArtworks) }
+                     onHoverText={ t('digital_artwork.description') }>
+          { t('digital_artwork.title') }
+        </ImageButton>
       </div>
 
     </LandingSlideContainer>
