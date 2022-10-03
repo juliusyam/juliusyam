@@ -38,6 +38,9 @@ module.exports = {
       fontSize: {
         '14xl': '12rem',
       },
+      inset: {
+        '15': '3.75rem',
+      }
     },
   },
   plugins: [],
