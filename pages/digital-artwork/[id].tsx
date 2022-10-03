@@ -5,6 +5,7 @@ import Image from 'next/image';
 import {ChevronButton, Direction} from "../../components/ChevronButton";
 import { useRouter } from 'next/router';
 import { motion } from 'framer-motion';
+import {Routes} from "../../utilities/routes";
 
 interface DigitalArtworkProps {
   digitalArtwork?: Artwork
@@ -31,7 +32,7 @@ export const getStaticProps: GetStaticProps<DigitalArtworkProps> = async({ param
   if (!digitalArtwork) {
     return {
       redirect: {
-        destination: '/digitalArtworks/1',
+        destination: Routes.digitalArtwork(1),
         permanent: false,
       },
     }
@@ -86,11 +87,11 @@ const DigitalArtwork: NextPage<DigitalArtworkProps> = ({ digitalArtwork }) => {
         </section>
         <section className="grid grid-cols-2">
           <ChevronButton direction={ Direction.left }
-                         onClick={ () => push(`/digitalArtworks/${ id - 1 }`) }
+                         onClick={ () => push(Routes.digitalArtwork(id - 1)) }
                          disabled={ id <= 1 }
           />
           <ChevronButton direction={ Direction.right }
-                         onClick={ () => push(`/digitalArtworks/${ id + 1 }`) }
+                         onClick={ () => push(Routes.digitalArtwork(id + 1)) }
           />
         </section>
       </div>

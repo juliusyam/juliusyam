@@ -5,6 +5,7 @@ import Image from "next/image";
 import {ClassNameProps} from "../../models";
 import {useTranslation} from "react-i18next";
 import {Namespace} from "../../utilities/locales";
+import {Routes} from "../../utilities/routes";
 
 export function LandingMyExperience() {
 
@@ -22,13 +23,13 @@ export function LandingMyExperience() {
           <CaseyNeistatQuote className="absolute right-0 md:-right-2/3 -bottom-20 md:bottom-20 w-full md:w-2/3" />
         </div>
 
-        <Link href='/clients'>
+        <Link href={ Routes.clients }>
           <ImageButton src="/img/handshake.png"
                        onHoverText={ t('previous_clients.description') }>
             { t('previous_clients.title') }
           </ImageButton>
         </Link>
-        <Link href='/techStack'>
+        <Link href={ Routes.techStack }>
           <ImageButton src="/img/stack.jpg"
                        onHoverText={ t('tech_stack.description') }>
             { t('tech_stack.title') }

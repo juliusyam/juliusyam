@@ -1,4 +1,3 @@
-import { ReactNode } from 'react';
 import { Navigation } from './Navigation';
 import { useRouter } from 'next/router';
 import { AnimatePresence } from 'framer-motion';
@@ -6,7 +5,7 @@ import { ChildrenProps } from '../models';
 
 export function AppWrapper({ children }: ChildrenProps) {
 
-  const { pathname, asPath, basePath } = useRouter();
+  const { pathname } = useRouter();
 
   if (pathname === '/') return <AnimationWrapper>{ children }</AnimationWrapper>;
 

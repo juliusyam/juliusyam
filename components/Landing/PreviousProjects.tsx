@@ -3,6 +3,7 @@ import {ImageButton} from "../ImageButton";
 import Link from 'next/link';
 import {useTranslation} from "react-i18next";
 import {Namespace} from "../../utilities/locales";
+import {Routes} from "../../utilities/routes";
 
 export function LandingPreviousProjects() {
 
@@ -31,7 +32,7 @@ export function LandingPreviousProjects() {
                      onHoverText={ t('experimental_projects.description') }>
           { t('experimental_projects.title') }
         </ImageButton>
-        <Link href='/digitalArtworks'>
+        <Link href={ Routes.digitalArtworks }>
           <ImageButton src="/img/digital-sketch.jpg"
                        onHoverText={ t('digital_artwork.description') }>
             { t('digital_artwork.title') }

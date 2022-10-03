@@ -1,10 +1,10 @@
 import JuliusYam from './JuliusYam';
-import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { StringChildrenProps } from '../models';
 import styles from '../styles/Navigation.module.scss';
 import {useAnimationToggle} from "../hooks/useAnimationToggle";
+import {Routes} from "../utilities/routes";
 
 interface NavBarProps {
   openPanel: () => void,
@@ -14,7 +14,7 @@ export function NavBar({ openPanel }: NavBarProps) {
 
   return (
     <div className="p-5 flex justify-between items-center">
-      <Link href='/#initial'>
+      <Link href={ Routes.homeWithAnchor('initial') }>
         <a><JuliusYam /></a>
       </Link>
 
@@ -46,9 +46,11 @@ export function NavPanel({ closePanel }: NavPanelProps) {
 
       <div className="grid grid-cols-2 w-full h-full">
         <div className="hidden md:grid justify-items-end items-center">
-          <div className="grid p-20" onClick={ closePanel }>
-            <JuliusYam textAlign="text-right" fontSize="md:text-6xl lg:text-8xl text-right" />
-          </div>
+          <Link href={ Routes.homeWithAnchor('initial') }>
+            <div className="grid p-20 cursor-pointer">
+              <JuliusYam textAlign="text-right" fontSize="md:text-6xl lg:text-8xl text-right" />
+            </div>
+          </Link>
         </div>
 
         <div className="grid justify-items-start items-center">
@@ -82,22 +84,22 @@ export function NavList({ closePanel }: NavPanelProps) {
   return (
     <div className="p-5 mb:p-20 z-10" onClick={ closePanel }>
       <Title>My experience</Title>
-      <NavItem href='/clients'>Clients</NavItem>
-      <NavItem href='/techStack'>Tech stack</NavItem>
+      <NavItem href={ Routes.clients }>Clients</NavItem>
+      <NavItem href={ Routes.techStack }>Tech stack</NavItem>
 
       <Divider />
 
       <Title>Projects</Title>
-      <NavItem href='/web'>Web</NavItem>
-      <NavItem href='/mobile'>Mobile</NavItem>
-      <NavItem href='/design'>Design</NavItem>
-      <NavItem href='/experiments'>Experiments</NavItem>
-      <NavItem href='/digitalArtworks'>Digital artwork</NavItem>
+      <NavItem href={ Routes.webs }>Web</NavItem>
+      <NavItem href={ Routes.mobiles }>Mobile</NavItem>
+      <NavItem href={ Routes.designs }>Design</NavItem>
+      <NavItem href={ Routes.experiments }>Experiments</NavItem>
+      <NavItem href={ Routes.digitalArtworks }>Digital artwork</NavItem>
 
       <Divider />
 
       <Title>Contact</Title>
-      <NavItem href='/contact'>Contact me</NavItem>
+      <NavItem href={ Routes.contact }>Contact me</NavItem>
 
     </div>
   )
