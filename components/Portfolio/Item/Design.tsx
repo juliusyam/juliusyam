@@ -1,6 +1,5 @@
 import { Design } from '../../../models/apiModels';
 import Image from "next/image";
-import Link from "next/link";
 import {IconButton} from "../../IconButton";
 import {faGlobeEurope, faHandshake} from "@fortawesome/free-solid-svg-icons";
 import {Routes} from "../../../utilities/routes";

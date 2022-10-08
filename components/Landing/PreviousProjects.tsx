@@ -22,6 +22,7 @@ export function LandingPreviousProjects() {
           { t('web.title') }
         </ImageButton>
         <ImageButton src="/img/design.jpg"
+                     onClick={ () => push(Routes.designs) }
                      onHoverText={ t('design.description') }>
           { t('design.title') }
         </ImageButton>

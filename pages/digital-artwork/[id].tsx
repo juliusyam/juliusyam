@@ -7,11 +7,11 @@ import { useRouter } from 'next/router';
 import { motion } from 'framer-motion';
 import {Routes} from "../../utilities/routes";
 
-interface DigitalArtworkProps {
+interface DigitalArtworkPageProps {
   digitalArtwork?: Artwork
 }
 
-export const getStaticPaths = async() => {
+export const getStaticPaths = async () => {
 
   return {
     paths: await getArtworks().then(artworks => artworks.map(a => ({
@@ -23,7 +23,7 @@ export const getStaticPaths = async() => {
   }
 }
 
-export const getStaticProps: GetStaticProps<DigitalArtworkProps> = async({ params }) => {
+export const getStaticProps: GetStaticProps<DigitalArtworkPageProps> = async ({ params }) => {
 
   const id = params?.id;
 
@@ -45,7 +45,7 @@ export const getStaticProps: GetStaticProps<DigitalArtworkProps> = async({ param
   }
 }
 
-const DigitalArtwork: NextPage<DigitalArtworkProps> = ({ digitalArtwork }) => {
+const DigitalArtworkPage: NextPage<DigitalArtworkPageProps> = ({ digitalArtwork }) => {
 
   const { push } = useRouter();
 
@@ -99,4 +99,4 @@ const DigitalArtwork: NextPage<DigitalArtworkProps> = ({ digitalArtwork }) => {
   )
 }
 
-export default DigitalArtwork
+export default DigitalArtworkPage

@@ -7,6 +7,7 @@ import {Dict} from "../../models";
 import {SSRConfig} from "next-i18next";
 import {Design} from "../../models/apiModels";
 import {DesignItem} from "../../components/Portfolio/Item/Design";
+import {getDesigns} from "../../services/ApiRoutes";
 
 interface DesignsProps extends SSRConfig {
   designs: Design[],
@@ -16,8 +17,7 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
 
   return {
     props: {
-      designs: await apiService.get('/api/designs?populate=*')
-        .then(({ data }) => data.data),
+      designs: await getDesigns(),
       ...(await serverSideTranslations(locale as string, [Namespace.common])),
     }
   }

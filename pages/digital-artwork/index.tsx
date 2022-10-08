@@ -1,9 +1,9 @@
 import {GetStaticProps, NextPage} from 'next';
-import {apiService} from '../../services/ApiService';
 import {Artwork} from '../../models/apiModels';
 import styles from '../../styles/ImageGallery.module.scss';
 import Link from 'next/link';
 import {Routes} from "../../utilities/routes";
+import {getArtworks} from "../../services/ApiRoutes";
 
 export interface DigitalArtworksProps {
   digitalArtworks: Artwork[],
@@ -13,8 +13,7 @@ export const getStaticProps: GetStaticProps<DigitalArtworksProps> = async() => {
 
   return {
     props: {
-      digitalArtworks: await apiService.get('/api/artworks?populate=*')
-        .then(({ data }) => data.data)
+      digitalArtworks: await getArtworks()
     }
   }
 }

@@ -1,5 +1,6 @@
 import Image from "next/image";
 import JuliusYam from "../JuliusYam";
+import {FullPageSlideWrapper} from "../FullPage/FullPageSlideWrapper";
 
 interface LandingInitialSideProps {
   description: string,
@@ -9,7 +10,7 @@ interface LandingInitialSideProps {
 export function LandingInitialSlide({ description, copyright }: LandingInitialSideProps) {
 
   return (
-    <div className="section relative h-screen" data-anchor="initial">
+    <FullPageSlideWrapper dataAnchor="initial">
       <div className="grid place-items-center px-5 md:px-20 w-full h-screen">
         <section className="relative w-full max-w-9xl h-full">
           <div className="absolute bottom-0 left-0 mt-96">
@@ -26,6 +27,6 @@ export function LandingInitialSlide({ description, copyright }: LandingInitialSi
           </h5>
         </section>
       </div>
-    </div>
+    </FullPageSlideWrapper>
   )
 }
