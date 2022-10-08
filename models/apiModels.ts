@@ -1,3 +1,5 @@
+import {Social} from "../components/SocialButton";
+
 export interface Client {
   id: number,
   attributes: ClientAttributes,
@@ -57,14 +59,38 @@ export interface Web {
 
 export interface WebAttributes extends GlobalAttributes {
   brief: string,
-  client: {
-    data?: Client,
-  },
+  client: ClientRelation,
   image: Image,
   link?: string,
   sortOrder: number,
   technologies: string,
   title: string,
+}
+
+export interface Design {
+  id: number,
+  attributes: DesignAttributes
+}
+
+export interface DesignAttributes extends GlobalAttributes {
+  about: string,
+  brief: string,
+  client: ClientRelation,
+  contribution: string,
+  image: Image,
+  onlinePresences: OnlinePresence[],
+  products: string,
+  sortOrder: number,
+  title: string,
+}
+
+export interface ClientRelation {
+  data?: Client,
+}
+
+export interface OnlinePresence {
+  link: string,
+  presenceType: Social,
 }
 
 export interface GlobalAttributes {

@@ -1,19 +1,19 @@
 import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
-import {faInstagram, faLinkedinIn} from "@fortawesome/free-brands-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {Social} from "./SocialButton";
+import { ColorGroupDict } from '../utilities/color';
 
 interface IconButtonProps {
   icon: IconDefinition,
   children: string,
   onClick?: () => void,
+  colorGroup: ColorGroupDict,
 }
 
-export function IconButton({ icon, onClick, children }: IconButtonProps) {
+export function IconButton({ icon, onClick, children, colorGroup: { background } }: IconButtonProps) {
 
   return (
     <button onClick={ onClick }>
-      <div className="flex justify-center items-center px-8 py-4 w-fit bg-jy-blue hover:bg-jy-blue-700">
+      <div className={`flex justify-center items-center px-8 py-4 w-fit ${ background.main } hover:${ background.hover }`}>
         <FontAwesomeIcon icon={ icon }
                          size="xl"
                          color="#171717"

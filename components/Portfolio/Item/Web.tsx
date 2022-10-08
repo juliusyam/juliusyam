@@ -7,6 +7,7 @@ import { useRouter } from 'next/router';
 import {Routes} from "../../../utilities/routes";
 import {useTranslation} from "react-i18next";
 import {Namespace} from "../../../utilities/locales";
+import {Color, Colors} from "../../../utilities/color";
 
 interface WebItemProps {
   web: Web,
@@ -44,13 +45,13 @@ export function WebItem({ web }: WebItemProps) {
             link &&
             <Link href={ link } passHref>
               <a target="_blank" rel="noopener noreferrer">
-                <IconButton icon={ faGlobeEurope }>{ t('view_site') }</IconButton>
+                <IconButton icon={ faGlobeEurope } colorGroup={ Colors[Color.blue] }>{ t('view_site') }</IconButton>
               </a>
             </Link>
           }
           {
             client &&
-            <IconButton icon={ faHandshake } onClick={ () => push(Routes.clients) }>
+            <IconButton icon={ faHandshake } colorGroup={ Colors[Color.blue] } onClick={ () => push(Routes.clients) }>
               { t('client') }
             </IconButton>
           }

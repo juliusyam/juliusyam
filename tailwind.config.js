@@ -17,6 +17,7 @@ module.exports = {
         'jy-lime': '#c3da68',
         'jy-blue': '#6978AC',
         'jy-blue-700': '#5a6899',
+        'jy-green': '#69CFA3',
         'jy-background': '#171717',
       },
       dropShadow: {

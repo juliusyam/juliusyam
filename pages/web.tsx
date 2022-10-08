@@ -1,13 +1,12 @@
 import {GetStaticProps, NextPage} from 'next';
 import {apiService} from '../services/ApiService';
-import Image from 'next/image';
 import {Web} from "../models/apiModels";
 import {PortfolioPageContainer} from "../components/Portfolio/PortfolioPageContainer";
-import {SSRConfig, useTranslation} from "next-i18next";
-import {Namespace} from "../utilities/locales";
+import {SSRConfig} from "next-i18next";
 import {serverSideTranslations} from "next-i18next/serverSideTranslations";
 import {Dict} from "../models";
 import {WebItem} from "../components/Portfolio/Item/Web";
+import {Namespace} from "../utilities/locales";
 
 interface WebsProps extends SSRConfig {
   webs: Web[],
@@ -19,7 +18,7 @@ export const getStaticProps: GetStaticProps<WebsProps> = async ({ locale }) => {
     props: {
       webs: await apiService.get('/api/webs?populate=*')
         .then(({ data }) => data.data),
-      ...(await serverSideTranslations(locale as string, ['common'])),
+      ...(await serverSideTranslations(locale as string, [Namespace.common])),
     }
   }
 }

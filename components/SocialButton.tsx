@@ -3,8 +3,10 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import { faInstagram, faLinkedinIn } from "@fortawesome/free-brands-svg-icons";
 
 export enum Social {
-  instagram,
-  linkedin,
+  instagram = 'instagram',
+  linkedin = 'linkedin',
+  facebook = 'facebook',
+  web = 'web',
 }
 
 interface SocialButtonProps {
