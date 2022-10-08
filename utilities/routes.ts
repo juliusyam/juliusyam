@@ -5,6 +5,7 @@ export const Routes = {
   techStack: '/tech-stack',
   webs: '/web',
   mobiles: '/mobile',
+  design: (id: number) => `/design/${ id }`,
   designs: '/design',
   experiments: '/experiment',
   digitalArtwork: (id: number) => `/digital-artwork/${ id }`,

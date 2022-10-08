@@ -49,8 +49,8 @@ const DesignPage: NextPage<DesignPageProps> = ({ design }) => {
       render={() => (
         <ReactFullPage.Wrapper>
           <FullPageSlideWrapper dataAnchor="initial">
-            <div className="grid relative w-full h-full">
-              <Image src={ image.data.attributes.url }
+            <div className="grid relative w-full h-screen">
+              <Image src="/img/design.jpg"
                      width="100%"
                      height="100%"
                      objectFit="cover"
@@ -58,11 +58,21 @@ const DesignPage: NextPage<DesignPageProps> = ({ design }) => {
 
               <div className="absolute top-0 left-0 w-full h-full bg-jy-green bg-opacity-80" />
 
-              <h1 className="font-ocr drop-shadow-text">{ title }</h1>
+              <div className="absolute w-full h-full bottom-1/2 right-1/2 translate-x-1/2 translate-y-1/2 flex justify-center items-center p-5 md:p-20">
+                <Image src={ image.data.attributes.url }
+                       width="900"
+                       height="900"
+                       objectFit="contain"
+                       layout="intrinsic" />
+              </div>
+
+              <div className="grid p-5 md:p-20 justify-start items-end">
+                <h1 className="font-ocr drop-shadow-text text-5xl md:text-7xl lg:text-9xl break-word w-full md:w-2/3">{ title }</h1>
+              </div>
             </div>
           </FullPageSlideWrapper>
           <FullPageSlideWrapper dataAnchor="initial">
-            <div className="grid relative w-full h-full">
+            <div className="grid relative w-full h-screen">
               <Image src={ image.data.attributes.url }
                      width="100%"
                      height="100%"

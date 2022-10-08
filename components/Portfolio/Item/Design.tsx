@@ -36,10 +36,16 @@ export function DesignItem({ design }: DesignItemProps) {
         <h3 className="font-tomorrow text-2xl text-gray-600 ml-1 my-3">{ products }</h3>
 
         <div className="grid gap-3 grid-flow-col mt-10 w-fit">
-          <IconButton icon={ faGlobeEurope } colorGroup={ Colors[Color.green] }>{ t('view_product') }</IconButton>
+          <IconButton icon={ faGlobeEurope }
+                      colorGroup={ Colors[Color.green] }
+                      onClick={ () => push(Routes.design(id)) }>
+            { t('view_product') }
+          </IconButton>
           {
             client &&
-            <IconButton icon={ faHandshake } colorGroup={ Colors[Color.green] } onClick={ () => push(Routes.clients) }>
+            <IconButton icon={ faHandshake }
+                        colorGroup={ Colors[Color.green] }
+                        onClick={ () => push(Routes.clients) }>
               { t('client') }
             </IconButton>
           }
