@@ -23,7 +23,7 @@ export const getStaticProps: GetStaticProps<TechStackProps> = async() => {
 const TechStack: NextPage<TechStackProps> = ({ techStack }) => {
 
   return (
-    <div className="grid grid-cols-2 gap-10 w-full h-screen -mt-20">
+    <div className="grid grid-cols-2 gap-10 w-full h-screen">
       <div className="hidden md:grid justify-items-end items-center">
         <div className="grid">
           <h1>Web</h1>

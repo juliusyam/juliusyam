@@ -62,7 +62,7 @@ const DigitalArtworkPage: NextPage<DigitalArtworkPageProps> = ({ digitalArtwork 
   }
 
   return (
-    <div className="grid w-full h-screen overflow-hidden relative -mt-20">
+    <div className="grid w-full h-screen overflow-hidden relative">
       <motion.div key={ id }
                   variants={ variants }
                   initial="hidden"

@@ -13,7 +13,7 @@ export function AppWrapper({ children }: ChildrenProps) {
     <>
       <div className="fixed w-full z-50"><Navigation /></div>
 
-      <div className="pt-20">
+      <div>
         <AnimationWrapper>{ children }</AnimationWrapper>
       </div>
     </>

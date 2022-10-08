@@ -13,7 +13,7 @@ export function PortfolioPageContainer({ title, backgroundColor, backgroundSrc, 
     md:grid-cols-portfolio-display-md
     lg:grid-cols-portfolio-display-lg
     xl:grid-cols-portfolio-display-xl
-    w-full h-screen -mt-20">
+    w-full h-screen">
 
       <div className="grid w-full h-full relative">
         <Image src={ backgroundSrc }
