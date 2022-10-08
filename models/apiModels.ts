@@ -61,7 +61,7 @@ export interface WebAttributes extends GlobalAttributes {
     data?: Client,
   },
   image: Image,
-  link: string,
+  link?: string,
   sortOrder: number,
   technologies: string,
   title: string,

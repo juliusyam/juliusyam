@@ -16,6 +16,7 @@ module.exports = {
         'jy-lime-300': '#c1ccaf',
         'jy-lime': '#c3da68',
         'jy-blue': '#6978AC',
+        'jy-blue-700': '#5a6899',
         'jy-background': '#171717',
       },
       dropShadow: {
@@ -26,11 +27,14 @@ module.exports = {
         'text': '3px 3px 1px rgba(23, 23, 23, 1)',
       },
       rotate: {
-        '135': '135deg'
+        '135': '135deg',
+        '270': '270deg',
       },
       gridTemplateColumns: {
         'tech': '15em calc(100% - 10em)',
-        'portfolio-display': '30% 70%',
+        'portfolio-display-md': '10% 90%',
+        'portfolio-display-lg': '20% 80%',
+        'portfolio-display-xl': '30% 70%',
       },
       height: {
         'screen-without-nav': 'calc(100vh - 5em)',
@@ -40,7 +44,7 @@ module.exports = {
       },
       inset: {
         '15': '3.75rem',
-      }
+      },
     },
   },
   plugins: [],
