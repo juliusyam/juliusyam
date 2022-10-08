@@ -1,10 +1,12 @@
 import JuliusYam from './JuliusYam';
 import Link from 'next/link';
 import Image from 'next/image';
-import { StringChildrenProps } from '../models';
+import {StringChildrenProps} from '../models';
 import styles from '../styles/Navigation.module.scss';
 import {useAnimationToggle} from "../hooks/useAnimationToggle";
 import {Routes} from "../utilities/routes";
+import {useTranslation} from "react-i18next";
+import {Namespace} from "../utilities/locales";
 
 interface NavBarProps {
   openPanel: () => void,
@@ -81,25 +83,27 @@ export function NavList({ closePanel }: NavPanelProps) {
     <div className="mb-10" />
   )
 
+  const { t } = useTranslation(Namespace.common);
+
   return (
     <div className="p-5 mb:p-20 z-10" onClick={ closePanel }>
-      <Title>My experience</Title>
-      <NavItem href={ Routes.clients }>Clients</NavItem>
-      <NavItem href={ Routes.techStack }>Tech stack</NavItem>
+      <Title>{ t('experience') }</Title>
+      <NavItem href={ Routes.clients }>{ t('previous_clients.title') }</NavItem>
+      <NavItem href={ Routes.techStack }>{ t('tech_stack.title') }</NavItem>
 
       <Divider />
 
-      <Title>Projects</Title>
-      <NavItem href={ Routes.webs }>Web</NavItem>
-      <NavItem href={ Routes.mobiles }>Mobile</NavItem>
-      <NavItem href={ Routes.designs }>Design</NavItem>
-      <NavItem href={ Routes.experiments }>Experiments</NavItem>
-      <NavItem href={ Routes.digitalArtworks }>Digital artwork</NavItem>
+      <Title>{ t('projects') }</Title>
+      <NavItem href={ Routes.webs }>{ t('web.title') }</NavItem>
+      <NavItem href={ Routes.mobiles }>{ t('mobile.title') }</NavItem>
+      <NavItem href={ Routes.designs }>{ t('design.title') }</NavItem>
+      <NavItem href={ Routes.experiments }>{ t('experimental_projects.title') }</NavItem>
+      <NavItem href={ Routes.digitalArtworks }>{ t('digital_artwork.title') }</NavItem>
 
       <Divider />
 
-      <Title>Contact</Title>
-      <NavItem href={ Routes.contact }>Contact me</NavItem>
+      <Title>{ t('contact') }</Title>
+      <NavItem href={ Routes.contact }>{ t('contact_me.title') }</NavItem>
 
     </div>
   )

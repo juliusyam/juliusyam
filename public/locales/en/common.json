@@ -27,6 +27,15 @@
     "title": "Digital artwork",
     "description": "Just for fun"
   },
+  "contact_me": {
+    "title": "Contact me"
+  },
+
+  "experience": "My experience",
+  "projects": "Projects",
+  "contact": "Contact",
+  "client": "Client",
+  "view_site": "View site",
 
   "copyright": "Copyright © 2022 by Julius Yam. All Rights Reserved"
 }

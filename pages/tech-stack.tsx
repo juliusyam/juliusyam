@@ -23,15 +23,15 @@ export const getStaticProps: GetStaticProps<TechStackProps> = async() => {
 const TechStack: NextPage<TechStackProps> = ({ techStack }) => {
 
   return (
-    <div className="grid grid-cols-2 gap-4 p-5 md:p-20">
+    <div className="grid grid-cols-2 gap-10 w-full h-screen -mt-20">
       <div className="hidden md:grid justify-items-end items-center">
-        <div className="grid p-20">
+        <div className="grid">
           <h1>Web</h1>
           <h1>Mobile</h1>
         </div>
       </div>
 
-      <div className="grid justify-items-start items-center">
+      <div className="grid justify-items-start items-center overflow-y-scroll">
         <TechStackList techStack={ techStack } />
       </div>
     </div>
@@ -45,7 +45,7 @@ export function TechStackList({ techStack }: TechStackProps) {
   )
 
   return (
-    <div className="p-5 mb:p-20 z-10 w-full">
+    <div className="mb:p-20 z-10 w-full">
       <Title>Web</Title>
       <>
         {

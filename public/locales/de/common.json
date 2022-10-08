@@ -27,6 +27,15 @@
     "title": "Digitale Kunstwerke",
     "description": "Nur zum Spaß"
   },
+  "contact_me": {
+    "title": "Kontaktiere mich"
+  },
+
+  "experience": "Meine Erfahrung",
+  "projects": "Projekte",
+  "contact": "Kontakt",
+  "client": "Klient/in",
+  "view_site": "Webesite ansehen",
 
   "copyright": "Copyright © 2022 von Julius Yam. Alle Rechte vorbehalten"
 }

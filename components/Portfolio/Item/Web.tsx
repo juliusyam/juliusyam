@@ -5,6 +5,8 @@ import { faGlobeEurope, faHandshake } from '@fortawesome/free-solid-svg-icons';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import {Routes} from "../../../utilities/routes";
+import {useTranslation} from "react-i18next";
+import {Namespace} from "../../../utilities/locales";
 
 interface WebItemProps {
   web: Web,
@@ -15,6 +17,8 @@ export function WebItem({ web }: WebItemProps) {
   const { id, attributes: { image, title, brief, technologies, link, client } } = web;
 
   const { push } = useRouter();
+
+  const { t } = useTranslation(Namespace.common);
 
   return (
     <div className="flex justify-start items-center" key={ id }>
@@ -40,14 +44,14 @@ export function WebItem({ web }: WebItemProps) {
             link &&
             <Link href={ link } passHref>
               <a target="_blank" rel="noopener noreferrer">
-                <IconButton icon={ faGlobeEurope }>View site</IconButton>
+                <IconButton icon={ faGlobeEurope }>{ t('view_site') }</IconButton>
               </a>
             </Link>
           }
           {
             client &&
             <IconButton icon={ faHandshake } onClick={ () => push(Routes.clients) }>
-              Client
+              { t('client') }
             </IconButton>
           }
         </div>
