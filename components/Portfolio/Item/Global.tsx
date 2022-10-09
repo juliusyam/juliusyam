@@ -1,10 +1,17 @@
 import {ChildrenProps, StringChildrenProps} from "../../../models";
+import {formatMonthAndYear} from "../../../utilities/date";
 
 interface OptionalClassProps extends ChildrenProps {
   className?: string
 }
 
 interface TextColorProps extends StringChildrenProps {
+  color: string,
+}
+
+interface DateDisplayProps {
+  startedAt: Date,
+  endedAt: Date,
   color: string,
 }
 
@@ -38,10 +45,20 @@ const Brief = ({ children, color }: TextColorProps) => (
   </h3>
 )
 
+const Description = ({ children }: StringChildrenProps) => (
+  <p className="font-tomorrow leading-5 md:leading-7 text-sm md:text-base text-gray-600 ml-1">{ children }</p>
+)
+
 const ButtonContainer = ({ children, className }: OptionalClassProps) => (
-  <div className={`flex justify-left items-center flex-wrap mt-10 w-fit ${ className }`}>
-    { children }
+  <div className={`flex justify-left items-center flex-wrap ${ children ? 'mt-10' : ''} w-fit ${className}`}>
+    {children}
   </div>
+)
+
+const DateDisplay = ({ startedAt, endedAt, color }: DateDisplayProps) => (
+  <h5 className={`font-tomorrow text-xl md:text-2xl ml-1 mb-5 ${ color }`}>
+    { formatMonthAndYear(startedAt) } - { formatMonthAndYear(endedAt) }
+  </h5>
 )
 
 export class Portfolio {
@@ -51,4 +68,6 @@ export class Portfolio {
   static ButtonContainer = ButtonContainer;
   static Title = Title;
   static Brief = Brief;
+  static Description = Description;
+  static DateDisplay = DateDisplay;
 }

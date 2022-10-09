@@ -27,7 +27,8 @@ export function ProjectItem({ project }: ProjectItemProps) {
       <Portfolio.ContentContainer>
         <Portfolio.Title color="text-jy-red">{ title }</Portfolio.Title>
         <Portfolio.Brief color="text-gray-300">{ brief }</Portfolio.Brief>
-        <Portfolio.Brief color="text-gray-600">{ description }</Portfolio.Brief>
+        <Portfolio.DateDisplay startedAt={ startedAt } endedAt={ endedAt } color="text-gray-600" />
+        <Portfolio.Description>{ description }</Portfolio.Description>
 
         <Portfolio.ButtonContainer>
           {
