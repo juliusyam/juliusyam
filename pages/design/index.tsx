@@ -1,5 +1,4 @@
 import {GetStaticProps, NextPage} from "next";
-import {apiService} from "../../services/ApiService";
 import {PortfolioPageContainer} from "../../components/Portfolio/PortfolioPageContainer";
 import {serverSideTranslations} from "next-i18next/serverSideTranslations";
 import {Namespace} from "../../utilities/locales";
