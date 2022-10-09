@@ -21,7 +21,7 @@ export function DesignItem({ design }: DesignItemProps) {
   const { t } = useTranslation(Namespace.common);
 
   return (
-    <div className="flex justify-start items-center" key={ id }>
+    <div className="flex justify-start items-center">
       <div className="max-w-md w-full relative">
         <div className="w-full h-full overflow-hidden">
           <Image src={ image.data.attributes.url }

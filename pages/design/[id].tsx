@@ -4,10 +4,13 @@ import {GetStaticProps, NextPage} from "next";
 import {FullPageSlideWrapper} from "../../components/FullPage/FullPageSlideWrapper";
 import ReactFullPage from '@fullpage/react-fullpage';
 import Image from "next/image";
-import {ChildrenProps, StringChildrenProps} from "../../models";
+import {ChildrenProps, Dict, StringChildrenProps} from "../../models";
 import {SocialButton} from "../../components/SocialButton";
+import {serverSideTranslations} from "next-i18next/serverSideTranslations";
+import {Namespace} from "../../utilities/locales";
+import {SSRConfig} from "next-i18next";
 
-interface DesignPageProps {
+interface DesignPageProps extends SSRConfig {
   design?: Design
 }
 
@@ -27,7 +30,7 @@ export const getStaticPaths = async () => {
   }
 }
 
-export const getStaticProps: GetStaticProps<DesignPageProps> = async({ params }) => {
+export const getStaticProps: GetStaticProps<DesignPageProps> = async({ params, locale }) => {
 
   const id = params?.id;
 
@@ -36,15 +39,19 @@ export const getStaticProps: GetStaticProps<DesignPageProps> = async({ params })
   return {
     props: {
       design,
+      ...(await serverSideTranslations(locale as string, [Namespace.common])),
     }
   }
 }
 
-const DesignPage: NextPage<DesignPageProps> = ({ design }) => {
+const DesignPage: NextPage<DesignPageProps> = ({ design, _nextI18Next }) => {
 
   if (!design) return null;
 
   const { attributes: { about, image, title, onlinePresences, contribution } } = design;
+
+  const { initialI18nStore, initialLocale } = _nextI18Next;
+  const keys = initialI18nStore[initialLocale].common as Dict<any>;
 
   const DetailsContainer = ({ title, children }: DetailsContainerProps) => (
     <section className="grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-12">
@@ -89,15 +96,15 @@ const DesignPage: NextPage<DesignPageProps> = ({ design }) => {
           </FullPageSlideWrapper>
           <FullPageSlideWrapper dataAnchor="initial">
             <div className="grid grid-flow-row gap-12 p-5 md:p-20">
-              <DetailsContainer title="About">
+              <DetailsContainer title={ keys.about }>
                 <Paragraph>{ about }</Paragraph>
               </DetailsContainer>
 
-              <DetailsContainer title="What I did for them?">
+              <DetailsContainer title={ keys.what_i_did }>
                 <Paragraph>{ contribution }</Paragraph>
               </DetailsContainer>
 
-              <DetailsContainer title="Online presence">
+              <DetailsContainer title={ keys.online_presences }>
                 <div className="grid grid-flow-col gap-4">
                   {
                     onlinePresences.map((onlinePresence, i) =>

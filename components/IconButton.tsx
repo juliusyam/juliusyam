@@ -7,12 +7,13 @@ interface IconButtonProps {
   children: string,
   onClick?: () => void,
   colorGroup: ColorGroupDict,
+  className?: string,
 }
 
-export function IconButton({ icon, onClick, children, colorGroup: { background } }: IconButtonProps) {
+export function IconButton({ icon, onClick, children, colorGroup: { background }, className }: IconButtonProps) {
 
   return (
-    <button onClick={ onClick }>
+    <button onClick={ onClick } className={ className || '' }>
       <div className={`flex justify-center items-center px-8 py-4 w-fit ${ background.main } hover:${ background.hover }`}>
         <FontAwesomeIcon icon={ icon }
                          size="xl"

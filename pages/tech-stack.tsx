@@ -50,7 +50,7 @@ export function TechStackList({ techStack }: TechStackProps) {
       <>
         {
           techStack.filter(t => t.attributes.category === TechStackCategories.web).map(t =>
-            <TechItem tech={ t } />
+            <TechItem tech={ t } key={ t.id } />
           )
         }
       </>

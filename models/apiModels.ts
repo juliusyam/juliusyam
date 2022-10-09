@@ -84,6 +84,21 @@ export interface DesignAttributes extends GlobalAttributes {
   title: string,
 }
 
+export interface Project {
+  id: number,
+  attributes: ProjectAttributes
+}
+
+export interface ProjectAttributes extends GlobalAttributes {
+  brief: string,
+  description: string,
+  endedAt: Date,
+  link?: string,
+  originLink?: string,
+  startedAt: Date,
+  title: string,
+}
+
 export interface ClientRelation {
   data?: Client,
 }

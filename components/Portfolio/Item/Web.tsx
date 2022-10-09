@@ -22,7 +22,7 @@ export function WebItem({ web }: WebItemProps) {
   const { t } = useTranslation(Namespace.common);
 
   return (
-    <div className="flex justify-start items-center" key={ id }>
+    <div className="flex justify-start items-center flex-col md:flex-row" key={ id }>
       <div className="max-w-md w-full p-2 pt-8 bg-gray-300 rounded-3xl relative">
         <div className="absolute w-3 h-3 rounded-xl top-3 left-5 bg-jy-blue" />
         <div className="absolute w-3 h-3 rounded-xl top-3 left-10 bg-jy-blue" />
@@ -35,23 +35,30 @@ export function WebItem({ web }: WebItemProps) {
         </div>
       </div>
 
-      <div className="ml-8">
-        <h2 className="font-ocr text-5xl text-jy-blue mb-3">{ title }</h2>
-        <h3 className="font-tomorrow text-2xl text-gray-300 ml-1 my-3">{ brief }</h3>
-        <h3 className="font-tomorrow text-2xl text-gray-600 ml-1 my-3">{ technologies }</h3>
+      <div className="mt-8 md:mt-0 md:ml-8">
+        <h2 className="font-ocr text-3xl md:text-5xl text-jy-blue mb-3">{ title }</h2>
+        <h3 className="font-tomorrow text-xl md:text-2xl text-gray-300 ml-1 my-3">{ brief }</h3>
+        <h3 className="font-tomorrow text-xl md:text-2xl text-gray-600 ml-1 my-3">{ technologies }</h3>
 
-        <div className="grid gap-3 grid-flow-col mt-10 w-fit">
+        <div className="flex justify-left items-center flex-wrap mt-10 w-fit">
           {
             link &&
             <Link href={ link } passHref>
               <a target="_blank" rel="noopener noreferrer">
-                <IconButton icon={ faGlobeEurope } colorGroup={ Colors[Color.blue] }>{ t('view_site') }</IconButton>
+                <IconButton icon={ faGlobeEurope }
+                            className="mr-4 mb-4"
+                            colorGroup={ Colors[Color.blue] }>
+                  { t('view_site') }
+                </IconButton>
               </a>
             </Link>
           }
           {
             client &&
-            <IconButton icon={ faHandshake } colorGroup={ Colors[Color.blue] } onClick={ () => push(Routes.clients) }>
+            <IconButton icon={ faHandshake }
+                        className="mr-4 mb-4"
+                        colorGroup={ Colors[Color.blue] }
+                        onClick={ () => push(Routes.clients) }>
               { t('client') }
             </IconButton>
           }

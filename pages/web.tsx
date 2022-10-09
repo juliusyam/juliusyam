@@ -37,7 +37,7 @@ const Webs: NextPage<WebsProps> = ({ webs, _nextI18Next }) => {
       <>
         {
           webs.map(web =>
-            <WebItem web={ web } />
+            <WebItem web={ web } key={ web.id } />
           )
         }
       </>

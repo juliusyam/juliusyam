@@ -12,7 +12,7 @@ interface DesignsProps extends SSRConfig {
   designs: Design[],
 }
 
-export const getStaticProps: GetStaticProps = async ({ locale }) => {
+export const getStaticProps: GetStaticProps<DesignsProps> = async ({ locale }) => {
 
   return {
     props: {
@@ -35,7 +35,7 @@ const Designs: NextPage<DesignsProps> = ({ _nextI18Next, designs }) => {
       <>
         {
           designs.map(design =>
-            <DesignItem design={ design } />
+            <DesignItem design={ design } key={ design.id } />
           )
         }
       </>

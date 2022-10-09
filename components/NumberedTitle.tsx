@@ -27,7 +27,7 @@ export function NumberedTitle({ slideNumber, title }: NumberedTitleProps) {
         </h2>
       </motion.div>
 
-      <motion.div key={ slideNumber } whileInView={ titleWhileInView }>
+      <motion.div key={ `${ slideNumber }_title` } whileInView={ titleWhileInView }>
         <h3 className="font-ocr text-3xl md:text-5xl lg:text-6xl text-jy-lime-300 text-left md:text-right drop-shadow-text">
           { title }
         </h3>

@@ -14,7 +14,6 @@ export enum Social {
 interface SocialButtonProps {
   social: Social,
   href: string,
-  key?: string | number | null,
   hoverColor: string,
 }
 
@@ -38,7 +37,7 @@ export function SocialButton({ social, href, key, hoverColor }: SocialButtonProp
   }
 
   return (
-    <Link href={ href } passHref key={ key }>
+    <Link href={ href } passHref>
       <a target="_blank" rel="noopener noreferrer">
         <FontAwesomeIcon icon={ icon }
                          size="3x"
