@@ -32,13 +32,15 @@ const Designs: NextPage<DesignsProps> = ({ _nextI18Next, designs }) => {
     <PortfolioPageContainer title={ keys.design.title }
                             backgroundColor="bg-jy-green"
                             backgroundSrc="/img/design.jpg">
-      <>
         {
-          designs.map(design =>
+          designs
+            .sort((a, b) => (
+              b.attributes.sortOrder - a.attributes.sortOrder)
+            )
+            .map(design =>
             <DesignItem design={ design } key={ design.id } />
           )
         }
-      </>
     </PortfolioPageContainer>
   )
 }

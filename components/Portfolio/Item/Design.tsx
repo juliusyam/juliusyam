@@ -7,6 +7,7 @@ import { Color, Colors } from "../../../utilities/color";
 import {useTranslation} from "react-i18next";
 import {Namespace} from "../../../utilities/locales";
 import {useRouter} from "next/router";
+import { Portfolio } from "./Global";
 
 interface DesignItemProps {
   design: Design,
@@ -21,22 +22,23 @@ export function DesignItem({ design }: DesignItemProps) {
   const { t } = useTranslation(Namespace.common);
 
   return (
-    <div className="flex justify-start items-center">
-      <div className="max-w-md w-full relative">
+    <Portfolio.Container>
+      <Portfolio.ImageContainer>
         <div className="w-full h-full overflow-hidden">
           <Image src={ image.data.attributes.url }
                  layout="responsive"
                  objectFit="cover" width="500" height="400" />
         </div>
-      </div>
+      </Portfolio.ImageContainer>
 
-      <div className="ml-8">
-        <h2 className="font-ocr text-5xl text-jy-green mb-3">{ title }</h2>
-        <h3 className="font-tomorrow text-2xl text-gray-300 ml-1 my-3">{ brief }</h3>
-        <h3 className="font-tomorrow text-2xl text-gray-600 ml-1 my-3">{ products }</h3>
+      <Portfolio.ContentContainer>
+        <Portfolio.Title color="text-jy-green">{ title }</Portfolio.Title>
+        <Portfolio.Brief color="text-gray-300">{ brief }</Portfolio.Brief>
+        <Portfolio.Brief color="text-gray-600">{ products }</Portfolio.Brief>
 
-        <div className="grid gap-3 grid-flow-col mt-10 w-fit">
+        <Portfolio.ButtonContainer>
           <IconButton icon={ faGlobeEurope }
+                      className="mr-4 mb-4"
                       colorGroup={ Colors[Color.green] }
                       onClick={ () => push(Routes.design(id)) }>
             { t('view_product') }
@@ -44,13 +46,14 @@ export function DesignItem({ design }: DesignItemProps) {
           {
             client &&
             <IconButton icon={ faHandshake }
+                        className="mr-4 mb-4"
                         colorGroup={ Colors[Color.green] }
                         onClick={ () => push(Routes.clients) }>
               { t('client') }
             </IconButton>
           }
-        </div>
-      </div>
-    </div>
+        </Portfolio.ButtonContainer>
+      </Portfolio.ContentContainer>
+    </Portfolio.Container>
   )
 }

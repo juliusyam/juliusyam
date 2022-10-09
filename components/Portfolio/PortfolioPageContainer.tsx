@@ -1,7 +1,6 @@
 import { ChildrenProps } from '../../models';
 import Image from "next/image";
 import {useScroll} from "../../hooks/useScroll";
-import {scale} from "style-value-types";
 
 interface PortfolioPageContainerProps extends ChildrenProps {
   title: string,

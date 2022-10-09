@@ -34,13 +34,15 @@ const Webs: NextPage<WebsProps> = ({ webs, _nextI18Next }) => {
     <PortfolioPageContainer title={ keys.web.title }
                             backgroundSrc="/img/web.jpg"
                             backgroundColor="bg-jy-blue">
-      <>
         {
-          webs.map(web =>
+          webs
+            .sort((a, b) => (
+              b.attributes.sortOrder - a.attributes.sortOrder)
+            )
+            .map(web =>
             <WebItem web={ web } key={ web.id } />
           )
         }
-      </>
     </PortfolioPageContainer>
   )
 }

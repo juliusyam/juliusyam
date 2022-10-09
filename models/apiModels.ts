@@ -93,6 +93,7 @@ export interface ProjectAttributes extends GlobalAttributes {
   brief: string,
   description: string,
   endedAt: Date,
+  image: Image,
   link?: string,
   originLink?: string,
   startedAt: Date,

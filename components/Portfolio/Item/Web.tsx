@@ -8,6 +8,7 @@ import {Routes} from "../../../utilities/routes";
 import {useTranslation} from "react-i18next";
 import {Namespace} from "../../../utilities/locales";
 import {Color, Colors} from "../../../utilities/color";
+import { Portfolio } from "./Global";
 
 interface WebItemProps {
   web: Web,
@@ -15,15 +16,15 @@ interface WebItemProps {
 
 export function WebItem({ web }: WebItemProps) {
 
-  const { id, attributes: { image, title, brief, technologies, link, client } } = web;
+  const { attributes: { image, title, brief, technologies, link, client } } = web;
 
   const { push } = useRouter();
 
   const { t } = useTranslation(Namespace.common);
 
   return (
-    <div className="flex justify-start items-center flex-col md:flex-row" key={ id }>
-      <div className="max-w-md w-full p-2 pt-8 bg-gray-300 rounded-3xl relative">
+    <Portfolio.Container>
+      <Portfolio.ImageContainer className="bg-gray-300 rounded-3xl">
         <div className="absolute w-3 h-3 rounded-xl top-3 left-5 bg-jy-blue" />
         <div className="absolute w-3 h-3 rounded-xl top-3 left-10 bg-jy-blue" />
         <div className="absolute w-3 h-3 rounded-xl top-3 left-15 bg-jy-blue" />
@@ -33,14 +34,14 @@ export function WebItem({ web }: WebItemProps) {
                  layout="responsive"
                  objectFit="cover" width="500" height="300" />
         </div>
-      </div>
+      </Portfolio.ImageContainer>
 
-      <div className="mt-8 md:mt-0 md:ml-8">
-        <h2 className="font-ocr text-3xl md:text-5xl text-jy-blue mb-3">{ title }</h2>
-        <h3 className="font-tomorrow text-xl md:text-2xl text-gray-300 ml-1 my-3">{ brief }</h3>
-        <h3 className="font-tomorrow text-xl md:text-2xl text-gray-600 ml-1 my-3">{ technologies }</h3>
+      <Portfolio.ContentContainer>
+        <Portfolio.Title color="text-jy-blue">{ title }</Portfolio.Title>
+        <Portfolio.Brief color="text-gray-300">{ brief }</Portfolio.Brief>
+        <Portfolio.Brief color="text-gray-600">{ technologies }</Portfolio.Brief>
 
-        <div className="flex justify-left items-center flex-wrap mt-10 w-fit">
+        <Portfolio.ButtonContainer>
           {
             link &&
             <Link href={ link } passHref>
@@ -62,8 +63,8 @@ export function WebItem({ web }: WebItemProps) {
               { t('client') }
             </IconButton>
           }
-        </div>
-      </div>
-    </div>
+        </Portfolio.ButtonContainer>
+      </Portfolio.ContentContainer>
+    </Portfolio.Container>
   )
 }

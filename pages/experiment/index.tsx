@@ -6,6 +6,7 @@ import {Namespace} from "../../utilities/locales";
 import {Dict} from "../../models";
 import {getExperimentalProjects} from "../../services/ApiRoutes";
 import {Project} from "../../models/apiModels";
+import {ProjectItem} from "../../components/Portfolio/Item/Project";
 
 interface ExperimentPageProps extends SSRConfig {
   projects: Project[]
@@ -32,8 +33,11 @@ const ExperimentPage: NextPage<ExperimentPageProps> = ({ _nextI18Next, projects 
                             backgroundColor="bg-jy-red"
                             backgroundSrc="/img/experiment.jpg"
                             fontSize="text-3xl xl:text-6xl">
-      <div />
-
+        {
+          projects.map(project =>
+            <ProjectItem project={ project } key={ project.id } />
+          )
+        }
     </PortfolioPageContainer>
   )
 }
