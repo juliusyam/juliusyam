@@ -23,6 +23,10 @@ module.exports = {
       },
       dropShadow: {
         'jy-text': [
+          '2px 0 0 rgba(195, 218, 104, 1)',
+          '-1px -1px 0 rgba(105, 170, 172, 1)',
+        ],
+        'jy-text-xl': [
           '5px 0 0 rgba(195, 218, 104, 1)',
           '-3px -3px 0 rgba(105, 170, 172, 1)',
         ],

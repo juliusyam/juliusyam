@@ -18,7 +18,9 @@ export function LandingInitialSlide({ description, copyright }: LandingInitialSi
           </div>
 
           <div className="absolute right-0 bottom-1/2 translate-y-1/2">
-            <JuliusYam textAlign="text-right" fontSize="text-3xl md:text-5xl lg:text-8xl text-right" />
+            <JuliusYam textAlign="text-right"
+                       fontSize="text-3xl md:text-5xl lg:text-8xl text-right"
+                       dropShadow="md:drop-shadow-jy-text lg:drop-shadow-jy-text-xl" />
             <h2 className="font-ocr text-jy-cyan text-2xl text-right">{ description }</h2>
           </div>
 
