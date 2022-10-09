@@ -37,7 +37,7 @@ function NavList({ closePanel, t }: NavPanelProps) {
       <NavItem href={ Routes.webs }>{ t('web.title') }</NavItem>
       <NavItem href={ Routes.mobiles }>{ t('mobile.title') }</NavItem>
       <NavItem href={ Routes.designs }>{ t('design.title') }</NavItem>
-      <NavItem href={ Routes.experiments }>{ t('experimental_projects.title') }</NavItem>
+      <NavItem href={ Routes.projects }>{ t('experimental_projects.title') }</NavItem>
       <NavItem href={ Routes.digitalArtworks }>{ t('digital_artwork.title') }</NavItem>
 
       <Divider />

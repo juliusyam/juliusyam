@@ -7,12 +7,13 @@ import {Dict} from "../../models";
 import {getExperimentalProjects} from "../../services/ApiRoutes";
 import {Project} from "../../models/apiModels";
 import {ProjectItem} from "../../components/Portfolio/Item/Project";
+import {sortByCloserDate} from "../../utilities/date";
 
-interface ExperimentPageProps extends SSRConfig {
+interface ProjectPageProps extends SSRConfig {
   projects: Project[]
 }
 
-export const getStaticProps: GetStaticProps<ExperimentPageProps> = async({ locale }) => {
+export const getStaticProps: GetStaticProps<ProjectPageProps> = async({ locale }) => {
 
   return {
     props: {
@@ -22,7 +23,7 @@ export const getStaticProps: GetStaticProps<ExperimentPageProps> = async({ local
   }
 }
 
-const ExperimentPage: NextPage<ExperimentPageProps> = ({ _nextI18Next, projects }) => {
+const ProjectPage: NextPage<ProjectPageProps> = ({ _nextI18Next, projects }) => {
 
   const { initialI18nStore, initialLocale } = _nextI18Next;
 
@@ -34,7 +35,11 @@ const ExperimentPage: NextPage<ExperimentPageProps> = ({ _nextI18Next, projects 
                             backgroundSrc="/img/experiment.jpg"
                             fontSize="text-3xl xl:text-6xl">
         {
-          projects.map(project =>
+          projects
+            .sort((a, b) => (
+              sortByCloserDate(b.attributes.endedAt, a.attributes.endedAt)
+            ))
+            .map(project =>
             <ProjectItem project={ project } key={ project.id } />
           )
         }
@@ -42,4 +47,4 @@ const ExperimentPage: NextPage<ExperimentPageProps> = ({ _nextI18Next, projects 
   )
 }
 
-export default ExperimentPage
+export default ProjectPage

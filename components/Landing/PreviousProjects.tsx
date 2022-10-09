@@ -32,7 +32,7 @@ export function LandingPreviousProjects() {
           { t('mobile.title') }
         </ImageButton>
         <ImageButton src="/img/experiment.jpg"
-                     onClick={ () => push(Routes.experiments) }
+                     onClick={ () => push(Routes.projects) }
                      onHoverText={ t('experimental_projects.description') }>
           { t('experimental_projects.title') }
         </ImageButton>

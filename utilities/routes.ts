@@ -7,7 +7,7 @@ export const Routes = {
   mobiles: '/mobile',
   design: (id: number) => `/design/${ id }`,
   designs: '/design',
-  experiments: '/experiment',
+  projects: '/project',
   digitalArtwork: (id: number) => `/digital-artwork/${ id }`,
   digitalArtworks: '/digital-artwork',
   contact: '/#contact-me',
