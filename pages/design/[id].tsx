@@ -1,13 +1,18 @@
 import { Design } from '../../models/apiModels';
 import { getDesign, getDesigns } from "../../services/ApiRoutes";
 import {GetStaticProps, NextPage} from "next";
-import {useRouter} from "next/router";
 import {FullPageSlideWrapper} from "../../components/FullPage/FullPageSlideWrapper";
 import ReactFullPage from '@fullpage/react-fullpage';
 import Image from "next/image";
+import {ChildrenProps, StringChildrenProps} from "../../models";
+import {SocialButton} from "../../components/SocialButton";
 
 interface DesignPageProps {
   design?: Design
+}
+
+interface DetailsContainerProps extends ChildrenProps {
+  title: string,
 }
 
 export const getStaticPaths = async () => {
@@ -37,11 +42,22 @@ export const getStaticProps: GetStaticProps<DesignPageProps> = async({ params })
 
 const DesignPage: NextPage<DesignPageProps> = ({ design }) => {
 
-  const { push } = useRouter();
-
   if (!design) return null;
 
   const { attributes: { about, image, title, onlinePresences, contribution } } = design;
+
+  const DetailsContainer = ({ title, children }: DetailsContainerProps) => (
+    <section className="grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-12">
+      <div className="grid justify-start md:justify-end items-start">
+        <h2 className="font-ocr text-jy-green text-2xl md:text-4xl text-left md:text-right">{ title }</h2>
+      </div>
+      <div className="grid justify-start items-start">{ children }</div>
+    </section>
+  )
+
+  const Paragraph = ({ children }: StringChildrenProps) => (
+    <p className="font-tomorrow leading-5 md:leading-7 text-sm md:text-base">{ children }</p>
+  )
 
   return (
     <ReactFullPage
@@ -72,15 +88,28 @@ const DesignPage: NextPage<DesignPageProps> = ({ design }) => {
             </div>
           </FullPageSlideWrapper>
           <FullPageSlideWrapper dataAnchor="initial">
-            <div className="grid relative w-full h-screen">
-              <Image src={ image.data.attributes.url }
-                     width="100%"
-                     height="100%"
-                     objectFit="cover"
-                     layout="fill" />
+            <div className="grid grid-flow-row gap-12 p-5 md:p-20">
+              <DetailsContainer title="About">
+                <Paragraph>{ about }</Paragraph>
+              </DetailsContainer>
 
-              <div className="absolute top-0 left-0 w-full h-full bg-jy-blue bg-opacity-80" />
+              <DetailsContainer title="What I did for them?">
+                <Paragraph>{ contribution }</Paragraph>
+              </DetailsContainer>
 
+              <DetailsContainer title="Online presence">
+                <div className="grid grid-flow-col gap-4">
+                  {
+                    onlinePresences.map((onlinePresence, i) =>
+                      <SocialButton social={ onlinePresence.presenceType }
+                                    href={ onlinePresence.link }
+                                    hoverColor="text-jy-green"
+                                    key={ i }
+                      />
+                    )
+                  }
+                </div>
+              </DetailsContainer>
             </div>
           </FullPageSlideWrapper>
         </ReactFullPage.Wrapper>

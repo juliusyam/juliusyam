@@ -23,8 +23,10 @@ export function Contact() {
 
           <div className="grid grid-cols-1 absolute -right-16 top-1/2 sm:top-auto bottom-auto sm:bottom-24 xl:top-0 xl:bottom-auto">
             <SocialButton href="https://instagram.com/juliusyam"
+                          hoverColor="text-jy-cyan"
                           social={ Social.instagram } />
             <SocialButton href="https://linkedin.com/in/juliusyam"
+                          hoverColor="text-jy-cyan"
                           social={ Social.linkedin } />
           </div>
 

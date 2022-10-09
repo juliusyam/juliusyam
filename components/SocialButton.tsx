@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import { faInstagram, faLinkedinIn } from "@fortawesome/free-brands-svg-icons";
+import { faInstagram, faLinkedinIn, faFacebook } from "@fortawesome/free-brands-svg-icons";
+import { faGlobeEurope } from "@fortawesome/free-solid-svg-icons";
+import {IconProp} from "@fortawesome/fontawesome-svg-core";
 
 export enum Social {
   instagram = 'instagram',
@@ -12,17 +14,36 @@ export enum Social {
 interface SocialButtonProps {
   social: Social,
   href: string,
+  key?: string | number | null,
+  hoverColor: string,
 }
 
-export function SocialButton({ social, href }: SocialButtonProps) {
+export function SocialButton({ social, href, key, hoverColor }: SocialButtonProps) {
+
+  let icon: IconProp
+
+  switch (social) {
+    case Social.instagram:
+      icon = faInstagram;
+      break;
+    case Social.linkedin:
+      icon = faLinkedinIn;
+      break;
+    case Social.facebook:
+      icon = faFacebook;
+      break;
+    default:
+      icon = faGlobeEurope
+      break;
+  }
 
   return (
-    <Link href={ href } passHref>
+    <Link href={ href } passHref key={ key }>
       <a target="_blank" rel="noopener noreferrer">
-        <FontAwesomeIcon icon={ social === Social.instagram ? faInstagram : faLinkedinIn }
+        <FontAwesomeIcon icon={ icon }
                          size="3x"
                          color="#D1D5DB"
-                         className="hover:text-jy-cyan transition ease-in-out duration-500 mb-4"
+                         className={`hover:${ hoverColor } transition ease-in-out duration-500 mb-4`}
         />
       </a>
     </Link>
