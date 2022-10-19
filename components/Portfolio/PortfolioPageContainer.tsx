@@ -26,7 +26,7 @@ export function PortfolioPageContainer({ title, backgroundColor, backgroundSrc, 
                objectFit="cover"
                width="100%"
                height="100%"
-               style={ { transform: `scale(${ componentHeight / (scrollPosition + 1) })` } }
+               style={ { transform: `scale(${ (scrollPosition / componentHeight) + 1 })` } }
         />
 
         <div className={`absolute top-0 left-0 w-full h-full ${ backgroundColor } bg-opacity-80`} />
