@@ -1,6 +1,7 @@
 import Link from "next/link";
 import {Routes} from "../../utilities/routes";
 import JuliusYam from "../JuliusYam";
+import {NavButton} from "./NavButton";
 
 interface NavBarProps {
   openPanel: () => void,
@@ -14,10 +15,7 @@ export function NavBar({ openPanel }: NavBarProps) {
         <a><JuliusYam /></a>
       </Link>
 
-      <div onClick={ openPanel } className="cursor-pointer">
-        <div className="w-16 h-0.5 bg-gray-300 mb-2" />
-        <div className="w-16 h-0.5 bg-gray-300" />
-      </div>
+      <NavButton onClick={ openPanel } />
     </div>
   )
 }
