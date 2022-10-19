@@ -55,3 +55,16 @@ export function NavButton({ onClick }: NavButtonProps) {
     </motion.button>
   )
 }
+
+export function NavCloseButton({ onClick }: NavButtonProps) {
+
+  return (
+    <motion.button onClick={ onClick }
+                   className="cursor-pointer absolute top-7 right-5 bg-opacity-0 h-16 p-2"
+                   whileHover={ { scale: 1.1, borderRadius: 5, backgroundColor: "#272727" } }>
+
+      <div className="w-14 h-0.5 bg-gray-300 rotate-45" />
+      <div className="w-14 h-0.5 -mt-0.5 bg-gray-300 rotate-135" />
+    </motion.button>
+  )
+}

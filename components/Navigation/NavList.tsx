@@ -17,7 +17,7 @@ function NavList({ closePanel, t }: NavPanelProps) {
 
   const NavItem = ({ href, children }: NavItemProps) => (
     <Link href={ href }>
-      <a><h3 className="font-ocr text-white text-2xl sm:text-4xl mb-4">{ children }</h3></a>
+      <a><h3 className="font-ocr text-white text-2xl sm:text-4xl mb-4 hover:drop-shadow-nav-text">{ children }</h3></a>
     </Link>
   )
 

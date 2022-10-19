@@ -30,6 +30,10 @@ module.exports = {
           '5px 0 0 rgba(195, 218, 104, 1)',
           '-3px -3px 0 rgba(105, 170, 172, 1)',
         ],
+        'nav-text': [
+          '5px 1px 0 rgba(195, 218, 104, 0.5)',
+          '-10px -10px 0 rgba(105, 170, 172, 0.15)'
+        ],
         'text': '3px 3px 1px rgba(23, 23, 23, 1)',
       },
       rotate: {

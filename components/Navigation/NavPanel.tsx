@@ -3,6 +3,7 @@ import Link from "next/link";
 import {Routes} from "../../utilities/routes";
 import JuliusYam from "../JuliusYam";
 import NavList from './NavList';
+import {NavCloseButton} from "./NavButton";
 
 export interface NavPanelProps {
   closePanel: () => void,
@@ -17,10 +18,7 @@ export function NavPanel({ closePanel }: NavPanelProps) {
                width="1920" height="1080" objectFit="cover" />
       </div>
 
-      <div onClick={ closePanel } className="cursor-pointer absolute top-14 right-5">
-        <div className="w-16 h-0.5 bg-gray-300 rotate-45" />
-        <div className="w-16 h-0.5 -mt-0.5 bg-gray-300 rotate-135" />
-      </div>
+      <NavCloseButton onClick={ closePanel } />
 
       <div className="grid grid-cols-2 w-full h-full">
         <div className="hidden md:grid justify-items-end items-center">
