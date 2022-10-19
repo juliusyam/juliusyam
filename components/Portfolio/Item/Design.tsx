@@ -22,7 +22,7 @@ export function DesignItem({ design }: DesignItemProps) {
   const { t } = useTranslation(Namespace.common);
 
   return (
-    <Portfolio.Container>
+    <Portfolio.Container key={ id }>
       <Portfolio.ImageContainer>
         <div className="w-full h-full overflow-hidden">
           <Image src={ image.data.attributes.url }

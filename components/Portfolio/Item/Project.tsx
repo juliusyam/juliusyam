@@ -12,10 +12,10 @@ interface ProjectItemProps {
 
 export function ProjectItem({ project }: ProjectItemProps) {
 
-  const { attributes: { image, title, brief, description, link, originLink, startedAt, endedAt } } = project;
+  const { attributes: { image, title, brief, description, link, originLink, startedAt, endedAt }, id } = project;
 
   return (
-    <Portfolio.Container>
+    <Portfolio.Container key={ id }>
       <Portfolio.ImageContainer>
         <div className="w-full h-full overflow-hidden">
           <Image src={ image.data.attributes.url }

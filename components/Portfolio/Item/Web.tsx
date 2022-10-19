@@ -16,14 +16,14 @@ interface WebItemProps {
 
 export function WebItem({ web }: WebItemProps) {
 
-  const { attributes: { image, title, brief, technologies, link, client } } = web;
+  const { id, attributes: { image, title, brief, technologies, link, client } } = web;
 
   const { push } = useRouter();
 
   const { t } = useTranslation(Namespace.common);
 
   return (
-    <Portfolio.Container>
+    <Portfolio.Container key={ id }>
       <Portfolio.ImageContainer className="bg-gray-300 rounded-3xl">
         <div className="absolute w-3 h-3 rounded-xl top-3 left-5 bg-jy-blue" />
         <div className="absolute w-3 h-3 rounded-xl top-3 left-10 bg-jy-blue" />

@@ -32,8 +32,6 @@ export function useScroll() {
     if (Math.abs(scrollY - prevScrollY.current) >= THRESHOLD) {
       const newScrollDirection = scrollY > prevScrollY.current ? ScrollDirection.down : ScrollDirection.up;
 
-      console.log("scrolling!!", newScrollDirection, scrollY, ref?.current?.scrollHeight - ref?.current?.clientHeight);
-
       const scrollHeight = current?.scrollHeight || 0;
       const clientHeight = current?.clientHeight || 0;
 
@@ -48,8 +46,6 @@ export function useScroll() {
   }
 
   useEffect(() => {
-    console.log('running');
-
     const handleScroll = () => window?.requestAnimationFrame(updateScroll);
 
     ref?.current?.addEventListener('scroll', handleScroll);

@@ -1,5 +1,11 @@
 import {ChildrenProps, StringChildrenProps} from "../../../models";
 import {formatMonthAndYear} from "../../../utilities/date";
+import {motion, useAnimation, useInView, AnimatePresence} from "framer-motion";
+import {useRef} from "react";
+
+interface KeyProps extends ChildrenProps {
+  key: number,
+}
 
 interface OptionalClassProps extends ChildrenProps {
   className?: string
@@ -15,11 +21,45 @@ interface DateDisplayProps {
   color: string,
 }
 
-const Container = ({ children }: ChildrenProps) => (
-  <div className="flex justify-start items-center flex-col md:flex-row">
-    { children }
-  </div>
-);
+const Container = ({ children, key }: KeyProps) => {
+
+  const animate = useAnimation();
+
+  const ref = useRef<HTMLDivElement | null>(null);
+  const inView = useInView(ref);
+
+  if(inView) {
+    animate.start({
+      y: 0,
+      opacity: 1,
+      transition: {
+        delay: 0.3,
+      }
+    })
+  } else {
+    animate.start({
+      opacity: 0,
+      y: 200,
+      transition: {
+        delay: 0.3,
+      }
+    })
+  }
+
+  return (
+    <AnimatePresence>
+      <motion.div className="flex justify-start items-center flex-col md:flex-row"
+                  ref={ ref }
+                  initial={ {
+                    y: -200,
+                    opacity: 0,
+                  } }
+                  animate={ animate } key={ key }>
+        { children }
+      </motion.div>
+    </AnimatePresence>
+  )
+};
 
 const ImageContainer = ({ className, children }: OptionalClassProps) => (
   <div className={`max-w-md w-full p-2 pt-8 relative ${ className }`}>
