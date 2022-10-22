@@ -31,7 +31,7 @@ export function DesignPageCarousel({ products }: DesignPageCarouselProps) {
                    key={ i }>
 
               <img src={ product.attributes.image.data.attributes.url }
-                   className="w-full h-full"
+                   className="w-full h-[calc(100vh-16rem)] lg:h-[calc(100vh-9rem)] object-cover"
                    draggable={ false }
                    key={ i }
                    alt={ product.attributes.title } />

@@ -1,6 +1,5 @@
 import {ChildrenProps} from "../../models";
-import {animate, PanInfo, useMotionValue} from "framer-motion";
-import {useRef, useState, Children, useEffect} from "react";
+import { Children } from "react";
 import {Slide} from "./Slide";
 import {useCarousel} from "../../hooks/useCarousel";
 
