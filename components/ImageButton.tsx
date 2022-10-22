@@ -1,7 +1,6 @@
 import Image from "next/image";
-import styles from '../styles/ImageButton.module.scss';
-import {useState} from "react";
 import {useAnimationToggle} from "../hooks/useAnimationToggle";
+import { motion, AnimatePresence } from "framer-motion";
 
 export enum ImageButtonBackground {
   cyan = 'bg-jy-cyan',
@@ -39,13 +38,16 @@ export function ImageButton({ children, onHoverText, onClick, src, className, wi
         { children }
       </h5>
 
-      <div className={`absolute ${ background || 'bg-jy-lime' } 
-      w-full h-full grid place-items-center bg-opacity-80 
-      ${ initialLoad ? styles.initialContainer : toggled ? styles.hoveredContainer : styles.container }`}>
+      <AnimatePresence>
+        <motion.div initial={ { opacity: 0 } }
+                    whileHover={ { opacity: 1 } }
+                    className={`absolute ${ background || 'bg-jy-lime' } 
+                  w-full h-full grid place-items-center bg-opacity-90`}>
 
-        <h5 className={`font-tomorrow w-2/3 text-3xl text-center 
+          <h5 className={`font-tomorrow w-2/3 text-3xl text-center 
         ${ background == ImageButtonBackground.black ? 'text-white' : 'text-jy-background' }`}>{ onHoverText }</h5>
-      </div>
+        </motion.div>
+      </AnimatePresence>
     </div>
   )
 }
