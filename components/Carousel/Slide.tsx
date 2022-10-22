@@ -4,10 +4,11 @@ import {PanInfo, motion, MotionStyle, MotionValue} from "framer-motion";
 interface SlideProps extends ChildrenProps {
   index: number,
   motionValue: MotionValue<number>,
-  onDragEnd: (e: Event, dragProps: PanInfo) => void
+  onDragStart: (e: Event, dragProps: PanInfo) => void,
+  onDragEnd: (e: Event, dragProps: PanInfo) => void,
 }
 
-export function Slide({ index, motionValue, onDragEnd, children }: SlideProps) {
+export function Slide({ index, motionValue, onDragStart, onDragEnd, children }: SlideProps) {
 
   const style: MotionStyle = {
     x: motionValue,
@@ -23,6 +24,7 @@ export function Slide({ index, motionValue, onDragEnd, children }: SlideProps) {
     <motion.div style={ style }
                 drag="x"
                 dragElastic={ 0.3 }
+                onDragStart={ onDragStart }
                 onDragEnd={ onDragEnd }>
       { children }
     </motion.div>

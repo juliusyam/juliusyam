@@ -1,7 +1,6 @@
 import {FullPageSlideWrapper} from "../FullPage/FullPageSlideWrapper";
 import {Carousel} from "./index";
 import {DesignImageItem} from "../../models/apiModels";
-import Image from "next/image";
 
 interface DesignPageCarouselProps {
   products: DesignImageItem[],

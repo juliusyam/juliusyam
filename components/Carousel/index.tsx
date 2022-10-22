@@ -9,16 +9,21 @@ interface CarouselProps extends ChildrenProps {
   autoPlay: boolean,
 }
 
-export function Carousel({ interval = 2000, loop = true, autoPlay = true, children: child }: CarouselProps) {
+export function Carousel({ interval, loop, autoPlay: initialAutoPlay, children: child }: CarouselProps) {
 
   const motionValue = useMotionValue(0);
   const ref = useRef<HTMLDivElement>(null);
 
   const [selectedIdx, setSelectedIdx] = useState(0);
+  const [autoPlay, setAutoPlay] = useState(initialAutoPlay);
 
   const clientWidth = (ref.current?.clientWidth || 0);
 
   const newMotionValue = -selectedIdx * clientWidth;
+
+  const handleDragStart = () => {
+    setAutoPlay(false);
+  }
 
   const handleDragEnd = (e: Event, dragProps: PanInfo) => {
     const { offset: { x: offsetX } } = dragProps;
@@ -33,6 +38,8 @@ export function Carousel({ interval = 2000, loop = true, autoPlay = true, childr
         bounce: 0,
       })
     }
+
+    if (initialAutoPlay) setAutoPlay(true);
   }
 
   const children = Children.toArray(child)
@@ -64,13 +71,14 @@ export function Carousel({ interval = 2000, loop = true, autoPlay = true, childr
     const timer = setInterval(goToNext, interval);
     return () => clearInterval(timer);
 
-  }, [interval, goToNext]);
+  }, [interval, goToNext, autoPlay]);
 
   return (
     <div className="relative w-full h-screen overflow-x-hidden flex" ref={ ref }>
       {
         children.map((child, i) => (
-          <Slide onDragEnd={ handleDragEnd }
+          <Slide onDragStart={ handleDragStart }
+                 onDragEnd={ handleDragEnd }
                  motionValue={ motionValue }
                  index={ i }
                  key={ i }>
