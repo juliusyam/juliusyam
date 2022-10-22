@@ -13,11 +13,14 @@ export function Slide({ index, motionValue, onDragEnd, children }: SlideProps) {
     x: motionValue,
     left: `${ index * 100 }%`,
     right: `${ index * 100 }%`,
+    width: "100%",
+    height: "100%",
+    display: "inline-block",
+    flex: "none",
   }
 
   return (
-    <motion.div className="w-full h-full inline-block flex-none"
-                style={ style }
+    <motion.div style={ style }
                 drag="x"
                 dragElastic={ 0.3 }
                 onDragEnd={ onDragEnd }>

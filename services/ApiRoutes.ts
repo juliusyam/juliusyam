@@ -1,4 +1,4 @@
-import {Artwork, Design, Project} from "../models/apiModels";
+import {Artwork, Design, DesignImageItem, Project} from "../models/apiModels";
 import {apiService} from "./ApiService";
 
 export const getArtworks = async(): Promise<Artwork[]> => {
@@ -21,6 +21,11 @@ export const getDesigns = async(): Promise<Design[]> => {
 
 export const getDesign = async(id: string): Promise<Design> => {
   return await apiService.get(`/api/designs/${ id }?populate=*`)
+    .then(({ data }) => data.data);
+}
+
+export const getDesignImageItems = async(id: string): Promise<DesignImageItem[]> => {
+  return await apiService.get(`/api/design-image-items?filters[design][id][$eq]=${ id }&populate=*`)
     .then(({ data }) => data.data);
 }
 

@@ -43,9 +43,18 @@ export function Carousel({ interval = 2000, loop = true, autoPlay = true, childr
   }
 
   const goToNext = () => {
-    const idx = loop ? children.length - 1 : 0;
-    setSelectedIdx(selectedIdx - 1 < 0 ? idx : selectedIdx - 1);
+    const idx = loop ? 0 : selectedIdx;
+    setSelectedIdx(selectedIdx + 1 === children.length ? idx : selectedIdx + 1);
   }
+
+  useEffect(() => {
+    const controls = animate(motionValue, newMotionValue, {
+      type: 'spring',
+      bounce: 0,
+    });
+
+    return controls.stop;
+  }, [selectedIdx]);
 
   useEffect(() => {
     if (!autoPlay) {
@@ -54,13 +63,17 @@ export function Carousel({ interval = 2000, loop = true, autoPlay = true, childr
 
     const timer = setInterval(goToNext, interval);
     return () => clearInterval(timer);
-  }, [goToNext, interval]);
+
+  }, [interval, goToNext]);
 
   return (
-    <div ref={ ref }>
+    <div className="relative w-full h-screen overflow-x-hidden flex" ref={ ref }>
       {
-        children.map((child, index) => (
-          <Slide onDragEnd={ handleDragEnd } motionValue={ motionValue } index={ index }>
+        children.map((child, i) => (
+          <Slide onDragEnd={ handleDragEnd }
+                 motionValue={ motionValue }
+                 index={ i }
+                 key={ i }>
             { child }
           </Slide>
         ))

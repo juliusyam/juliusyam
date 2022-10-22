@@ -1,5 +1,5 @@
-import { Design } from '../../models/apiModels';
-import { getDesign, getDesigns } from "../../services/ApiRoutes";
+import {Design, DesignImageItem} from '../../models/apiModels';
+import {getDesign, getDesignImageItems, getDesigns} from "../../services/ApiRoutes";
 import {GetStaticProps, NextPage} from "next";
 import {FullPageSlideWrapper} from "../../components/FullPage/FullPageSlideWrapper";
 import ReactFullPage from '@fullpage/react-fullpage';
@@ -9,9 +9,11 @@ import {SocialButton} from "../../components/SocialButton";
 import {serverSideTranslations} from "next-i18next/serverSideTranslations";
 import {Namespace} from "../../utilities/locales";
 import {SSRConfig} from "next-i18next";
+import {DesignPageCarousel} from "../../components/Carousel/DesignPageCarousel";
 
 interface DesignPageProps extends SSRConfig {
-  design?: Design
+  design?: Design,
+  products: DesignImageItem[],
 }
 
 interface DetailsContainerProps extends ChildrenProps {
@@ -35,16 +37,18 @@ export const getStaticProps: GetStaticProps<DesignPageProps> = async({ params, l
   const id = params?.id;
 
   const design = await getDesign(id as string);
+  const products = await getDesignImageItems(id as string);
 
   return {
     props: {
       design,
+      products,
       ...(await serverSideTranslations(locale as string, [Namespace.common])),
     }
   }
 }
 
-const DesignPage: NextPage<DesignPageProps> = ({ design, _nextI18Next }) => {
+const DesignPage: NextPage<DesignPageProps> = ({ design, products , _nextI18Next }) => {
 
   if (!design) return null;
 
@@ -119,6 +123,8 @@ const DesignPage: NextPage<DesignPageProps> = ({ design, _nextI18Next }) => {
               </DetailsContainer>
             </div>
           </FullPageSlideWrapper>
+
+          <DesignPageCarousel products={ products } />
         </ReactFullPage.Wrapper>
         )
     } />

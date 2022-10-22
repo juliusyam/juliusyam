@@ -100,6 +100,23 @@ export interface ProjectAttributes extends GlobalAttributes {
   title: string,
 }
 
+export interface DesignImageItem {
+  id: number,
+  attributes: DesignImageItemAttributes
+}
+
+export interface DesignImageItemAttributes extends GlobalAttributes {
+  description: string,
+  design: DesignRelation,
+  image: Image,
+  sortOrder: number,
+  title: string,
+}
+
+export interface DesignRelation {
+  data?: Design,
+}
+
 export interface ClientRelation {
   data?: Client,
 }
