@@ -16,7 +16,7 @@ export function Carousel({ interval, loop, autoPlay, children: child }: Carousel
 
   const { ref, motionValue, dragEvent } = useCarousel({
     quantity: children.length,
-    config: {interval, loop, autoPlay },
+    config: { interval, loop, autoPlay },
   });
 
   return (

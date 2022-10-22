@@ -15,6 +15,7 @@ interface CarouselProps {
 interface CarouselReturnObject {
   ref: RefObject<HTMLDivElement>,
   motionValue: MotionValue<number>,
+  selectedIdx: number,
   dragEvent: {
     handleDragStart: () => void,
     handleDragEnd: (e: Event, dragProps: PanInfo) => void,
@@ -92,6 +93,7 @@ export function useCarousel({ quantity, config }: CarouselProps): CarouselReturn
   return {
     ref,
     motionValue,
+    selectedIdx,
     dragEvent: { handleDragStart, handleDragEnd },
     navigate: { toNextSlide: goToNext, toPrevSlide: goToPrev },
   }
