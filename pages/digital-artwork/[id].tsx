@@ -7,6 +7,7 @@ import { useRouter } from 'next/router';
 import { motion } from 'framer-motion';
 import {Routes} from "../../utilities/routes";
 import {useSwipeable} from "react-swipeable";
+import {CarouselBottomControls} from "../../components/Carousel/BottomControls";
 
 interface DigitalArtworkPageProps {
   digitalArtwork?: Artwork
@@ -86,21 +87,10 @@ const DigitalArtworkPage: NextPage<DigitalArtworkPageProps> = ({ digitalArtwork 
         </div>
       </motion.div>
 
-      <div className="absolute left-0 bottom-0 grid grid-cols-1 lg:grid-cols-2 bg-jy-background w-full h-64 lg:h-36">
-        <section className="p-5 grid items-center">
-          <h1 className="font-ocr text-3xl pb-5 truncate">{ title }</h1>
-          <h2 className="font-ocr text-base text-gray-500 truncate">{ description }</h2>
-        </section>
-        <section className="grid grid-cols-2">
-          <ChevronButton direction={ Direction.left }
-                         onClick={ () => push(Routes.digitalArtwork(id - 1)) }
-                         disabled={ id <= 1 }
-          />
-          <ChevronButton direction={ Direction.right }
-                         onClick={ () => push(Routes.digitalArtwork(id + 1)) }
-          />
-        </section>
-      </div>
+      <CarouselBottomControls title={ title }
+                              description={ description }
+                              onClickLeft={ () => push(Routes.digitalArtwork(id - 1)) }
+                              onClickRight={ () => push(Routes.digitalArtwork(id + 1)) } />
     </div>
   )
 }

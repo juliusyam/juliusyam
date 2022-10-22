@@ -98,7 +98,7 @@ const DesignPage: NextPage<DesignPageProps> = ({ design, products , _nextI18Next
               </div>
             </div>
           </FullPageSlideWrapper>
-          <FullPageSlideWrapper dataAnchor="initial">
+          <FullPageSlideWrapper dataAnchor="about">
             <div className="grid grid-flow-row gap-12 p-5 md:p-20">
               <DetailsContainer title={ keys.about }>
                 <Paragraph>{ about }</Paragraph>
