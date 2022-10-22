@@ -45,7 +45,7 @@ export function Carousel({ interval, loop, autoPlay: initialAutoPlay, children: 
   const children = Children.toArray(child)
 
   const goToPrev = () => {
-    const idx = loop ? 0 : selectedIdx;
+    const idx = loop ? children.length - 1 : 0;
     setSelectedIdx(selectedIdx - 1 < 0 ? idx : selectedIdx - 1);
   }
 
