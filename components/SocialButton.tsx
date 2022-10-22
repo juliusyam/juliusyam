@@ -17,7 +17,7 @@ interface SocialButtonProps {
   hoverColor: string,
 }
 
-export function SocialButton({ social, href, key, hoverColor }: SocialButtonProps) {
+export function SocialButton({ social, href, hoverColor }: SocialButtonProps) {
 
   let icon: IconProp
 

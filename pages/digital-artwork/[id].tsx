@@ -6,6 +6,7 @@ import {ChevronButton, Direction} from "../../components/ChevronButton";
 import { useRouter } from 'next/router';
 import { motion } from 'framer-motion';
 import {Routes} from "../../utilities/routes";
+import {useSwipeable} from "react-swipeable";
 
 interface DigitalArtworkPageProps {
   digitalArtwork?: Artwork
@@ -61,8 +62,13 @@ const DigitalArtworkPage: NextPage<DigitalArtworkPageProps> = ({ digitalArtwork 
     } },
   }
 
+  const handlers = useSwipeable({
+    onSwipedLeft: () => push(Routes.digitalArtwork(id - 1)),
+    onSwipedRight: () => push(Routes.digitalArtwork(id + 1)),
+  });
+
   return (
-    <div className="grid w-full h-screen overflow-hidden relative">
+    <div className="grid w-full h-screen overflow-hidden relative" { ...handlers }>
       <motion.div key={ id }
                   variants={ variants }
                   initial="hidden"
