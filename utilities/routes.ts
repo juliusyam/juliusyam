@@ -5,7 +5,7 @@ export const Routes = {
   techStack: '/tech-stack',
   webs: '/web',
   mobiles: '/mobile',
-  design: (id: number) => `/design/${ id }`,
+  design: (id: number, anchor?: string) => `/design/${ id }${ anchor ? `#${ anchor }` : '' }`,
   designs: '/design',
   projects: '/project',
   digitalArtwork: (id: number) => `/digital-artwork/${ id }`,

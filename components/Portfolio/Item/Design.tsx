@@ -40,7 +40,7 @@ export function DesignItem({ design }: DesignItemProps) {
           <IconButton icon={ faGlobeEurope }
                       className="mr-4 mb-4"
                       colorGroup={ Colors[Color.green] }
-                      onClick={ () => push(Routes.design(id)) }>
+                      onClick={ () => push(Routes.design(id, 'initial')) }>
             { t('view_product') }
           </IconButton>
           {
