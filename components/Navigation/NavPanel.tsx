@@ -14,8 +14,7 @@ export function NavPanel({ closePanel }: NavPanelProps) {
   return (
     <div className="grid bg-jy-background w-full h-screen relative">
       <div className="absolute top-0 left-0 w-full h-screen grid place-items-center opacity-5">
-        <Image src='/img/perspective-sketch.png' layout="fill"
-               width="1920" height="1080" objectFit="cover" />
+        <Image src='/img/perspective-sketch.png' layout="fill" objectFit="cover" />
       </div>
 
       <NavCloseButton onClick={ closePanel } />

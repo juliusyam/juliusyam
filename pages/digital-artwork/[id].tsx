@@ -2,9 +2,9 @@ import {GetStaticProps, NextPage} from "next";
 import {getArtwork, getArtworks} from "../../services/ApiRoutes";
 import {Artwork} from "../../models/apiModels";
 import Image from 'next/image';
-import { useRouter } from 'next/router';
 import {useEffect, useState} from "react";
 import {CarouselImage, ImageCarousel} from "../../components/Carousel";
+import {Routes} from "../../utilities/routes";
 
 interface DigitalArtworkPageProps {
   digitalArtwork?: Artwork
@@ -37,8 +37,6 @@ export const getStaticProps: GetStaticProps<DigitalArtworkPageProps> = async ({ 
 
 const DigitalArtworkPage: NextPage<DigitalArtworkPageProps> = ({ digitalArtwork }) => {
 
-  const { push } = useRouter();
-
   if (!digitalArtwork) return null;
 
   const { attributes: { image }, id } = digitalArtwork;
@@ -64,11 +62,17 @@ const DigitalArtworkPage: NextPage<DigitalArtworkPageProps> = ({ digitalArtwork 
   return (
     galleryImages.length ?
         <ImageCarousel images={ galleryImages }
-                       initialIdx={ galleryImages.findIndex(g => g.id === id) } /> :
+                       initialIdx={ galleryImages.findIndex(g => g.id === id) }
+                       onChangeSlide={ id => {
+                         const url = Routes.digitalArtwork(id);
+
+                         window.history.replaceState({
+                           ...window.history.state,
+                           as: url, url: url }, '', url);
+                       } }
+        /> :
         <div className="grid w-full h-screen overflow-hidden relative">
           <Image src={ image.data.attributes.url }
-                 width="1920"
-                 height="1080"
                  layout="fill"
                  objectFit="cover"
           />

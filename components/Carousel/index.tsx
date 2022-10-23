@@ -1,5 +1,5 @@
 import {ChildrenProps} from "../../models";
-import { Children } from "react";
+import {Children, useEffect} from "react";
 import {Slide} from "./Slide";
 import {useCarousel} from "../../hooks/useCarousel";
 import {CarouselBottomControls} from "./BottomControls";
@@ -41,6 +41,7 @@ export function Carousel({ interval, loop, autoPlay, initialIdx, children: child
 interface ImageCarouselProps {
   images: CarouselImage[],
   initialIdx?: number,
+  onChangeSlide?: (id: number) => void,
 }
 
 export interface CarouselImage {
@@ -50,7 +51,7 @@ export interface CarouselImage {
   src: string,
 }
 
-export function ImageCarousel({ images, initialIdx }: ImageCarouselProps) {
+export function ImageCarousel({ images, initialIdx, onChangeSlide }: ImageCarouselProps) {
 
   const { ref, selectedIdx, motionValue, dragEvent, navigate } = useCarousel({
     quantity: images.length,
@@ -61,6 +62,10 @@ export function ImageCarousel({ images, initialIdx }: ImageCarouselProps) {
       autoPlay: true,
     }
   });
+
+  useEffect(() => {
+    onChangeSlide && onChangeSlide(images[selectedIdx].id);
+  }, [selectedIdx]);
 
   return (
     <div className="relative w-full h-screen overflow-x-hidden flex" ref={ ref }>
