@@ -70,7 +70,6 @@ export function useCarousel({ quantity, initialIdx, config }: CarouselProps): Ca
   }
 
   const goToNext = () => {
-    console.log(selectedIdx, quantity);
     const idx = loop ? 0 : selectedIdx;
     setSelectedIdx(selectedIdx + 1 === quantity ? idx : selectedIdx + 1);
   }

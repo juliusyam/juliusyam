@@ -4,7 +4,7 @@ import {Artwork} from "../../models/apiModels";
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import {useEffect, useState} from "react";
-import {Carousel} from "../../components/Carousel";
+import {CarouselImage, ImageCarousel} from "../../components/Carousel";
 
 interface DigitalArtworkPageProps {
   digitalArtwork?: Artwork
@@ -43,33 +43,28 @@ const DigitalArtworkPage: NextPage<DigitalArtworkPageProps> = ({ digitalArtwork 
 
   const { attributes: { image }, id } = digitalArtwork;
 
-  const [galleryArtworks, setGalleryArtworks] = useState<Artwork[]>([]);
+  const [galleryImages, setGalleryImages] = useState<CarouselImage[]>([]);
 
   useEffect(() => {
     getArtworks()
       .then(artworks => {
-        console.log('index', artworks.findIndex(g => g.id === id));
-        setGalleryArtworks(artworks);
+        const images: CarouselImage[] = artworks.reduce<CarouselImage[]>((all, each) => {
+
+          const { id, attributes: { title, description, image } } = each;
+
+          all.push({ id, title, description, src: image.data.attributes.url });
+          return all;
+        }, []);
+
+        setGalleryImages(images);
       });
 
   }, []);
 
   return (
-      galleryArtworks.length ?
-        <Carousel interval={ 3000 }
-                  loop={ true }
-                  autoPlay={ true }
-                  initialIdx={ galleryArtworks.findIndex(g => g.id === id) }>
-          {
-            galleryArtworks.map((artwork, i) => (
-              <img src={ artwork.attributes.image.data.attributes.url }
-                   className="w-full h-full object-cover"
-                   draggable={ false }
-                   key={ i }
-                   alt={ artwork.attributes.title } />
-            ))
-          }
-        </Carousel> :
+    galleryImages.length ?
+        <ImageCarousel images={ galleryImages }
+                       initialIdx={ galleryImages.findIndex(g => g.id === id) } /> :
         <div className="grid w-full h-screen overflow-hidden relative">
           <Image src={ image.data.attributes.url }
                  width="1920"
