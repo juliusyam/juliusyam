@@ -37,10 +37,6 @@ export const getStaticProps: GetStaticProps<DigitalArtworkPageProps> = async ({ 
 
 const DigitalArtworkPage: NextPage<DigitalArtworkPageProps> = ({ digitalArtwork }) => {
 
-  if (!digitalArtwork) return null;
-
-  const { attributes: { image }, id } = digitalArtwork;
-
   const [galleryImages, setGalleryImages] = useState<CarouselImage[]>([]);
 
   useEffect(() => {
@@ -58,6 +54,10 @@ const DigitalArtworkPage: NextPage<DigitalArtworkPageProps> = ({ digitalArtwork 
       });
 
   }, []);
+
+  if (!digitalArtwork) return null;
+
+  const { attributes: { image }, id } = digitalArtwork;
 
   return (
     galleryImages.length ?
