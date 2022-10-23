@@ -76,7 +76,7 @@ const DesignPage: NextPage<DesignPageProps> = ({ design, products , _nextI18Next
       render={() => (
         <ReactFullPage.Wrapper>
           <FullPageSlideWrapper dataAnchor="initial">
-            <div className="grid relative w-full h-screen">
+            <div className="grid relative w-full h-screen overflow-hidden">
               <Image src="/img/design.jpg" objectFit="cover" layout="fill" />
 
               <div className="absolute top-0 left-0 w-full h-full bg-jy-green bg-opacity-80" />

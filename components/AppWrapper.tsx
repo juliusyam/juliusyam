@@ -3,10 +3,28 @@ import { useRouter } from 'next/router';
 import { AnimatePresence } from 'framer-motion';
 import { ChildrenProps } from '../models';
 import Head from "next/head";
+import {useEffect} from "react";
 
 export function AppWrapper({ children }: ChildrenProps) {
 
   const { pathname } = useRouter();
+
+  useEffect(() => {
+    const nextJsContainer = document?.getElementById('__next');
+
+    const appHeight = () => {
+      console.log(window.innerHeight, nextJsContainer);
+      if (nextJsContainer) nextJsContainer.style.setProperty('--vh', `${window.innerHeight}px`);
+    }
+
+    window.addEventListener('load', appHeight);
+    window.addEventListener('resize', appHeight);
+
+    return () => {
+      window.removeEventListener('load', appHeight);
+      window.removeEventListener('resize', appHeight);
+    }
+  });
 
   if (pathname === '/') return <Wrapper>{ children }</Wrapper>;
 

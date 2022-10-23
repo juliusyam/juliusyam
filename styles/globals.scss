@@ -42,3 +42,8 @@ div.fp-overflow {
     background: #171717;
   }
 }
+
+.h-screen {
+  height: 100vh;
+  height: var(--vh);
+}
