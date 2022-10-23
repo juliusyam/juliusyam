@@ -18,7 +18,6 @@ export function useScroll() {
   const ref = useRef<HTMLDivElement | null>(null);
   const [scrollProps, setScrollProps] = useState<ScrollProps>({
     scrollDirection: ScrollDirection.down,
-    scrollHeight: 0,
     componentHeight: 0,
     scrollPosition: 0,
   });

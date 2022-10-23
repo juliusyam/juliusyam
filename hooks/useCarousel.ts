@@ -1,4 +1,4 @@
-import {animate, MotionValue, PanInfo, useMotionValue} from "framer-motion";
+import {animate, AnimationOptions, MotionValue, PanInfo, useMotionValue} from "framer-motion";
 import {Children, RefObject, useEffect, useRef, useState} from "react";
 
 interface CarouselConfig {
@@ -40,6 +40,11 @@ export function useCarousel({ quantity, config }: CarouselProps): CarouselReturn
 
   const newMotionValue = -selectedIdx * clientWidth;
 
+  const transition: AnimationOptions<number> = {
+    type: 'spring',
+    bounce: 0.25,
+  }
+
   const handleDragStart = () => {
     setAutoPlay(false);
   }
@@ -52,10 +57,7 @@ export function useCarousel({ quantity, config }: CarouselProps): CarouselReturn
     } else if (offsetX < -clientWidth / 4) {
       goToNext();
     } else {
-      animate(motionValue, newMotionValue, {
-        type: 'spring',
-        bounce: 0,
-      })
+      animate(motionValue, newMotionValue, transition)
     }
 
     if (initialAutoPlay) setAutoPlay(true);
@@ -72,10 +74,7 @@ export function useCarousel({ quantity, config }: CarouselProps): CarouselReturn
   }
 
   useEffect(() => {
-    const controls = animate(motionValue, newMotionValue, {
-      type: 'spring',
-      bounce: 0,
-    });
+    const controls = animate(motionValue, newMotionValue, transition);
 
     return controls.stop;
   }, [selectedIdx]);

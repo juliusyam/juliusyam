@@ -3,6 +3,6 @@
 }
 
 .imageGallery:has(img:hover) img:not(:hover) {
-  scale: 0.8;
+  scale: 0.9;
   opacity: 0.7;
 }

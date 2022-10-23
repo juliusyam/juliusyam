@@ -2,7 +2,6 @@ import {GetStaticProps, NextPage} from "next";
 import {getArtwork, getArtworks} from "../../services/ApiRoutes";
 import {Artwork} from "../../models/apiModels";
 import Image from 'next/image';
-import {ChevronButton, Direction} from "../../components/ChevronButton";
 import { useRouter } from 'next/router';
 import { motion } from 'framer-motion';
 import {Routes} from "../../utilities/routes";
@@ -21,7 +20,7 @@ export const getStaticPaths = async () => {
         id: a.id.toString(),
       }
     }))),
-    fallback: true,
+    fallback: false,
   }
 }
 
@@ -31,14 +30,14 @@ export const getStaticProps: GetStaticProps<DigitalArtworkPageProps> = async ({ 
 
   const digitalArtwork = await getArtwork(id as string);
 
-  if (!digitalArtwork) {
-    return {
-      redirect: {
-        destination: Routes.digitalArtwork(1),
-        permanent: false,
-      },
-    }
-  }
+  // if (!digitalArtwork) {
+  //   return {
+  //     redirect: {
+  //       destination: Routes.digitalArtwork(1),
+  //       permanent: false,
+  //     },
+  //   }
+  // }
 
   return {
     props: {
@@ -63,13 +62,13 @@ const DigitalArtworkPage: NextPage<DigitalArtworkPageProps> = ({ digitalArtwork 
     } },
   }
 
-  const handlers = useSwipeable({
-    onSwipedLeft: () => push(Routes.digitalArtwork(id - 1)),
-    onSwipedRight: () => push(Routes.digitalArtwork(id + 1)),
-  });
+  // const handlers = useSwipeable({
+  //   onSwipedLeft: () => push(Routes.digitalArtwork(id - 1)),
+  //   onSwipedRight: () => push(Routes.digitalArtwork(id + 1)),
+  // });
 
   return (
-    <div className="grid w-full h-screen overflow-hidden relative" { ...handlers }>
+    <div className="grid w-full h-screen overflow-hidden relative">
       <motion.div key={ id }
                   variants={ variants }
                   initial="hidden"

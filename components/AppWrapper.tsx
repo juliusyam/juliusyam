@@ -28,7 +28,7 @@ function Wrapper({ children }: ChildrenProps) {
         <title>Julius Yam | Web, Mobile, UX, Graphic Design</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
         <meta name="description" content="Design is a function that transcends practicality into the world of beauty. The idea of a design focused software developer is to create bespoke software products that converts functionality into aesthetics and usability, whilst devising a design language uniquely tailored to each client, and ultimately transform unimaginable ideas to life."/>
-        <link rel="shortcut icon" href="/img/favicon.ico" />
+        <link rel="shortcut icon" href="/favicon.ico" />
       </Head>
       <AnimatePresence exitBeforeEnter initial={ false }>
         { children }

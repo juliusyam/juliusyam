@@ -1,15 +1,19 @@
 import {StringChildrenProps} from "../../models";
 import Link from "next/link";
-import { withTranslation } from "next-i18next";
+import {withTranslation, WithTranslation} from "next-i18next";
 import {Namespace} from "../../utilities/locales";
 import {Routes} from "../../utilities/routes";
-import { NavPanelProps } from "./NavPanel";
 
 interface NavItemProps extends StringChildrenProps {
   href: string,
+  children: string,
 }
 
-function NavList({ closePanel, t }: NavPanelProps) {
+interface NavListProps extends WithTranslation {
+  closePanel: () => void,
+}
+
+function NavList({ closePanel, t }: NavListProps) {
 
   const Title = ({ children }: StringChildrenProps) => (
     <h4 className="font-ocr text-1xl sm:text-2xl text-jy-cyan mb-4">{ children }</h4>
