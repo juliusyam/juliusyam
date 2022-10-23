@@ -7,14 +7,16 @@ interface CarouselProps extends ChildrenProps {
   interval: number,
   loop: boolean,
   autoPlay: boolean,
+  initialIdx?: number,
 }
 
-export function Carousel({ interval, loop, autoPlay, children: child }: CarouselProps) {
+export function Carousel({ interval, loop, autoPlay, initialIdx, children: child }: CarouselProps) {
 
   const children = Children.toArray(child);
 
   const { ref, motionValue, dragEvent } = useCarousel({
     quantity: children.length,
+    initialIdx,
     config: { interval, loop, autoPlay },
   });
 

@@ -1,5 +1,5 @@
 import {animate, AnimationOptions, MotionValue, PanInfo, useMotionValue} from "framer-motion";
-import {Children, RefObject, useEffect, useRef, useState} from "react";
+import {RefObject, useEffect, useRef, useState} from "react";
 
 interface CarouselConfig {
   interval: number,
@@ -9,6 +9,7 @@ interface CarouselConfig {
 
 interface CarouselProps {
   quantity: number,
+  initialIdx?: number,
   config: CarouselConfig
 }
 
@@ -26,7 +27,7 @@ interface CarouselReturnObject {
   }
 }
 
-export function useCarousel({ quantity, config }: CarouselProps): CarouselReturnObject {
+export function useCarousel({ quantity, initialIdx, config }: CarouselProps): CarouselReturnObject {
 
   const { interval, loop, autoPlay: initialAutoPlay } = config;
 
@@ -42,7 +43,7 @@ export function useCarousel({ quantity, config }: CarouselProps): CarouselReturn
 
   const transition: AnimationOptions<number> = {
     type: 'spring',
-    bounce: 0.25,
+    bounce: 0,
   }
 
   const handleDragStart = () => {
@@ -69,9 +70,14 @@ export function useCarousel({ quantity, config }: CarouselProps): CarouselReturn
   }
 
   const goToNext = () => {
+    console.log(selectedIdx, quantity);
     const idx = loop ? 0 : selectedIdx;
     setSelectedIdx(selectedIdx + 1 === quantity ? idx : selectedIdx + 1);
   }
+
+  useEffect(() => {
+    if (initialIdx) setSelectedIdx(initialIdx);
+  }, [initialIdx]);
 
   useEffect(() => {
     const controls = animate(motionValue, newMotionValue, transition);

@@ -3,10 +3,8 @@ import {getArtwork, getArtworks} from "../../services/ApiRoutes";
 import {Artwork} from "../../models/apiModels";
 import Image from 'next/image';
 import { useRouter } from 'next/router';
-import { motion } from 'framer-motion';
-import {Routes} from "../../utilities/routes";
-import {useSwipeable} from "react-swipeable";
-import {CarouselBottomControls} from "../../components/Carousel/BottomControls";
+import {useEffect, useState} from "react";
+import {Carousel} from "../../components/Carousel";
 
 interface DigitalArtworkPageProps {
   digitalArtwork?: Artwork
@@ -30,15 +28,6 @@ export const getStaticProps: GetStaticProps<DigitalArtworkPageProps> = async ({ 
 
   const digitalArtwork = await getArtwork(id as string);
 
-  // if (!digitalArtwork) {
-  //   return {
-  //     redirect: {
-  //       destination: Routes.digitalArtwork(1),
-  //       permanent: false,
-  //     },
-  //   }
-  // }
-
   return {
     props: {
       digitalArtwork,
@@ -52,31 +41,36 @@ const DigitalArtworkPage: NextPage<DigitalArtworkPageProps> = ({ digitalArtwork 
 
   if (!digitalArtwork) return null;
 
-  const { attributes: { title, description, image }, id } = digitalArtwork;
+  const { attributes: { image }, id } = digitalArtwork;
 
-  const variants = {
-    hidden: { opacity: 0, x: -200, y: 0 },
-    enter: { opacity: 1, x: 0, y: 0 },
-    exit: { opacity: 0, x: 200, y: 0, transition: {
-      duration: 0.25
-    } },
-  }
+  const [galleryArtworks, setGalleryArtworks] = useState<Artwork[]>([]);
 
-  // const handlers = useSwipeable({
-  //   onSwipedLeft: () => push(Routes.digitalArtwork(id - 1)),
-  //   onSwipedRight: () => push(Routes.digitalArtwork(id + 1)),
-  // });
+  useEffect(() => {
+    getArtworks()
+      .then(artworks => {
+        console.log('index', artworks.findIndex(g => g.id === id));
+        setGalleryArtworks(artworks);
+      });
+
+  }, []);
 
   return (
-    <div className="grid w-full h-screen overflow-hidden relative">
-      <motion.div key={ id }
-                  variants={ variants }
-                  initial="hidden"
-                  animate="enter"
-                  exit="exit"
-                  transition={{ type: 'spring', duration: 2, stiffness: 75, delay: 0.25 }}>
-
-        <div className='absolute left-0 top-0 w-full h-[calc(100%_-_16rem)] lg:h-[calc(100%_-_9rem)]'>
+      galleryArtworks.length ?
+        <Carousel interval={ 3000 }
+                  loop={ true }
+                  autoPlay={ true }
+                  initialIdx={ galleryArtworks.findIndex(g => g.id === id) }>
+          {
+            galleryArtworks.map((artwork, i) => (
+              <img src={ artwork.attributes.image.data.attributes.url }
+                   className="w-full h-full object-cover"
+                   draggable={ false }
+                   key={ i }
+                   alt={ artwork.attributes.title } />
+            ))
+          }
+        </Carousel> :
+        <div className="grid w-full h-screen overflow-hidden relative">
           <Image src={ image.data.attributes.url }
                  width="1920"
                  height="1080"
@@ -84,13 +78,6 @@ const DigitalArtworkPage: NextPage<DigitalArtworkPageProps> = ({ digitalArtwork 
                  objectFit="cover"
           />
         </div>
-      </motion.div>
-
-      <CarouselBottomControls title={ title }
-                              description={ description }
-                              onClickLeft={ () => push(Routes.digitalArtwork(id - 1)) }
-                              onClickRight={ () => push(Routes.digitalArtwork(id + 1)) } />
-    </div>
   )
 }
 
