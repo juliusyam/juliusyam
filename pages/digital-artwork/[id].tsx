@@ -5,6 +5,7 @@ import Image from 'next/image';
 import {useEffect, useState} from "react";
 import {CarouselImage, ImageCarousel} from "../../components/Carousel";
 import {Routes} from "../../utilities/routes";
+import {replaceUrlState} from "../../utilities/url";
 
 interface DigitalArtworkPageProps {
   digitalArtwork?: Artwork
@@ -64,11 +65,7 @@ const DigitalArtworkPage: NextPage<DigitalArtworkPageProps> = ({ digitalArtwork 
         <ImageCarousel images={ galleryImages }
                        initialIdx={ galleryImages.findIndex(g => g.id === id) }
                        onChangeSlide={ id => {
-                         const url = Routes.digitalArtwork(id);
-
-                         window.history.replaceState({
-                           ...window.history.state,
-                           as: url, url: url }, '', url);
+                         replaceUrlState(Routes.digitalArtwork(id));
                        } }
         /> :
         <div className="grid w-full h-screen overflow-hidden relative">

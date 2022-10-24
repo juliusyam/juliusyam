@@ -3,6 +3,8 @@ import {apiService} from "../services/ApiService";
 import {Tech, TechStackCategories} from "../models/apiModels";
 import {StringChildrenProps} from "../models";
 import {TechItem} from "../components/TechItem";
+import {Routes} from "../utilities/routes";
+import {replaceUrlState} from "../utilities/url";
 
 interface TechStackProps {
   techStack: Tech[],
@@ -32,6 +34,8 @@ const TechStack: NextPage<TechStackProps> = ({ techStack }) => {
       e.preventDefault();
 
       anchor && anchor.scrollIntoView({ behavior: 'smooth' });
+
+      replaceUrlState(Routes.techStackWithAnchor(category));
     } }>
       <h1 className="font-ocr text-jy-lime text-3xl sm:text-5xl my-5 hover:drop-shadow-nav-text text-right cursor-pointer">{ children }</h1>
     </div>
