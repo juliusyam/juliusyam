@@ -28,6 +28,7 @@ export function LandingPreviousProjects() {
         </ImageButton>
         <div className="hidden md:block" />
         <ImageButton src="/img/mobile.jpg"
+                     onClick={ () => push(Routes.mobiles) }
                      onHoverText={ t('mobile.description') }>
           { t('mobile.title') }
         </ImageButton>

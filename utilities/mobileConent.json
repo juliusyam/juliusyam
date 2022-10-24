@@ -1,0 +1,23 @@
+[
+  {
+    "title": "iOS Developer at BrightHR",
+    "description": "Improving BrightHR\"s iOS applications with implementing new features in SwiftUI, converting legacy code from UIKit to SwiftUI, general maintenance and deduplication, and writing unit tests, UI tests and Snapshot Tests.",
+    "duration": "Sep 2022 - present",
+    "list": [
+      "Implementing new HR related features as part of the main feature team\"s work",
+      "Adding unit tests, UI tests and Snapshot tests to increase test coverage",
+      "Improving current UI standardisation with custom extensions, and small general purpose components with high customisation flexibility",
+      "Fixing UI bugs as found on smaller devices",
+      "Frequent incremental releases to improve the user experience"
+    ]
+  },
+  {
+    "title": "Junior Software Developer / Junior Digital Designer at Twelve Oaks Software",
+    "description": "Creating bespoke software and providing expertise in graphic and user experience design. Continuing our primary focus on high quality and context appropriate software (web app, mobile & desktop app, website), and transcending modern aesthetics into usability, whilst creating unique design language tailored to each client.",
+    "duration": "Feb 2021 - Aug 2022",
+    "list": [
+      "Created a sport statistics display iOS app with Swift and SwiftUI for a client, target for iOS 14+",
+      "UX Design and programmed the initial setup for an in house application on Android with Kotlin and Jetpack Compose, target for Android 6.0+"
+    ]
+  }
+]
