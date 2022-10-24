@@ -9,6 +9,8 @@ export function useAppHeight() {
       if (nextJsContainer) nextJsContainer.style.setProperty('--vh', `${window.innerHeight}px`);
     }
 
+    if (document.readyState === 'complete') appHeight();
+
     window.addEventListener('load', appHeight);
     window.addEventListener('resize', appHeight);
 
