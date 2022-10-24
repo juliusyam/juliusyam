@@ -9,7 +9,7 @@ export default function JuliusYam({ fontSize, textAlign, dropShadow }: JuliusYam
   const size: string = fontSize || 'text-2xl';
   const align: string = textAlign || 'text-left';
   const shadow: string = dropShadow || 'drop-shadow-jy-text';
-  const mainClassAttrs = `${ size } ${ align } font-ocr uppercase text-right ${ shadow }`;
+  const mainClassAttrs = `${ size } ${ align } font-ocr uppercase ${ shadow }`;
 
   return (
     <h1 className={ mainClassAttrs }>Julius Yam</h1>

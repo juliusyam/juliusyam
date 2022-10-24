@@ -12,18 +12,17 @@ interface ViewportAndViews {
 }
 
 export enum Width {
-  SmallPhone = 350,
-  Phone = 600,
-  SmallTablet = 992,
-  LargeTablet = 1200,
-  NarrowDesktop = 1400,
-  Desktop = 1600,
+  sm = 640,
+  md = 768,
+  lg = 1024,
+  xl = 1280,
+  xl2 = 1536,
 }
 
 export function useViewport(): ViewportAndViews {
   const [viewport, setViewport] = useState<Viewport>({
-    width: window.innerWidth,
-    height: window.innerHeight,
+    width: 0,
+    height: 0,
   });
 
   function handleResize() {
@@ -34,20 +33,25 @@ export function useViewport(): ViewportAndViews {
   }
 
   useEffect(() => {
+    if (document.readyState === 'complete') handleResize();
+
+    window.addEventListener('load', handleResize);
     window.addEventListener('resize', handleResize);
 
-    return () => window.removeEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('load', handleResize);
+      window.removeEventListener('resize', handleResize);
+    }
   }, []);
 
   const { width } = viewport;
 
   const views: Dict<boolean> = {
-    smallMobile: width <= Width.SmallPhone,
-    mobile: width <= Width.Phone,
-    smallTablet: width <= Width.SmallTablet,
-    largeTablet: width <= Width.LargeTablet,
-    narrowDesktop: width <= Width.NarrowDesktop,
-    desktop: width <= Width.Desktop,
+    sm: width < Width.sm,
+    md: width < Width.lg,
+    lg: width < Width.lg,
+    xl: width < Width.xl,
+    xl2: width < Width.xl2,
   };
 
   return { viewport, views };

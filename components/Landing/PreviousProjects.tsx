@@ -15,7 +15,7 @@ export function LandingPreviousProjects() {
                            title={ t('previous_projects', { ns: Namespace.landing }) }
                            dataAnchor="previous-projects">
 
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-8 mb-32 md:mb-0">
+      <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-8 mb-32 md:mb-0">
         <ImageButton src="/img/web.jpg"
                      onClick={ () => push(Routes.webs) }
                      onHoverText={ t('web.description') }>
