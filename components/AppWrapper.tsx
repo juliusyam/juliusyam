@@ -3,6 +3,8 @@ import { useRouter } from 'next/router';
 import { AnimatePresence } from 'framer-motion';
 import { ChildrenProps } from '../models';
 import Head from "next/head";
+import {ActivityContext} from "../contexts/ActivityContext";
+import {useActivityContextState} from "../contexts/ActivityContextState";
 
 export function AppWrapper({ children }: ChildrenProps) {
 
@@ -22,8 +24,11 @@ export function AppWrapper({ children }: ChildrenProps) {
 }
 
 function Wrapper({ children }: ChildrenProps) {
+
+  const activityState = useActivityContextState();
+
   return (
-    <>
+    <ActivityContext.Provider value={ activityState }>
       <Head>
         <title>Julius Yam | Web, Mobile, UX, Graphic Design</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
@@ -33,6 +38,6 @@ function Wrapper({ children }: ChildrenProps) {
       <AnimatePresence exitBeforeEnter initial={ false }>
         { children }
       </AnimatePresence>
-    </>
+    </ActivityContext.Provider>
   )
 }

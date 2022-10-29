@@ -6,6 +6,8 @@ import {useEffect, useState} from "react";
 import {CarouselImage, ImageCarousel} from "../../components/Carousel";
 import {Routes} from "../../utilities/routes";
 import {replaceUrlState} from "../../utilities/url";
+import {useActivityContext} from "../../contexts/ActivityContext";
+import {LoadingSpinner} from "../../components/LoadingSpinner";
 
 interface DigitalArtworkPageProps {
   digitalArtwork?: Artwork
@@ -38,9 +40,13 @@ export const getStaticProps: GetStaticProps<DigitalArtworkPageProps> = async ({ 
 
 const DigitalArtworkPage: NextPage<DigitalArtworkPageProps> = ({ digitalArtwork }) => {
 
+  const { dict, startActivity, completeActivity } = useActivityContext();
   const [galleryImages, setGalleryImages] = useState<CarouselImage[]>([]);
 
+  const loadingKey = 'load-artworks';
+
   useEffect(() => {
+    startActivity(loadingKey);
     getArtworks()
       .then(artworks => {
         const images: CarouselImage[] = artworks.reduce<CarouselImage[]>((all, each) => {
@@ -52,28 +58,38 @@ const DigitalArtworkPage: NextPage<DigitalArtworkPageProps> = ({ digitalArtwork 
         }, []);
 
         setGalleryImages(images);
-      });
 
+        completeActivity(loadingKey);
+      });
   }, []);
 
   if (!digitalArtwork) return null;
 
   const { attributes: { image }, id } = digitalArtwork;
 
+  const FullImage = ({ blur }: { blur?: boolean }) => (
+    <div className={`grid w-full h-screen overflow-hidden relative ${ blur ? 'blur' : '' }`}>
+      <Image src={ image.data.attributes.url }
+             layout="fill"
+             objectFit="cover"
+      />
+    </div>
+  )
+
   return (
-    galleryImages.length ?
-        <ImageCarousel images={ galleryImages }
-                       initialIdx={ galleryImages.findIndex(g => g.id === id) }
-                       onChangeSlide={ id => {
-                         replaceUrlState(Routes.digitalArtwork(id));
-                       } }
-        /> :
-        <div className="grid w-full h-screen overflow-hidden relative">
-          <Image src={ image.data.attributes.url }
-                 layout="fill"
-                 objectFit="cover"
-          />
-        </div>
+    dict[loadingKey] ?
+      <div className="relative">
+        <FullImage blur={ true } />
+        <LoadingSpinner className="absolute bottom-1/2 right-1/2 translate-x-1/2 translate-y-1/2" />
+      </div> :
+      galleryImages.length ?
+          <ImageCarousel images={ galleryImages }
+                         initialIdx={ galleryImages.findIndex(g => g.id === id) }
+                         onChangeSlide={ id => {
+                           replaceUrlState(Routes.digitalArtwork(id));
+                         } }
+          /> :
+          <FullImage />
   )
 }
 
