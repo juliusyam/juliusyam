@@ -1,5 +1,6 @@
 import {animate, AnimationOptions, MotionValue, PanInfo, useMotionValue} from "framer-motion";
 import {RefObject, useEffect, useRef, useState} from "react";
+import {AutoPlay} from "../components/AutoPlayButton";
 
 interface CarouselConfig {
   interval: number,
@@ -24,7 +25,8 @@ interface CarouselReturnObject {
   navigate: {
     toPrevSlide: () => void,
     toNextSlide: () => void,
-  }
+  },
+  autoPlay: AutoPlay,
 }
 
 export function useCarousel({ quantity, initialIdx, config }: CarouselProps): CarouselReturnObject {
@@ -74,6 +76,10 @@ export function useCarousel({ quantity, initialIdx, config }: CarouselProps): Ca
     setSelectedIdx(selectedIdx + 1 === quantity ? idx : selectedIdx + 1);
   }
 
+  const handleChangeAutoplay = () => {
+    setAutoPlay(prevState => !prevState);
+  }
+
   useEffect(() => {
     if (initialIdx) setSelectedIdx(initialIdx);
   }, [initialIdx]);
@@ -100,5 +106,9 @@ export function useCarousel({ quantity, initialIdx, config }: CarouselProps): Ca
     selectedIdx,
     dragEvent: { handleDragStart, handleDragEnd },
     navigate: { toNextSlide: goToNext, toPrevSlide: goToPrev },
+    autoPlay: {
+      currentState: autoPlay,
+      toggle: handleChangeAutoplay,
+    },
   }
 }

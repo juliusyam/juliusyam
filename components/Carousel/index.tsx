@@ -53,7 +53,7 @@ export interface CarouselImage {
 
 export function ImageCarousel({ images, initialIdx, onChangeSlide }: ImageCarouselProps) {
 
-  const { ref, selectedIdx, motionValue, dragEvent, navigate } = useCarousel({
+  const { ref, selectedIdx, motionValue, dragEvent, navigate, autoPlay } = useCarousel({
     quantity: images.length,
     initialIdx,
     config: {
@@ -78,7 +78,7 @@ export function ImageCarousel({ images, initialIdx, onChangeSlide }: ImageCarous
                  key={ i }>
 
             <img src={ image.src }
-                 className="w-full h-[calc(100vh-16rem)] lg:h-[calc(100vh-9rem)] object-cover"
+                 className="w-full h-[calc(100vh-9rem)] sm:h-[calc(100vh-16rem)] lg:h-[calc(100vh-9rem)] object-cover"
                  draggable={ false }
                  key={ i }
                  alt={ image.title } />
@@ -90,7 +90,9 @@ export function ImageCarousel({ images, initialIdx, onChangeSlide }: ImageCarous
       <CarouselBottomControls title={ images[selectedIdx].title }
                               description={ images[selectedIdx].description }
                               onClickLeft={ navigate.toPrevSlide }
-                              onClickRight={ navigate.toNextSlide } />
+                              onClickRight={ navigate.toNextSlide }
+                              autoPlay={ autoPlay }
+      />
     </div>
   )
 }
