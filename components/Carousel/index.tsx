@@ -78,7 +78,7 @@ export function ImageCarousel({ images, initialIdx, onChangeSlide }: ImageCarous
                  key={ i }>
 
             <img src={ image.src }
-                 className="w-full h-[calc(100vh-9rem)] sm:h-[calc(100vh-16rem)] lg:h-[calc(100vh-9rem)] object-cover"
+                 className="w-full h-carousel sm:h-carousel-sm lg:h-carousel object-cover"
                  draggable={ false }
                  key={ i }
                  alt={ image.title } />

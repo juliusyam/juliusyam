@@ -50,6 +50,8 @@ module.exports = {
       },
       height: {
         'screen-without-nav': 'calc(100vh - 5em)',
+        'carousel': 'calc(100vh - 9rem)',
+        'carousel-sm': 'calc(100vh - 16rem)',
       },
       fontSize: {
         '14xl': '12rem',
