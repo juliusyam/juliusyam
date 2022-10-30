@@ -5,19 +5,23 @@ import {StringChildrenProps} from "../models";
 import {TechItem} from "../components/TechItem";
 import {Routes} from "../utilities/routes";
 import {replaceUrlState} from "../utilities/url";
+import {SSRConfig} from "next-i18next";
+import {serverSideTranslations} from "next-i18next/serverSideTranslations";
+import {Namespace} from "../utilities/locales";
 
-interface TechStackProps {
+interface TechStackProps extends SSRConfig {
   techStack: Tech[],
 }
 
-export const getStaticProps: GetStaticProps<TechStackProps> = async() => {
+export const getStaticProps: GetStaticProps<TechStackProps> = async({ locale }) => {
 
   return {
     props: {
       techStack: await apiService.get('/api/tech-stacks?populate=*')
         .then(({ data }) => {
           return data.data;
-        })
+        }),
+      ...(await serverSideTranslations(locale as string, [Namespace.common])),
     }
   }
 }
@@ -60,7 +64,11 @@ const TechStack: NextPage<TechStackProps> = ({ techStack }) => {
   )
 }
 
-export function TechStackList({ techStack }: TechStackProps) {
+interface TechStackListProps {
+  techStack: Tech[],
+}
+
+export function TechStackList({ techStack }: TechStackListProps) {
 
   const Title = ({ children, category }: TitleProps) => (
     <h4 id={ category }

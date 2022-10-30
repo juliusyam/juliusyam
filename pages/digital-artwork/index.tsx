@@ -4,16 +4,20 @@ import styles from '../../styles/ImageGallery.module.scss';
 import Link from 'next/link';
 import {Routes} from "../../utilities/routes";
 import {getArtworks} from "../../services/ApiRoutes";
+import {SSRConfig} from "next-i18next";
+import {serverSideTranslations} from "next-i18next/serverSideTranslations";
+import {Namespace} from "../../utilities/locales";
 
-export interface DigitalArtworksProps {
+export interface DigitalArtworksProps extends SSRConfig {
   digitalArtworks: Artwork[],
 }
 
-export const getStaticProps: GetStaticProps<DigitalArtworksProps> = async() => {
+export const getStaticProps: GetStaticProps<DigitalArtworksProps> = async({ locale }) => {
 
   return {
     props: {
-      digitalArtworks: await getArtworks()
+      digitalArtworks: await getArtworks(),
+      ...(await serverSideTranslations(locale as string, [Namespace.common])),
     }
   }
 }

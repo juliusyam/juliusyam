@@ -4,12 +4,15 @@ import {Client} from '../models/apiModels';
 import Link from 'next/link';
 import {ImageButton, ImageButtonBackground} from '../components/ImageButton';
 import { motion } from 'framer-motion';
+import {SSRConfig} from "next-i18next";
+import {serverSideTranslations} from "next-i18next/serverSideTranslations";
+import {Namespace} from "../utilities/locales";
 
-interface ClientsProps {
+interface ClientsProps extends SSRConfig {
   clients: Client[],
 }
 
-export const getStaticProps: GetStaticProps<ClientsProps> = async () => {
+export const getStaticProps: GetStaticProps<ClientsProps> = async ({ locale }) => {
 
   return {
     props: {
@@ -17,6 +20,7 @@ export const getStaticProps: GetStaticProps<ClientsProps> = async () => {
         .then(({ data }) => {
           return data.data;
         }),
+      ...(await serverSideTranslations(locale as string, [Namespace.common])),
     }
   }
 }

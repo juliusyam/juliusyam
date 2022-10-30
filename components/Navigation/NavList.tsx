@@ -29,6 +29,8 @@ function NavList({ closePanel, t }: NavListProps) {
     <div className="mb-10" />
   )
 
+  console.log(t);
+
   return (
     <div className="p-5 mb:p-20 z-10" onClick={ closePanel }>
       <Title>{ t('experience') }</Title>
