@@ -42,7 +42,7 @@ const TechStack: NextPage<TechStackProps> = ({ techStack }) => {
   )
 
   return (
-    <div className="grid grid-cols-2 gap-10 w-full h-screen">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-10 w-full h-screen">
       <div className="hidden md:grid justify-items-end items-center">
         <div className="grid">
           <NavItem category={ TechStackCategories.web }>Web</NavItem>
@@ -70,7 +70,7 @@ export function TechStackList({ techStack }: TechStackProps) {
   )
 
   return (
-    <div className="md:p-20 z-10 w-full">
+    <div className="grid p-5 sm:p-10 xl:p-20 z-10 w-full">
       <Title category={ TechStackCategories.web }>Web</Title>
       <>
         {

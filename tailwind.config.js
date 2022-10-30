@@ -41,7 +41,9 @@ module.exports = {
         '270': '270deg',
       },
       gridTemplateColumns: {
-        'tech': '15em calc(100% - 10em)',
+        'tech': '15em calc(100% - 16em)',
+        'tech-xl': '10em calc(100% - 11em)',
+        'tech-sm': '5em calc(100% - 6em)',
         'portfolio-display-md': '10% 90%',
         'portfolio-display-lg': '20% 80%',
         'portfolio-display-xl': '30% 70%',
