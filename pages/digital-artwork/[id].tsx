@@ -8,8 +8,11 @@ import {Routes} from "../../utilities/routes";
 import {replaceUrlState} from "../../utilities/url";
 import {useActivityContext} from "../../contexts/ActivityContext";
 import {LoadingSpinner} from "../../components/LoadingSpinner";
+import {SSRConfig} from "next-i18next";
+import {serverSideTranslations} from "next-i18next/serverSideTranslations";
+import {Namespace} from "../../utilities/locales";
 
-interface DigitalArtworkPageProps {
+interface DigitalArtworkPageProps extends SSRConfig {
   digitalArtwork?: Artwork
 }
 
@@ -25,7 +28,7 @@ export const getStaticPaths = async () => {
   }
 }
 
-export const getStaticProps: GetStaticProps<DigitalArtworkPageProps> = async ({ params }) => {
+export const getStaticProps: GetStaticProps<DigitalArtworkPageProps> = async ({ params, locale }) => {
 
   const id = params?.id;
 
@@ -34,6 +37,7 @@ export const getStaticProps: GetStaticProps<DigitalArtworkPageProps> = async ({ 
   return {
     props: {
       digitalArtwork,
+      ...(await serverSideTranslations(locale as string, [Namespace.common])),
     }
   }
 }
