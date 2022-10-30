@@ -14,7 +14,7 @@ export function CarouselBottomControls({ title, description, onClickLeft, onClic
   const textFormatting = 'line-clamp-2 lg:line-clamp-1 lg:truncate';
 
   return (
-    <div className="absolute left-0 bottom-0 grid grid-cols-1 lg:grid-cols-2 bg-jy-background w-full h-40 sm:h-64 lg:h-36">
+    <div className="z-50 absolute left-0 bottom-0 grid grid-cols-1 lg:grid-cols-2 bg-jy-background w-full h-40 sm:h-64 lg:h-36">
       <section className="p-2 sm:p-5 grid items-center h-28 sm:h-auto overflow-hidden">
         <h1 className={`font-ocr text-sm sm:text-xl lg:text-3xl pb-1 lg:pb-5 ${ textFormatting }`}>{ title }</h1>
         <h2 className={`font-ocr text-xs sm:text-base text-gray-500 ${ textFormatting }`}>{ description }</h2>

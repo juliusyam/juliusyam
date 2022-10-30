@@ -19,12 +19,12 @@ export function LandingInitialSlide({ description, copyright }: LandingInitialSi
 
           <div className="absolute right-0 bottom-1/2 translate-y-1/2">
             <JuliusYam textAlign="text-right"
-                       fontSize="text-3xl md:text-5xl lg:text-8xl text-right"
-                       dropShadow="md:drop-shadow-jy-text lg:drop-shadow-jy-text-xl" />
-            <h2 className="font-ocr text-jy-cyan text-2xl text-right">{ description }</h2>
+                       fontSize="text-6xl lg:text-8xl text-right"
+                       dropShadow="drop-shadow-jy-text lg:drop-shadow-jy-text-xl" />
+            <h2 className="font-ocr text-jy-cyan text-md sm:text-2xl text-right">{ description }</h2>
           </div>
 
-          <h5 className="font-ocr text-gray-400 text-1xl text-right bottom-20 right-0 absolute w-80">
+          <h5 className="font-ocr text-gray-400 text-xs text-right bottom-5 md:bottom-20 right-0 absolute w-80">
             { copyright }
           </h5>
         </section>

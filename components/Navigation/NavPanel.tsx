@@ -19,7 +19,7 @@ export function NavPanel({ closePanel }: NavPanelProps) {
 
       <NavCloseButton onClick={ closePanel } />
 
-      <div className="grid grid-cols-2 w-full h-full">
+      <div className="grid grid-cols-1 md:grid-cols-2 w-full h-full">
         <div className="hidden md:grid justify-items-end items-center">
           <Link href={ Routes.homeWithAnchor('initial') }>
             <div className="grid p-20 cursor-pointer">
