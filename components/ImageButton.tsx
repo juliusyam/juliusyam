@@ -34,7 +34,7 @@ export function ImageButton({ children, onHoverText, onClick, src, className, wi
         darken && <div className="absolute top-0 left-0 w-full h-full bg-jy-background bg-opacity-20" />
       }
 
-      <h5 className="font-ocr drop-shadow-text w-2/3 absolute bottom-3 left-3 text-lg lg:text-3xl">
+      <h5 className="font-ocr drop-shadow-text w-2/3 absolute bottom-3 left-3 text-sm sm:text-lg lg:text-3xl">
         { children }
       </h5>
 
