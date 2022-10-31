@@ -12,15 +12,13 @@ export function LandingInitialSlide({ description, copyright }: LandingInitialSi
   return (
     <FullPageSlideWrapper dataAnchor="initial">
       <div className="grid place-items-center px-5 md:px-20 w-full h-screen">
-        <section className="relative w-full max-w-9xl h-full">
+        <section className="relative w-full max-w-8xl h-full">
           <div className="absolute bottom-0 left-0 mt-96">
             <Image src="/img/profile.png" layout="intrinsic" objectFit="cover" width="800" height="700" />
           </div>
 
           <div className="absolute right-0 bottom-1/2 translate-y-1/2">
-            <JuliusYam textAlign="text-right"
-                       fontSize="text-6xl lg:text-8xl text-right"
-                       dropShadow="drop-shadow-jy-text lg:drop-shadow-jy-text-xl" />
+            <JuliusYam className="text-right text-6xl lg:text-8xl text-right drop-shadow-jy-text lg:drop-shadow-jy-text-xl" />
             <h2 className="font-ocr text-jy-cyan text-md sm:text-2xl text-right">{ description }</h2>
           </div>
 

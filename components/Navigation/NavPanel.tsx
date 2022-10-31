@@ -23,9 +23,7 @@ export function NavPanel({ closePanel }: NavPanelProps) {
         <div className="hidden md:grid justify-items-end items-center">
           <Link href={ Routes.homeWithAnchor('initial') }>
             <div className="grid p-20 cursor-pointer">
-              <JuliusYam textAlign="text-right"
-                         fontSize="md:text-6xl lg:text-8xl text-right"
-                         dropShadow="md:drop-shadow-jy-text lg:drop-shadow-jy-text-xl" />
+              <JuliusYam className="text-right md:text-6xl lg:text-8xl text-right md:drop-shadow-jy-text lg:drop-shadow-jy-text-xl" />
             </div>
           </Link>
         </div>

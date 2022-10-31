@@ -12,7 +12,7 @@ export function NavBar({ openPanel }: NavBarProps) {
   return (
     <div className="p-5 flex justify-between items-center">
       <Link href={ Routes.homeWithAnchor('initial') }>
-        <a><JuliusYam fontSize="text-md sm:text-2xl" /></a>
+        <a><JuliusYam className="text-md sm:text-2xl" /></a>
       </Link>
 
       <NavButton onClick={ openPanel } />

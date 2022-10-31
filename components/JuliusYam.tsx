@@ -1,17 +1,9 @@
 interface JuliusYamProps {
-  fontSize?: string,
-  textAlign?: string,
-  dropShadow?: string,
+  className?: string,
 }
 
-export default function JuliusYam({ fontSize, textAlign, dropShadow }: JuliusYamProps) {
-
-  const size: string = fontSize || 'text-2xl';
-  const align: string = textAlign || 'text-left';
-  const shadow: string = dropShadow || 'drop-shadow-jy-text';
-  const mainClassAttrs = `${ size } ${ align } font-ocr uppercase ${ shadow }`;
-
+export default function JuliusYam({ className }: JuliusYamProps) {
   return (
-    <h1 className={ mainClassAttrs }>Julius Yam</h1>
+    <h1 className={`font-ocr uppercase text-left drop-shadow-jy-text ${ className|| '' }`}>Julius Yam</h1>
   )
 }
