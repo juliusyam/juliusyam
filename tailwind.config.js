@@ -42,6 +42,7 @@ module.exports = {
         '270': '270deg',
       },
       gridTemplateColumns: {
+        'tech-stack-md': '20em calc(100% - 22.5em)',
         'tech': '15em calc(100% - 16em)',
         'tech-xl': '10em calc(100% - 11em)',
         'tech-sm': '5em calc(100% - 6em)',

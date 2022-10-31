@@ -19,7 +19,7 @@ export function TechItem({ tech }: TechItemProps) {
       </div>
 
       <div className="grid w-1/2">
-        <h4 className="font-ocr text-2xl mb-4">{ tech.attributes.title }</h4>
+        <h4 className="font-ocr text-md lg:text-2xl mb-4">{ tech.attributes.title }</h4>
         <ExperienceIndicator experienceLevel={ tech.attributes.experienceLevel } />
       </div>
     </div>
