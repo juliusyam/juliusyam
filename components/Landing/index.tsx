@@ -1,5 +1,4 @@
 import Image from "next/image";
-import JuliusYam from "../JuliusYam";
 import {FullPageSlideWrapper} from "../FullPage/FullPageSlideWrapper";
 import {useAnimation, useInView, motion, AnimatePresence} from "framer-motion";
 import {useRef} from "react";
@@ -22,6 +21,7 @@ export function LandingInitialSlide({ description, copyright }: LandingInitialSi
     containerAnimate.start({
       scale: 1,
       opacity: 1,
+      width: 'auto',
       right: 0,
       translateX: 0,
       translateY: '50%',
@@ -30,8 +30,8 @@ export function LandingInitialSlide({ description, copyright }: LandingInitialSi
           duration: 1.5,
           type: 'spring',
           damping: 1.3,
-          mass: 0.5,
-          stiffness: 70,
+          mass: 0.1,
+          stiffness: 20,
         },
         opacity: {
           duration: 2,
@@ -71,7 +71,7 @@ export function LandingInitialSlide({ description, copyright }: LandingInitialSi
             </motion.div>
 
             <motion.div className="absolute bottom-1/2 translate-y-1/2"
-                        initial={ { scale: 0.9, opacity: 0, right: '50%', translateX: '50%', translateY: '50%' } }
+                        initial={ { scale: 0.9, opacity: 0, right: '50%', translateX: '50%', translateY: '50%', width: '100%' } }
                         animate={ containerAnimate }>
               <motion.h1 className="font-ocr uppercase text-6xl lg:text-8xl drop-shadow-jy-text lg:drop-shadow-jy-text-xl"
                          initial={ { textAlign: 'center' } }
