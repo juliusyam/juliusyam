@@ -14,13 +14,13 @@ export function IconButton({ icon, onClick, children, colorGroup: { background }
 
   return (
     <button onClick={ onClick } className={ className || '' }>
-      <div className={`flex justify-center items-center px-8 py-4 w-fit ${ background.main } hover:${ background.hover }`}>
+      <div className={`flex justify-center items-center px-4 sm:px-8 py-2  sm:py-4 w-fit ${ background.main } hover:${ background.hover }`}>
         <FontAwesomeIcon icon={ icon }
                          size="xl"
                          color="#171717"
                          className="transition ease-in-out duration-500 mr-2"
         />
-        <h6 className="font-tomorrow text-lg text-jy-background text-xl font-bold whitespace-nowrap">{ children }</h6>
+        <h6 className="font-tomorrow text-lg text-jy-background text-lg sm:text-xl font-bold whitespace-nowrap">{ children }</h6>
       </div>
     </button>
   )
