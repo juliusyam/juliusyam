@@ -22,11 +22,8 @@ UI & UX, Figma, Adobe XD, Sketch.
 
 ## My contributions
 
-##### iOS Developer at [BrightHR](https://www.brighthr.com)
-Manchester, UK | Sep 2022 - Present
-
-##### Junior Software Developer / Junior Digital Designer at [Twelve Oaks Software](https://12os.co.uk)
-York, UK | Feb 2021 - Aug 2022
+##### Associate Delivery Manager and Software Engineer at [Twelve Oaks Software](https://12os.co.uk)
+York, UK | Feb 2021 - Now
 
 ## Contact me
 
