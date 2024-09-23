@@ -85,9 +85,20 @@ const Brief = ({ children, color }: TextColorProps) => (
   </h3>
 )
 
-const Description = ({ children }: StringChildrenProps) => (
-  <p className="font-tomorrow leading-5 md:leading-7 text-sm md:text-base text-gray-600 ml-1">{ children }</p>
-)
+const Description = ({ children }: StringChildrenProps) => {
+  const paragraphs = children.split('\n');
+  return (
+    <>
+      {
+        paragraphs.map((p, i) => (
+          <p key={ i } className="font-tomorrow leading-5 md:leading-7 text-sm md:text-base text-gray-400 ml-1 mb-3">
+            { p }
+          </p>
+        ))
+      }
+    </>
+  )
+}
 
 const ButtonContainer = ({ children, className }: OptionalClassProps) => (
   <div className={`flex justify-left items-center flex-wrap ${ children ? 'mt-10' : ''} w-fit ${className}`}>
