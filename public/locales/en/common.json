@@ -41,5 +41,5 @@
   "what_i_did": "What I did for them?",
   "online_presences": "Online presences",
 
-  "copyright": "Copyright © 2024 by Julius Yam. All Rights Reserved"
+  "copyright": "Copyright © {{ year }} by Julius Yam. All Rights Reserved"
 }

@@ -41,5 +41,5 @@
   "what_i_did": "Was habe ich gemacht?",
   "online_presences": "Online-Präsenzen",
 
-  "copyright": "Copyright © 2024 von Julius Yam. Alle Rechte vorbehalten"
+  "copyright": "Copyright © {{ year }} von Julius Yam. Alle Rechte vorbehalten"
 }
