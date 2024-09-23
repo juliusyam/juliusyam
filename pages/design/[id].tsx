@@ -107,7 +107,7 @@ const DesignPage: NextPage<DesignPageProps> = ({ design, products , _nextI18Next
               <DetailsContainer title={ keys.online_presences }>
                 <div className="grid grid-flow-col gap-4">
                   {
-                    onlinePresences.map((onlinePresence, i) =>
+                    onlinePresences?.map((onlinePresence, i) =>
                       <SocialButton social={ onlinePresence.presenceType }
                                     href={ onlinePresence.link }
                                     hoverColor="text-jy-green"
