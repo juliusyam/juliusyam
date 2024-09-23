@@ -1,16 +1,11 @@
 import { Navigation } from './Navigation';
-import { useRouter } from 'next/router';
 import { AnimatePresence } from 'framer-motion';
 import { ChildrenProps } from '../models';
-import Head from "next/head";
-import {ActivityContext} from "../contexts/ActivityContext";
-import {useActivityContextState} from "../contexts/ActivityContextState";
+import Head from 'next/head';
+import { ActivityContext } from '../contexts/ActivityContext';
+import { useActivityContextState } from '../contexts/ActivityContextState';
 
 export function AppWrapper({ children }: ChildrenProps) {
-
-  const { pathname } = useRouter();
-
-  if (pathname === '/') return <Wrapper>{ children }</Wrapper>;
 
   return (
     <>
