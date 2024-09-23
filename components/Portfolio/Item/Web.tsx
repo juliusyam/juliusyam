@@ -1,14 +1,12 @@
-import {Web} from "../../../models/apiModels";
-import Image from "next/image";
-import {IconButton} from "../../IconButton";
-import { faGlobeEurope, faHandshake } from '@fortawesome/free-solid-svg-icons';
+import { Web } from '../../../models/apiModels';
+import Image from 'next/image';
+import { IconButton } from '../../IconButton';
+import { faGlobeEurope } from '@fortawesome/free-solid-svg-icons';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
-import {Routes} from "../../../utilities/routes";
-import {useTranslation} from "react-i18next";
-import {Namespace} from "../../../utilities/locales";
-import {Color, Colors} from "../../../utilities/color";
-import { Portfolio } from "./Global";
+import { useTranslation } from 'react-i18next';
+import { Namespace } from '../../../utilities/locales';
+import { Color, Colors } from '../../../utilities/color';
+import { Portfolio } from './Global';
 
 interface WebItemProps {
   web: Web,
@@ -16,9 +14,7 @@ interface WebItemProps {
 
 export function WebItem({ web }: WebItemProps) {
 
-  const { id, attributes: { image, title, brief, technologies, link, client } } = web;
-
-  const { push } = useRouter();
+  const { id, attributes: { image, title, brief, technologies, link } } = web;
 
   const { t } = useTranslation(Namespace.common);
 
@@ -53,15 +49,6 @@ export function WebItem({ web }: WebItemProps) {
                 </IconButton>
               </a>
             </Link>
-          }
-          {
-            client &&
-            <IconButton icon={ faHandshake }
-                        className="mr-4 mb-4"
-                        colorGroup={ Colors[Color.blue] }
-                        onClick={ () => push(Routes.clients) }>
-              { t('client') }
-            </IconButton>
           }
         </Portfolio.ButtonContainer>
       </Portfolio.ContentContainer>

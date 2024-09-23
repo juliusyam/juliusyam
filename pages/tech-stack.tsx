@@ -32,6 +32,8 @@ interface TitleProps extends StringChildrenProps {
 
 const TechStack: NextPage<TechStackProps> = ({ techStack }) => {
 
+  console.log(techStack);
+
   const NavItem = ({ children, category }: TitleProps) => (
     <div onClick={ e => {
       let anchor = document.getElementById(category);
@@ -51,8 +53,8 @@ const TechStack: NextPage<TechStackProps> = ({ techStack }) => {
         <div className="grid">
           <NavItem category={ TechStackCategories.web }>Web</NavItem>
           <NavItem category={ TechStackCategories.mobile }>Mobile</NavItem>
-          <NavItem category={ TechStackCategories.design }>Design</NavItem>
           <NavItem category={ TechStackCategories.backend }>Backend</NavItem>
+          <NavItem category={ TechStackCategories.design }>Design</NavItem>
           <NavItem category={ TechStackCategories.language }>Language</NavItem>
         </div>
       </div>
@@ -97,19 +99,19 @@ export function TechStackList({ techStack }: TechStackListProps) {
         }
       </>
 
-      <Title category={ TechStackCategories.design }>Design</Title>
+      <Title category={ TechStackCategories.backend }>Backend</Title>
       <>
         {
-          techStack.filter(t => t.attributes.category === TechStackCategories.design).map(t =>
+          techStack.filter(t => t.attributes.category === TechStackCategories.backend).map(t =>
             <TechItem tech={ t } key={ t.id } />
           )
         }
       </>
 
-      <Title category={ TechStackCategories.backend }>Backend</Title>
+      <Title category={ TechStackCategories.design }>Design</Title>
       <>
         {
-          techStack.filter(t => t.attributes.category === TechStackCategories.backend).map(t =>
+          techStack.filter(t => t.attributes.category === TechStackCategories.design).map(t =>
             <TechItem tech={ t } key={ t.id } />
           )
         }

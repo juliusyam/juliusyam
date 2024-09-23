@@ -57,6 +57,8 @@ export interface Web {
   attributes: WebAttributes,
 }
 
+export type Mobile = Web;
+
 export interface WebAttributes extends GlobalAttributes {
   brief: string,
   client: ClientRelation,
@@ -78,7 +80,7 @@ export interface DesignAttributes extends GlobalAttributes {
   client: ClientRelation,
   contribution: string,
   image: Image,
-  onlinePresences: OnlinePresence[],
+  onlinePresences?: OnlinePresence[],
   products: string,
   sortOrder: number,
   title: string,
@@ -94,8 +96,7 @@ export interface ProjectAttributes extends GlobalAttributes {
   description: string,
   endedAt: Date,
   image: Image,
-  link?: string,
-  originLink?: string,
+  links: LinkPresence[],
   startedAt: Date,
   title: string,
 }
@@ -124,6 +125,10 @@ export interface ClientRelation {
 export interface OnlinePresence {
   link: string,
   presenceType: Social,
+}
+
+export interface LinkPresence extends OnlinePresence {
+  label: string,
 }
 
 export interface GlobalAttributes {

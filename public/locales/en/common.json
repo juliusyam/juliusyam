@@ -9,7 +9,7 @@
   },
   "web": {
     "title": "Web",
-    "description": "Reactive and static sites"
+    "description": "JS Frameworks, Static sites, CMS"
   },
   "design": {
     "title": "Design",
@@ -21,11 +21,11 @@
   },
   "experimental_projects": {
     "title": "Experimental projects",
-    "description": "Some fun doodles"
+    "description": "FullStack Development, C# and .NET, Laravel, Rest APIs, WebSockets"
   },
   "digital_artwork": {
     "title": "Digital artwork",
-    "description": "Just for fun"
+    "description": "Hobby digital drawings"
   },
   "contact_me": {
     "title": "Contact me"
@@ -35,11 +35,11 @@
   "projects": "Projects",
   "contact": "Contact",
   "client": "Client",
-  "view_site": "View site",
+  "view_site": "View",
   "view_product": "View product",
   "about": "About",
   "what_i_did": "What I did for them?",
   "online_presences": "Online presences",
 
-  "copyright": "Copyright © 2022 by Julius Yam. All Rights Reserved"
+  "copyright": "Copyright © {{ year }} by Julius Yam. All Rights Reserved"
 }

@@ -12,7 +12,7 @@ interface ProjectItemProps {
 
 export function ProjectItem({ project }: ProjectItemProps) {
 
-  const { attributes: { image, title, brief, description, link, originLink, startedAt, endedAt }, id } = project;
+  const { attributes: { image, title, brief, description, links, startedAt, endedAt }, id } = project;
 
   return (
     <Portfolio.Container key={ id }>
@@ -30,32 +30,24 @@ export function ProjectItem({ project }: ProjectItemProps) {
         <Portfolio.DateDisplay startedAt={ startedAt } endedAt={ endedAt } color="text-gray-600" />
         <Portfolio.Description>{ description }</Portfolio.Description>
 
-        <Portfolio.ButtonContainer>
-          {
-            link &&
-            <Link href={ link } passHref>
-              <a target="_blank" rel="noopener noreferrer">
-                <IconButton icon={ faGlobeEurope }
-                            className="mr-4 mb-4"
-                            colorGroup={ Colors[Color.red] }>
-                  View product
-                </IconButton>
-              </a>
-            </Link>
-          }
-          {
-            originLink &&
-            <Link href={ originLink } passHref>
-              <a target="_blank" rel="noopener noreferrer">
-                <IconButton icon={ faGlobeEurope }
-                            className="mr-4 mb-4"
-                            colorGroup={ Colors[Color.red] }>
-                  View original tutorial
-                </IconButton>
-              </a>
-            </Link>
-          }
-        </Portfolio.ButtonContainer>
+        {
+          links?.length > 0 &&
+          <Portfolio.ButtonContainer>
+            {
+              links.map((presence, i) => (
+                <Link key={ i } href={ presence.link } passHref>
+                  <a target="_blank" rel="noopener noreferrer">
+                    <IconButton icon={ faGlobeEurope }
+                                className="mr-4 mb-4"
+                                colorGroup={ Colors[Color.red] }>
+                      { presence.label }
+                    </IconButton>
+                  </a>
+                </Link>
+              ))
+            }
+          </Portfolio.ButtonContainer>
+        }
       </Portfolio.ContentContainer>
     </Portfolio.Container>
   )
